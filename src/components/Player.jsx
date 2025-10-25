@@ -2,7 +2,7 @@ import React from "react";
 
 const Player = () => {
   return (
-    <div className="w-full h-[100px] bg-[#1b1b1b]">
+    <div className="w-full h-[130px] bg-[#422155]">
 
     </div>
   );
