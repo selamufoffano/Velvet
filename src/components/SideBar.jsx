@@ -3,7 +3,7 @@ import React from "react";
 
 const SideBar = () => {
   return (
-    <div className="w-1/5 bg-[#0e0e0e] mt-18 flex-grow flex flex-col rounded-tl-[10px]">
+    <div className="w-1/5 bg-[#121212] mt-18 flex-grow flex flex-col pt-2 rounded-tl-[20px] rounded-tr-[20px] ">
       {/** Contenitore elementi Home e Browse */}
       <div
         className="w-[95%] h-[100px] bg-[#121212] m-[2.5%] border-1 rounded-[10px]
@@ -87,6 +87,7 @@ const SideBar = () => {
             </div>
           </div>
 
+          {/*
           <div className="flex items-center space-x-2 mb-6.5 pl-3 border-l-2 border-white">
             <div>
               <svg
@@ -120,6 +121,7 @@ const SideBar = () => {
               <p>New</p>
             </div>
           </div>
+          */}
 
           <div className="flex items-center space-x-2 pl-3 border-l-2 border-white">
             <div>
@@ -141,7 +143,122 @@ const SideBar = () => {
       </div>
 
       {/** Contenitore elementi Play History */}
-      <div className="w-[95%] flex-grow bg-[#121212] m-[2.5%] border-1 rounded-[10px]"></div>
+      {/** Ovvviamente qui va creato un ciclo */}
+      <div className="w-[95%] flex-grow bg-[#121212] m-[2.5%] border-1 rounded-[10px] pt-3 pl-2 overflow-y-scroll scrollbar-hidden">
+        <div className="flex items-center space-x-2 text-white mb-5 bg-[#1f1e1e] rounded-[10px]">
+          <div className="w-12">
+            <img src="/album/img1.jpeg" alt="" />
+          </div>
+          <div className="ml-3">
+            <p className="text-white text-sm mb-1">ten days</p>
+            <p className="text-gray-400 text-xs">Fred again..</p>
+          </div>
+        </div>
+
+        <div className="flex items-center space-x-2 text-white mb-5">
+          <div className="w-12">
+            <img src="/album/img2.jpeg" alt="" />
+          </div>
+          <div className="ml-3">
+            <p className="text-white text-sm  mb-1">Reckless Heart</p>
+            <p className="text-gray-400 text-xs">Joanne Shaw Taylor</p>
+          </div>
+        </div>
+
+        <div className="flex items-center space-x-2 text-white mb-5">
+          <div className="w-12">
+            <img src="/album/img3.jpeg" alt="" />
+          </div>
+          <div className="ml-3">
+            <p className="text-white text-sm  mb-1">
+              Saviors (èdition de luxe)
+            </p>
+            <p className="text-gray-400 text-xs">Green Day</p>
+          </div>
+        </div>
+
+        <div className="flex items-center space-x-2 text-white mb-5">
+          <div className="w-12">
+            <img src="/album/img4.jpeg" alt="" />
+          </div>
+          <div className="ml-3">
+            <p className="text-white text-sm  mb-1">El Camino</p>
+            <p className="text-gray-400 text-xs">The Black Keys</p>
+          </div>
+        </div>
+
+        <div className="flex items-center space-x-2 text-white mb-5">
+          <div className="w-12">
+            <img src="/album/img5.jpeg" alt="" />
+          </div>
+          <div className="ml-3">
+            <p className="text-white text-sm  mb-1">Groovy</p>
+            <p className="text-gray-400 text-xs">
+              StreamBeats by Harris Heller
+            </p>
+          </div>
+        </div>
+
+        <div className="flex items-center space-x-2 text-white mb-5">
+          <div className="w-12">
+            <img src="/album/img6.jpeg" alt="" />
+          </div>
+          <div className="ml-3">
+            <p className="text-white text-sm font-semibold mb-1">
+              The Human Condition
+            </p>
+            <p className="text-gray-400 text-xs">Jon Bellion</p>
+          </div>
+        </div>
+
+        <div className="flex items-center space-x-4 text-white mb-5">
+          <div className="w-12">
+            <img src="/album/img4.jpeg" alt="" />
+          </div>
+          <div className="">
+            <p className="text-white text-sm font-semibold mb-1">
+              Live At Eventim Apollo
+            </p>
+            <p className="text-gray-400 text-xs">Olivia Dean</p>
+          </div>
+        </div>
+
+        <div className="flex items-center space-x-4 text-white mb-5">
+          <div className="w-12">
+            <img src="/album/img7.jpeg" alt="" />
+          </div>
+          <div className="">
+            <p className="text-white text-sm font-semibold mb-1">
+              Live At Eventim Apollo
+            </p>
+            <p className="text-gray-400 text-xs">Olivia Dean</p>
+          </div>
+        </div>
+
+        <div className="flex items-center space-x-4 text-white mb-5">
+          <div className="w-12">
+            <img src="/album/img2.jpeg" alt="" />
+          </div>
+          <div className="">
+            <p className="text-white text-sm font-semibold mb-1">
+              Live At Eventim Apollo
+            </p>
+            <p className="text-gray-400 text-xs">Olivia Dean</p>
+          </div>
+        </div>
+
+        <div className="flex items-center space-x-4 text-white mb-5">
+          <div className="w-12">
+            <img src="/album/img1.jpeg" alt="" />
+          </div>
+          <div className="">
+            <p className="text-white text-sm font-semibold mb-1">
+              Live At Eventim Apollo
+            </p>
+            <p className="text-gray-400 text-xs">Olivia Dean</p>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

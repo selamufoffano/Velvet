@@ -4,7 +4,7 @@ import userIcon from "../../img/user.jpg";
 
 const NavBar = () => {
   return (
-    <nav className="w-full fixed top-0 left-0 bg-black text-white shadow-2xl z-50">
+    <nav className="w-full fixed top-0 left-0 bg-black shadow-2xl z-50">
       <div className="mx-auto px-6 py-3 flex items-center justify-between">
         
         {/* Primo gruppo - 25% */}
@@ -23,7 +23,7 @@ const NavBar = () => {
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
-              className="w-6 h-6 text-red"
+              className="w-6 h-6 text-white"
               fill="currentColor"
               aria-hidden="true"
             >
@@ -37,24 +37,24 @@ const NavBar = () => {
               <input 
                 type="search" 
                 id="default-search" 
-                className="block w-full h-12 ps-10 rounded-[30px] text-white-900 border  bg-[#383838]" 
+                className="block w-full h-12 ps-10 rounded-[30px] text-white  bg-[#383838]" 
                 placeholder="What do you want to play?" 
               />
 
               
               <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-                <svg className="w-6 h-6 " xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                <svg className="w-6 h-6 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
                   <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
                 </svg>
               </div>
 
 
-              <span className="absolute inset-y-2.5 end-0 flex items-center pl-3 pe-3 pointer-events-none border-l-2 mr-5.5 h-6"></span>
+              <span className="absolute inset-y-2.5 end-0 flex items-center pl-3 pe-3 border-white pointer-events-none border-l-2 mr-5.5 h-6"></span>
               <button className="absolute inset-y-0 end-0 flex items-center pl-3 pe-3 pointer-events-none">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
-                  className="w-6 h-6 text-red"
+                  className="w-6 h-6 text-white"
                   fill="currentColor"
                   aria-hidden="true"
                 >
@@ -71,7 +71,7 @@ const NavBar = () => {
                             <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
-                  className="w-6 h-6 text-red"
+                  className="w-6 h-6 text-white"
                   fill="currentColor"
                   aria-hidden="true"
                 >
@@ -82,7 +82,7 @@ const NavBar = () => {
                             <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
-                  className="w-6 h-6 text-red"
+                  className="w-6 h-6 text-white"
                   fill="currentColor"
                   aria-hidden="true"
                 >
