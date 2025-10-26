@@ -3,7 +3,7 @@ import React from "react";
 
 const SideBar = () => {
   return (
-    <div className="w-1/5 bg-[#121212] mt-18 flex-grow flex flex-col pt-2 rounded-tl-[20px] rounded-tr-[20px] ">
+    <div className="w-1/5 bg-[#121212] mt-16 flex-grow flex flex-col pt-2 rounded-tl-[20px] rounded-tr-[20px] ">
       {/** Contenitore elementi Home e Browse */}
       <div
         className="w-[95%] h-[100px] bg-[#121212] m-[2.5%] border-1 rounded-[10px]
@@ -145,7 +145,7 @@ const SideBar = () => {
       {/** Contenitore elementi Play History */}
       {/** Ovvviamente qui va creato un ciclo */}
       <div className="w-[95%] flex-grow bg-[#121212] m-[2.5%] border-1 rounded-[10px] pt-3 pl-2 overflow-y-scroll scrollbar-hidden">
-        <div className="flex items-center space-x-2 text-white mb-5 bg-[#1f1e1e] rounded-[10px]">
+        <div className="flex items-center space-x-2 text-white mb-3 bg-[#1f1e1e] rounded-[10px]">
           <div className="w-12">
             <img src="/album/img1.jpeg" alt="" />
           </div>
@@ -165,7 +165,7 @@ const SideBar = () => {
           </div>
         </div>
 
-        <div className="flex items-center space-x-2 text-white mb-5">
+        <div className="flex items-center space-x-2 text-white mb-3">
           <div className="w-12">
             <img src="/album/img3.jpeg" alt="" />
           </div>
@@ -177,7 +177,7 @@ const SideBar = () => {
           </div>
         </div>
 
-        <div className="flex items-center space-x-2 text-white mb-5">
+        <div className="flex items-center space-x-2 text-white mb-3">
           <div className="w-12">
             <img src="/album/img4.jpeg" alt="" />
           </div>
@@ -187,7 +187,7 @@ const SideBar = () => {
           </div>
         </div>
 
-        <div className="flex items-center space-x-2 text-white mb-5">
+        <div className="flex items-center space-x-2 text-white mb-3">
           <div className="w-12">
             <img src="/album/img5.jpeg" alt="" />
           </div>
@@ -199,7 +199,7 @@ const SideBar = () => {
           </div>
         </div>
 
-        <div className="flex items-center space-x-2 text-white mb-5">
+        <div className="flex items-center space-x-2 text-white mb-3">
           <div className="w-12">
             <img src="/album/img6.jpeg" alt="" />
           </div>
@@ -211,7 +211,7 @@ const SideBar = () => {
           </div>
         </div>
 
-        <div className="flex items-center space-x-4 text-white mb-5">
+        <div className="flex items-center space-x-4 text-white mb-3">
           <div className="w-12">
             <img src="/album/img4.jpeg" alt="" />
           </div>
@@ -223,7 +223,7 @@ const SideBar = () => {
           </div>
         </div>
 
-        <div className="flex items-center space-x-4 text-white mb-5">
+        <div className="flex items-center space-x-4 text-white mb-3">
           <div className="w-12">
             <img src="/album/img7.jpeg" alt="" />
           </div>

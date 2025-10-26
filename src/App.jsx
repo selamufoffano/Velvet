@@ -6,7 +6,7 @@ import './App.css'
 import SideBar from './components/SideBar'
 import Player from './components/Player'
 import HomePage from './components/HomePage' // Importa la tua HomePage
-
+import AudioPlayer from './components/AudioPlayer'
 function App() {
   const [count, setCount] = useState(0)
 
@@ -35,6 +35,7 @@ function App() {
       
       {/* 3. Player: rimarrà sempre in basso grazie a 'fixed' e un'altra classe, ma nel tuo layout Flex-col attuale, è già in basso. */}
       <Player></Player>
+      <AudioPlayer></AudioPlayer>
     </div>
   )
 }
