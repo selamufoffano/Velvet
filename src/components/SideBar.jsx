@@ -7,7 +7,7 @@ const SideBar = () => {
       {/** Contenitore elementi Home e Browse */}
       <div
         className="w-[95%] h-[100px] bg-[#121212] m-[2.5%] border-1 rounded-[10px]
-      flex justify-center items-center p-2"
+      flex justify-center items-center p-2 font-bold"
       >
         <div className=" w-full">
           <div className="flex items-center space-x-2 mb-6.5 pl-3 border-l-2 border-white">

@@ -12,11 +12,11 @@ const NavBar = () => {
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
-              className="w-6 h-6 text-white"
+              className="w-8 h-8 text-white"
               fill="currentColor"
               aria-hidden="true"
             >
-              <path d="M 0,21 H 27 V 17.5 H 0 Z M 0,12.25 H 27 V 8.7499998 H 0 Z M 0,0 V 3.5 H 27 V 0 Z" />
+              <path d="M 0.99993896,0 A 1,1 0 0 0 0,0.9999389 V 15.000118 a 1,1 0 0 0 0.99993896,0.999939 H 15.000118 a 1,1 0 0 0 0.999939,-0.999939 V 0.9999389 A 1,1 0 0 0 15.000118,0 Z M 1.5001668,1.5001668 H 5.0002116 V 14.49989 H 1.5001668 Z m 4.9996949,0 H 14.499891 V 14.49989 H 6.4998617 Z m 2.7631388,3.5548215 a 0.75,0.75 0 0 0 -0.5105632,1.260388 l 1.4696777,1.470195 -1.4696777,1.469678 A 0.75,0.75 0 1 0 9.812321,10.315649 l 1.999878,-2.0003947 a 0.75,0.75 0 0 0 0,-1.059883 L 9.812321,5.2554933 A 0.75,0.75 0 0 0 9.2630005,5.0549883 Z" />
             </svg>
           </div>
 
@@ -87,7 +87,7 @@ const NavBar = () => {
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
-              className="w-6 h-6 text-white"
+              className="w-5 h-5 text-white"
               fill="currentColor"
               aria-hidden="true"
             >
@@ -98,7 +98,7 @@ const NavBar = () => {
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
-              className="w-6 h-6 text-white"
+              className="w-5 h-5 text-white"
               fill="currentColor"
               aria-hidden="true"
             >

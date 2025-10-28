@@ -1,6 +1,5 @@
 // src/components/Controls.jsx
 import React, { useEffect, useCallback } from 'react';
-import { BsShuffle, BsRepeat } from 'react-icons/bs';
 import { useAudioPlayerContext } from '../store/context/audio-player-context';
 import { tracks } from '../data/tracks';
 
@@ -73,7 +72,7 @@ export const Controls = () => {
   );
 
   const btnBase =
-    'flex items-center justify-center w-10 h-9 rounded-md transition-colors p-0 leading-none';
+    'flex items-center justify-center w-10 h-10 rounded-md transition-colors p-0 leading-none';
 
   return (
     <div className="flex items-center justify-center gap-1">
