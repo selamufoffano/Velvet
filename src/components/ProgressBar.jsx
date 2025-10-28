@@ -78,13 +78,14 @@ export const ProgressBar = () => {
   return (
     <div className="flex items-center justify-center gap-5 w-full">
       <span className="text-xs text-gray-400">{formatTime(timeProgress)}</span>
-      <input
-        type="range"
-        className="max-w-[80%] w-full h-1 bg-gray-600 appearance-none cursor-pointer rounded-lg focus:outline-none focus:ring-2 focus:ring-[#f50] focus:ring-offset-2"
-        ref={progressBarRef}
-        defaultValue="0"
-        onChange={handleProgressChange}
-      />
+        <input
+          type="range"
+          // Rimuovi 'appearance-none' e aggiungi 'accent-red-500'
+          className="custom-range max-w-[80%] w-full h-1 bg-gray-600 cursor-pointer rounded-2xl focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2 accent-green-500"
+          ref={progressBarRef}
+          defaultValue="0"
+          onChange={handleProgressChange}
+        />
       <span className="text-xs text-gray-400">{formatTime(duration)}</span>
     </div>
   );

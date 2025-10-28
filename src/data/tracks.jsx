@@ -1,18 +1,15 @@
 
 export const tracks = [
   {
-    title: 'Trinix ft Rushawn – Its a beautiful day',
-    // Il file a_beautiful_day.mp3 in public/ diventa '/a_beautiful_day.mp3'
+    title: 'Live At Eventim Apollo',
     src: '/a_beautiful_day.mp3', 
-    author: 'Trinix ft Rushawn',
-    // Il file vite.svg in public/ diventa '/vite.svg'
+    author: 'Fred again..',
     thumbnail: '/img1.jpeg', 
   },
   {
     title: 'Brano Esempio 2',
-    src: '/path/to/second/audio.mp3', // AGGIORNA CON IL TUO PERCORSO IN public/
+    src: '/path/to/second/audio.mp3', 
     author: 'Artista Esempio 2',
-    thumbnail: '/path/to/second/thumbnail.jpg', // AGGIORNA CON IL TUO PERCORSO IN public/
+    thumbnail: '/path/to/second/thumbnail.jpg', 
   },
-  // Aggiungi altri brani qui
 ];

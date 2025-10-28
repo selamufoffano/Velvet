@@ -145,7 +145,7 @@ const SideBar = () => {
       {/** Contenitore elementi Play History */}
       {/** Ovvviamente qui va creato un ciclo */}
       <div className="w-[95%] flex-grow bg-[#121212] m-[2.5%] border-1 rounded-[10px] pt-3 pl-2 overflow-y-scroll scrollbar-hidden">
-        <div className="flex items-center space-x-2 text-white mb-3 bg-[#1f1e1e] rounded-[10px]">
+        <div className="flex items-center space-x-2 text-white mb-2.5 bg-[#1f1e1e] rounded-[10px]">
           <div className="w-12">
             <img src="/album/img1.jpeg" alt="" />
           </div>
@@ -155,7 +155,7 @@ const SideBar = () => {
           </div>
         </div>
 
-        <div className="flex items-center space-x-2 text-white mb-5">
+        <div className="flex items-center space-x-2 text-white mb-2.5">
           <div className="w-12">
             <img src="/album/img2.jpeg" alt="" />
           </div>
@@ -165,7 +165,7 @@ const SideBar = () => {
           </div>
         </div>
 
-        <div className="flex items-center space-x-2 text-white mb-3">
+        <div className="flex items-center space-x-2 text-white mb-2.5">
           <div className="w-12">
             <img src="/album/img3.jpeg" alt="" />
           </div>
@@ -177,7 +177,7 @@ const SideBar = () => {
           </div>
         </div>
 
-        <div className="flex items-center space-x-2 text-white mb-3">
+        <div className="flex items-center space-x-2 text-white mb-2.5">
           <div className="w-12">
             <img src="/album/img4.jpeg" alt="" />
           </div>

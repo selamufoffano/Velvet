@@ -1,9 +1,83 @@
 @import "tailwindcss";
 /* App.css */
+/* ===== Scrollbar CSS ===== */
+  /* Firefox */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #4d4d4d #000000;
+  }
+
+  /* Chrome, Edge, and Safari */
+  *::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: none;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background-color: #4d4d4d;
+    border-radius: 1px;
+    border: 0px solid #ffffff;
+  }
 .scrollbar-hidden::-webkit-scrollbar {
     display: none;
 }
 .scrollbar-hidden {
     -ms-overflow-style: none;
     scrollbar-width: none;
+}
+
+
+/* Esempio: in index.css o globals.css */
+
+.custom-range {
+  -webkit-appearance: none; /* Rimuove lo stile di default del browser per Webkit */
+  appearance: none;
+  background: var(--progress-width, 0%) linear-gradient(to right, #7986CB, #A7BFFD) no-repeat; /* Gradiente per il riempimento */
+  background-color: #374151; /* Colore di fallback per la parte non progredita */
+  border-radius: 9999px; /* Per bordi arrotondati */
+  height: 5px; /* Altezza della barra */
+  outline: none; /* Rimuove l'outline al focus */
+}
+
+/* Stile per il thumb (il "cerchio" che si trascina) in Webkit (Chrome, Safari) */
+.custom-range::-webkit-slider-thumb {
+  -webkit-appearance: none; /* Rimuove lo stile di default */
+  appearance: none;
+  width: 12px; /* Dimensione del cerchio */
+  height: 12px; /* Dimensione del cerchio */
+  border-radius: 50%; /* Rende il thumb un cerchio perfetto */
+  background: white; /* Colore bianco per il cerchio */
+  cursor: pointer;
+  //margin-top: ; /* Centra verticalmente il thumb sulla barra di 8px */
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.5); /* L'anello esterno bianco */
+}
+
+/* Stile per il thumb in Firefox */
+.custom-range::-moz-range-thumb {
+  width: 16px; /* Dimensione del cerchio */
+  height: 16px; /* Dimensione del cerchio */
+  border-radius: 50%; /* Rende il thumb un cerchio perfetto */
+  background: white; /* Colore bianco per il cerchio */
+  cursor: pointer;
+  border: none; /* Rimuove il bordo di default di Firefox */
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.5); /* L'anello esterno bianco */
+}
+
+/* Stile per la "track" (la barra) in Firefox */
+.custom-range::-moz-range-track {
+    background: transparent; /* Il background complessivo è gestito dalla classe .custom-range */
+    border-radius: 9999px;
+    height: 8px;
+}
+
+/* Gestione del gradiente per la parte riempita */
+.custom-range {
+    /* La magia del gradiente: usa una variabile CSS per definire la percentuale del riempimento */
+    /* La parte riempita avrà il gradiente, la parte non riempita il background-color */
+    background: linear-gradient(to right, #7986CB, #A7BFFD) no-repeat var(--progress-width, 0%) 0;
+    background-size: var(--progress-width, 0%) 100%; /* La dimensione del gradiente copre solo la percentuale di progresso */
+    background-color: #374151; /* Colore del track non progredito (gray-700) */
 }

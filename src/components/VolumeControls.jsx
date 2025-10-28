@@ -67,7 +67,7 @@ export const VolumeControl = () => {
         max="100"
         value={isMute ? 0 : volume}
         onChange={handleVolumeChange}
-        className="w-20 h-1 bg-gray-600 appearance-none cursor-pointer rounded-lg focus:outline-none focus:ring-1 focus:ring-gray-400"
+        className="custom-range w-20 h-1 bg-gray-600 appearance-none cursor-pointer rounded-lg focus:outline-none focus:ring-1 focus:ring-gray-400"
       />
     </div>
   );

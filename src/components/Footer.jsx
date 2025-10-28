@@ -2,7 +2,7 @@ import React from "react";
 
 const Footer = () => {
   return(
-    <div className="w-full h-[150px] bg-green-400"></div>
+    <div className="w-full h-[150px] bg-[#D00000]"></div>
   );
 };
 

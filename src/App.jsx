@@ -34,7 +34,7 @@ function App() {
       </div>
       
       {/* 3. Player: rimarrà sempre in basso grazie a 'fixed' e un'altra classe, ma nel tuo layout Flex-col attuale, è già in basso. */}
-      <Player></Player>
+    {/*}  <Player></Player>*/}
       <AudioPlayer></AudioPlayer>
     </div>
   )

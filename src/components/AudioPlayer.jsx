@@ -5,14 +5,14 @@ import { TrackInfo } from './TrackInfo';
 import { Controls } from './Controls';
 import { ProgressBar } from './ProgressBar';
 import { VolumeControl } from './VolumeControls';
-import { PlayList } from './PlayList';
+import { Coda } from './Coda';
 
 const AudioPlayer = () => {
   const [openDrawer, setOpenDrawer] = useState(false);
 
   return (
-    <div className="text-white flex flex-col">
-      <div className="h-[130px] flex items-center justify-between px-4">
+    <div className="text-white flex flex-col ">
+      <div className="h-[70px] flex items-center justify-between px-2 overflow-hidden">
 
         <div className="w-1/4 flex items-center space-x-4">
           <div>
@@ -20,7 +20,7 @@ const AudioPlayer = () => {
           </div>
         </div>
 
-        <div className="w-2/4 flex flex-col justify-center items-center space-y-2">
+        <div className="w-2/4 flex flex-col justify-center items-center">
           <Controls />
           <div className="w-4/5">
             <ProgressBar />
