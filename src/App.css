@@ -81,3 +81,13 @@
     background-size: var(--progress-width, 0%) 100%; /* La dimensione del gradiente copre solo la percentuale di progresso */
     background-color: #374151; /* Colore del track non progredito (gray-700) */
 }
+
+/* Rimuove il bordo e l'ombra del focus sugli input */
+input:focus,
+textarea:focus,
+select:focus,
+button:focus {
+  outline: none !important;
+  box-shadow: none !important;
+  border-color: transparent !important;
+}

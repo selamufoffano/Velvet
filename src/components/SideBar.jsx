@@ -3,7 +3,7 @@ import React from "react";
 
 const SideBar = () => {
   return (
-    <div className="w-1/5 bg-[#121212] mt-16 flex-grow flex flex-col pt-2 rounded-tl-[20px] rounded-tr-[20px] ">
+    <div className="w-1/4 bg-[#121212] mt-16 flex-grow flex flex-col pt-2 rounded-tl-[20px] rounded-tr-[20px] ">
       {/** Contenitore elementi Home e Browse */}
       <div
         className="w-[95%] h-[100px] bg-[#121212] m-[2.5%] border-1 rounded-[10px]
@@ -144,8 +144,8 @@ const SideBar = () => {
 
       {/** Contenitore elementi Play History */}
       {/** Ovvviamente qui va creato un ciclo */}
-      <div className="w-[95%] flex-grow bg-[#121212] m-[2.5%] border-1 rounded-[10px] pt-3 pl-2 overflow-y-scroll scrollbar-hidden">
-        <div className="flex items-center space-x-2 text-white mb-2.5 bg-[#1f1e1e] rounded-[10px]">
+      <div className="w-[95%] flex-grow bg-[#121212] m-[2.5%] border-1 rounded-[10px] pt-3 pl-2 pr-2 overflow-y-scroll scrollbar-hidden">
+        <div className="flex items-center space-x-2 text-white mb-2.5 bg-[#1f1e1e] rounded-[10px] p-2">
           <div className="w-12">
             <img src="/album/img1.jpeg" alt="" />
           </div>
