@@ -13,7 +13,7 @@ export const Album = () => {
           className="w-full h-full object-cover rounded-t-xl"
         />
         <div className="w-full h-auto p-3">
-          <h1 className="text-white text-b ">ten days</h1>
+          <h1 className="text-white font-semibold ">ten days</h1>
           <p className="text-gray-400 text-xs">Fred again..</p>
         </div>
       </div>

@@ -8,3 +8,7 @@ REACT & TailwindCSS
 - UI
 - DB SQLite
 - MediaServer
+
+# WORK FLOW concept
+# DB concept
+![alt text](https://github.com/selamufoffano/Velvet/blob/main/public/img/velvetSQLite.svg?raw=true)
