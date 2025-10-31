@@ -1,5 +1,5 @@
 import React from "react";
-const cardStyles = "w-full aspect-square bg-sky-500 rounded-xl overflow-hidden";
+const cardStyles = "w-full aspect-square bg-slate-800 rounded-xl hover:bg-slate-600 transition duration-500 ease-in-out hover:shadow-2xl shadow-slate-800";
 
 export const Album = () => {
   
@@ -10,15 +10,19 @@ export const Album = () => {
         <img 
           src={`/album/img${i}.jpeg`} 
           alt={`Copertina album ${i}`} 
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover rounded-t-xl"
         />
+        <div className="w-full h-auto p-3">
+          <h1 className="text-white text-b ">ten days</h1>
+          <p className="text-gray-400 text-xs">Fred again..</p>
+        </div>
       </div>
     );
   }
 
   return (
-    <div className="w-full mx-auto p-1 bg-slate-800">
-      <div className="grid grid-cols-5 gap-4">
+    <div className="w-full mx-auto p-1">
+      <div className="grid grid-cols-6 gap-4">
         {albumCards}        
         {albumCards}        
         {albumCards}        
