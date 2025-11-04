@@ -1,6 +1,4 @@
 import React from "react";
-import logo from "../../img/tailwind-logo.svg";
-import userIcon from "../../img/user.jpg";
 
 const NavBar = () => {
   return (
@@ -105,7 +103,7 @@ const NavBar = () => {
               <path d="M 18.27197,3.084375 C 16.329568,1.18125 13.66379,0 10.703302,0 4.7823265,0 0,4.69875 0,10.5 0,16.30125 4.7823265,21 10.703302,21 c 4.99666,0 9.162777,-3.346875 10.355009,-7.875 H 18.27197 c -1.098462,3.058125 -4.072345,5.25 -7.568668,5.25 -4.4340333,0 -8.0375234,-3.530625 -8.0375234,-7.875 0,-4.344375 3.6034901,-7.875 8.0375234,-7.875 2.223714,0 4.206304,0.905625 5.653058,2.33625 L 12.042889,9.1875 H 21.42 V 0 Z" />
             </svg>
           </div>
-          <div className="w-9 h-9 rounded-full bg-[#383838] flex items-center justify-center">
+          <div className="w-10 h-10 rounded-full bg-[#3d3d3d] flex items-center justify-center">
             <div className="w-7 h-7 rounded-full overflow-hidden bg-gray-200 flex items-center justify-center">
               <img
                 src={"/img/user.jpeg"}

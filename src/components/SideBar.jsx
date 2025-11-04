@@ -3,7 +3,7 @@ import React from "react";
 
 const SideBar = () => {
   return (
-    <div className="w-1/4 bg-[#121212] mt-16 flex-grow flex flex-col pt-2 rounded-tl-[20px] rounded-tr-[20px] ">
+    <div className="w-1/4 bg-[#121212] mt-16 flex-grow flex flex-col pt-1.5 rounded-tl-[20px] rounded-tr-[20px] ml-1.5">
       {/** Contenitore elementi Home e Browse */}
       <div
         className="w-[95%] h-[100px] bg-[#121212] m-[2.5%] border-1 rounded-[10px]
