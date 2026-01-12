@@ -24,8 +24,6 @@ export const Album = () => {
     <div className="w-full mx-auto p-1">
       <div className="grid grid-cols-6 gap-4">
         {albumCards}        
-        {albumCards}        
-        {albumCards}        
       </div>
     </div>
   );

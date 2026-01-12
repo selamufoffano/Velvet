@@ -13,10 +13,10 @@ const HomePage = () => {
         <h1 className="text-white text-5xl font-semibold mb-5">Browse</h1>
         <Album></Album>
         </div>
-      <div className="w-full h-[500px] bg-[#222222] mb-4"> Contenuto 2 </div>
+      {/*<div className="w-full h-[500px] bg-[#222222] mb-4"> Contenuto 2 </div>
       <div className="w-full h-[500px] bg-[#222222] mb-4"> Contenuto 3 </div>
       <div className="w-full h-[500px] bg-[#222222] mb-4"> Contenuto 3 </div>
-      <Footer></Footer>
+      <Footer></Footer>*/}
     </div>
     );
 };

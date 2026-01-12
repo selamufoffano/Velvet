@@ -1,6 +1,6 @@
 // SideBar.jsx
 import React from "react";
-
+import SideBar_history from "./sideBar_history";
 const SideBar = () => {
   return (
     <div className="w-1/4 bg-[#121212] mt-16 flex-grow flex flex-col pt-1.5 rounded-tl-[20px] rounded-tr-[20px] ml-1.5">
@@ -87,42 +87,6 @@ const SideBar = () => {
             </div>
           </div>
 
-          {/*
-          <div className="flex items-center space-x-2 mb-6.5 pl-3 border-l-2 border-white">
-            <div>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                className="w-6 h-6 text-white"
-                fill="currentColor"
-                aria-hidden="true"
-              >
-                <path d="M 14.5,0 C 12.76,0 11.09,0.81 10,2.09 8.91,0.81 7.24,0 5.5,0 2.42,0 0,2.42 0,5.5 0,9.28 3.4,12.36 8.55,17.04 L 10,18.35 11.45,17.03 C 16.6,12.36 20,9.28 20,5.5 20,2.42 17.58,0 14.5,0 Z M 10.1,15.55 10,15.65 9.9,15.55 C 5.14,11.24 2,8.39 2,5.5 2,3.5 3.5,2 5.5,2 7.04,2 8.54,2.99 9.07,4.36 h 1.87 C 11.46,2.99 12.96,2 14.5,2 c 2,0 3.5,1.5 3.5,3.5 0,2.89 -3.14,5.74 -7.9,10.05 z" />
-              </svg>
-            </div>
-            <div>
-              <p>Favorite</p>
-            </div>
-          </div>
-
-          <div className="flex items-center space-x-2 mb-6.5 pl-3 border-l-2 border-white">
-            <div>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                className="w-6 h-6 text-white"
-                fill="currentColor"
-                aria-hidden="true"
-              >
-                <path d="M 4.92,6.3729999 C 5.886,6.3729999 6.3729995,5.886 6.3729995,4.883 v -3.4 C 6.3729995,0.479 5.886,0 4.92,0 H 1.452 C 0.487,0 0,0.479 0,1.483 v 3.4 c 0,1.003 0.487,1.4899999 1.452,1.4899999 z m 7.628,0 C 13.512999,6.3729999 14,5.886 14,4.883 v -3.4 C 14,0.479 13.513,0 12.548,0 H 9.0879995 c -0.974,0 -1.46,0.479 -1.46,1.483 v 3.4 c 0,1.003 0.486,1.4899999 1.46,1.4899999 z M 4.898,5.3 H 1.468 C 1.202,5.3 1.072,5.163 1.072,4.882 v -3.4 c 0,-0.273 0.13,-0.41 0.396,-0.41 h 3.43 c 0.265,0 0.402,0.137 0.402,0.41 v 3.4 C 5.3,5.163 5.163,5.3 4.897,5.3 Z m 7.634,0 H 9.1019995 c -0.273,0 -0.402,-0.137 -0.402,-0.418 v -3.4 c 0,-0.273 0.129,-0.41 0.403,-0.41 H 12.533 c 0.265,0 0.395,0.137 0.395,0.41 v 3.4 c 0,0.281 -0.13,0.418 -0.396,0.418 z M 4.92,14 c 0.966,0 1.4529995,-0.48 1.4529995,-1.483 V 9.1099999 c 0,-0.996 -0.4869995,-1.483 -1.4529995,-1.483 H 1.452 c -0.965,0 -1.452,0.487 -1.452,1.483 V 12.517 C 0,13.521 0.487,14 1.452,14 Z m 7.628,0 C 13.512999,14 14,13.52 14,12.517 V 9.1099999 c 0,-0.996 -0.487,-1.483 -1.452,-1.483 H 9.0879995 c -0.974,0 -1.46,0.487 -1.46,1.483 V 12.517 c 0,1.004 0.486,1.483 1.46,1.483 z m -7.65,-1.072 h -3.43 c -0.266,0 -0.396,-0.137 -0.396,-0.41 V 9.1179999 c 0,-0.282 0.13,-0.418 0.396,-0.418 h 3.43 c 0.265,0 0.402,0.136 0.402,0.418 V 12.518 c 0,0.273 -0.137,0.41 -0.403,0.41 z m 7.633999,0 H 9.1019995 c -0.273,0 -0.402,-0.137 -0.402,-0.41 V 9.1179999 c 0,-0.282 0.129,-0.418 0.403,-0.418 h 3.4299995 c 0.265001,0 0.395,0.136 0.395,0.418 V 12.518 c 0,0.273 -0.129999,0.41 -0.396,0.41 z" />
-              </svg>
-            </div>
-            <div>
-              <p>New</p>
-            </div>
-          </div>
-          */}
-
           <div className="flex items-center space-x-2 pl-3 border-l-2 border-white">
             <div>
               <svg
@@ -144,121 +108,7 @@ const SideBar = () => {
 
       {/** Contenitore elementi Play History */}
       {/** Ovvviamente qui va creato un ciclo */}
-      <div className="w-[95%] flex-grow bg-[#121212] m-[2.5%] border-1 rounded-[10px] pt-3 pl-2 pr-2 overflow-y-scroll scrollbar-hidden">
-        <div className="flex items-center space-x-2 text-white mb-2.5 bg-[#1f1e1e] rounded-[10px] p-2">
-          <div className="w-12">
-            <img src="/album/img1.jpeg" alt="" />
-          </div>
-          <div className="ml-3">
-            <p className="text-white text-sm mb-1">ten days</p>
-            <p className="text-gray-400 text-xs">Fred again..</p>
-          </div>
-        </div>
-
-        <div className="flex items-center space-x-2 text-white mb-2.5">
-          <div className="w-12">
-            <img src="/album/img2.jpeg" alt="" />
-          </div>
-          <div className="ml-3">
-            <p className="text-white text-sm  mb-1">Reckless Heart</p>
-            <p className="text-gray-400 text-xs">Joanne Shaw Taylor</p>
-          </div>
-        </div>
-
-        <div className="flex items-center space-x-2 text-white mb-2.5">
-          <div className="w-12">
-            <img src="/album/img3.jpeg" alt="" />
-          </div>
-          <div className="ml-3">
-            <p className="text-white text-sm  mb-1">
-              Saviors (èdition de luxe)
-            </p>
-            <p className="text-gray-400 text-xs">Green Day</p>
-          </div>
-        </div>
-
-        <div className="flex items-center space-x-2 text-white mb-2.5">
-          <div className="w-12">
-            <img src="/album/img4.jpeg" alt="" />
-          </div>
-          <div className="ml-3">
-            <p className="text-white text-sm  mb-1">El Camino</p>
-            <p className="text-gray-400 text-xs">The Black Keys</p>
-          </div>
-        </div>
-
-        <div className="flex items-center space-x-2 text-white mb-3">
-          <div className="w-12">
-            <img src="/album/img5.jpeg" alt="" />
-          </div>
-          <div className="ml-3">
-            <p className="text-white text-sm  mb-1">Groovy</p>
-            <p className="text-gray-400 text-xs">
-              StreamBeats by Harris Heller
-            </p>
-          </div>
-        </div>
-
-        <div className="flex items-center space-x-2 text-white mb-3">
-          <div className="w-12">
-            <img src="/album/img6.jpeg" alt="" />
-          </div>
-          <div className="ml-3">
-            <p className="text-white text-sm font-semibold mb-1">
-              The Human Condition
-            </p>
-            <p className="text-gray-400 text-xs">Jon Bellion</p>
-          </div>
-        </div>
-
-        <div className="flex items-center space-x-4 text-white mb-3">
-          <div className="w-12">
-            <img src="/album/img4.jpeg" alt="" />
-          </div>
-          <div className="">
-            <p className="text-white text-sm font-semibold mb-1">
-              Live At Eventim Apollo
-            </p>
-            <p className="text-gray-400 text-xs">Olivia Dean</p>
-          </div>
-        </div>
-
-        <div className="flex items-center space-x-4 text-white mb-3">
-          <div className="w-12">
-            <img src="/album/img7.jpeg" alt="" />
-          </div>
-          <div className="">
-            <p className="text-white text-sm font-semibold mb-1">
-              Live At Eventim Apollo
-            </p>
-            <p className="text-gray-400 text-xs">Olivia Dean</p>
-          </div>
-        </div>
-
-        <div className="flex items-center space-x-4 text-white mb-5">
-          <div className="w-12">
-            <img src="/album/img2.jpeg" alt="" />
-          </div>
-          <div className="">
-            <p className="text-white text-sm font-semibold mb-1">
-              Live At Eventim Apollo
-            </p>
-            <p className="text-gray-400 text-xs">Olivia Dean</p>
-          </div>
-        </div>
-
-        <div className="flex items-center space-x-4 text-white mb-5">
-          <div className="w-12">
-            <img src="/album/img1.jpeg" alt="" />
-          </div>
-          <div className="">
-            <p className="text-white text-sm font-semibold mb-1">
-              Live At Eventim Apollo
-            </p>
-            <p className="text-gray-400 text-xs">Olivia Dean</p>
-          </div>
-        </div>
-      </div>
+      <SideBar_history></SideBar_history>
     </div>
   );
 };
