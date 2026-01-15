@@ -1,33 +1,33 @@
-// App.jsx
-import { useState } from 'react'
-// ... (omissione degli altri import)
-import NavBar from './components/NavBar'
-import './App.css'
-import SideBar from './components/SideBar'
-import HomePage from './components/HomePage' // Importa la tua HomePage
-import AudioPlayer from './components/AudioPlayer'
-function App() {
-  const [count, setCount] = useState(0)
+import Nav from "./components/Nav";
+import SideBar from "./components/SideBar";
+import AudioPlayer from "./components/AudioPlayer";
+import Connect from "./db/Connect";
+import "./App.css";
+import SideBarMenu from "./components/SideBarMenu";
 
-  // Calcoliamo l'altezza disponibile per il contenuto.
-  // La NavBar è alta 60px (esempio), e il Player è alto 70px (dalle tue classi).
-  // Quindi, l'altezza è l'intera viewport (h-screen) meno 60px - 70px.
-  // Usiamo 'h-[calc(100vh-130px)]' o un approccio basato su classi Flex/Grid.
-  
+function App() {
   return (
-    <div className="h-screen flex flex-col"> 
-      
-      <NavBar></NavBar>
-      <div className="flex flex-row flex-grow overflow-hidden">
-        
-        <SideBar></SideBar>
-        
-        <HomePage></HomePage>
+    <div className="h-screen w-full flex flex-col bg-[#000000] overflow-hidden">
+      <Nav/>
+
+      <div className="flex flex-grow overflow-hidden border-1 border-red-500">
+        <aside className="w-1/5 flex flex-col overflow-hidden bg-[#121212] m-1 p-0.5 rounded-md">
+          <div className="min-h-min max-h-fit flex-grow overflow-hidden m-1 mb-0 border-1 bg-[#121212] rounded-t-md p-0.5">
+            <SideBarMenu></SideBarMenu>
+          </div>
+
+          <div className="flex-grow overflow-hidden m-1 mt-0 border-1">
+            <SideBar />
+          </div>
+        </aside>
+
+        <main className="w-4/5 overflow-y-auto overflow-x-hidden">
+          <Connect />
+        </main>
       </div>
-      
-      <AudioPlayer></AudioPlayer>
+      <AudioPlayer />
     </div>
-  )
+  );
 }
 
-export default App
+export default App;

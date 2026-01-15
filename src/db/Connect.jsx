@@ -1,16 +1,20 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import md5 from "md5";
+import HomePage from "../components/HomePage";
 
-const BASE_URL = "";
-const USERNAME = "";
-const PASSWORD = "";
+// Server navidrome su Docker
+const BASE_URL = "http://192.168.1.57:4533";
+const USERNAME = "selamu";
+const PASSWORD = "admin";
 
 function Connect() {
   const [albums, setAlbums] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   const salt = "random_salt_123";
   const token = md5(PASSWORD + salt);
+
   const AUTH_QUERY = `u=${USERNAME}&t=${token}&s=${salt}&v=1.16.1&c=myApp&f=json`;
 
   useEffect(() => {
@@ -19,56 +23,58 @@ function Connect() {
 
   const fetchAlbums = async () => {
     try {
+      setLoading(true);
+      setError(null);
 
-      const res = await fetch(`${BASE_URL}/rest/getAlbumList2?${AUTH_QUERY}&type=newest&size=50`);
+      const url = `${BASE_URL}/rest/getAlbumList2?${AUTH_QUERY}&type=newest&size=80`;
+      console.log("FETCH:", url);
+
+      const res = await fetch(url);
+
+      if (!res.ok) {
+        throw new Error("Errore HTTP " + res.status);
+      }
+
       const data = await res.json();
-      
-      const list = data["subsonic-response"].albumList2.album;
-      setAlbums(list || []);
-      setLoading(false);
+
+      const list =
+        data?.["subsonic-response"]?.albumList2?.album ?? [];
+
+      setAlbums(list);
     } catch (err) {
-      console.error("Errore caricamento album:", err);
+      console.error("ERRORE FETCH:", err);
+      setError(err.message);
+    } finally {
       setLoading(false);
     }
   };
 
-  if (loading) return <div style={{ padding: 20 }}>Caricamento...</div>;
+  const arrayDati = useMemo(() => {
+    return albums.map((a) => ({
+      id: a.id,
+      titolo: a.name || a.title,
+      artista: a.artist,
+      coverUrl: a.coverArt
+        ? `${BASE_URL}/rest/getCoverArt?${AUTH_QUERY}&id=${a.coverArt}&size=300`
+        : null,
+    }));
+  }, [albums]);
+
+  if (loading) {
+    return <div >Caricamento…</div>;
+  }
+
+  if (error) {
+    return (
+      <div style={{ padding: 20, color: "red" }}>
+        Errore: {error}
+      </div>
+    );
+  }
 
   return (
-    <div style={{ padding: 20, fontFamily: "sans-serif" }}>
-
-      <table border="1" cellPadding="10" style={{ borderCollapse: "collapse", width: "100%" }}>
-        <thead>
-          <tr style={{ backgroundColor: "#f4f4f4" }}>
-            <th>Cover</th>
-            <th>ID Album</th>
-            <th>Titolo</th>
-            <th>Artista</th>
-          </tr>
-        </thead>
-        <tbody>
-          {albums.map((a) => {
-
-            const coverUrl = `${BASE_URL}/rest/getCoverArt?${AUTH_QUERY}&id=al-${a.id}&size=100`;
-
-            return (
-              <tr key={a.id}>
-                <td style={{ textAlign: "center", width: "110px" }}>
-                  <img 
-                    src={coverUrl} 
-                    alt={a.name} 
-                    style={{ width: "80px", height: "80px", borderRadius: "4px", display: "block", margin: "auto" }}
-                    onError={(e) => { e.target.src = "https://via.placeholder.com/80?text=No+Cover"; }}
-                  />
-                </td>
-                <td style={{ fontSize: "12px", color: "#666" }}>{a.id}</td>
-                <td style={{ fontWeight: "bold" }}>{a.name || a.title}</td>
-                <td>{a.artist}</td>
-              </tr>
-            );
-          })}
-        </tbody>
-      </table>
+    <div>
+      <HomePage db_data={arrayDati} />
     </div>
   );
 }

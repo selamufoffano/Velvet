@@ -1,4 +1,5 @@
 import React from "react";
+import { BrowserRouter as Router, Routes,Route } from 'react-router-dom';
 const cardStyles = "w-full aspect-square bg-slate-800 rounded-xl hover:bg-slate-600 transition duration-500 ease-in-out hover:shadow-2xl shadow-slate-800";
 
 export const Album = () => {

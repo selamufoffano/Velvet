@@ -1,116 +1,90 @@
-import React from "react";
-
 const NavBar = () => {
   return (
-    <nav className="w-full fixed top-0 left-0 bg-black shadow-2xl z-50">
-      <div className="mx-auto px-6 py-2 flex items-center justify-between">
-        {/* Primo gruppo - 25% */}
-        <div className="flex items-center space-x-7 basis-1/4 flex-shrink-0">
-          <div className="overflow-hidden flex items-center justify-center">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="45 -2 24 24"
-              className="w-70 h-12 text-white"
-              fill="currentColor"
-              aria-hidden="true"
-            >
-              <path d="m 1.5356201,-1.8552535 c -6.622,-0.263 -12.2030001,4.892 -12.4660001,11.514 -0.263,6.6230005 4.8920001,12.2040005 11.51500013,12.4660005 6.62199997,0.263 12.20299987,-4.892 12.46599987,-11.514 C 13.31362,3.9887465 8.1576201,-1.5932535 1.5356201,-1.8552535 m 5.066,17.5790005 a 0.717,0.717 0 0 1 -0.977,0.268 14.4,14.4 0 0 0 -5.13799997,-1.747 14.4,14.4 0 0 0 -5.42000003,0.263 0.717,0.717 0 0 1 -0.338,-1.392 c 1.95,-0.474 3.955,-0.571 5.95800003,-0.29 2.00299997,0.282 3.90299997,0.928 5.64699997,1.92 a 0.717,0.717 0 0 1 0.268,0.978 m 1.577,-3.15 a 0.93,0.93 0 0 1 -1.262,0.376 17.7,17.7 0 0 0 -5.97199997,-1.96 17.7,17.7 0 0 0 -6.28100003,0.238 0.93,0.93 0 0 1 -1.11,-0.71 0.93,0.93 0 0 1 0.71,-1.1100005 19.5,19.5 0 0 1 6.94,-0.262 19.5,19.5 0 0 1 6.599,2.1650005 c 0.452,0.245 0.62,0.81 0.376,1.263 m 1.748,-3.5510005 a 1.147,1.147 0 0 1 -1.546,0.488 21.4,21.4 0 0 0 -6.918,-2.208 21.4,21.4 0 0 0 -7.259,0.215 1.146,1.146 0 0 1 -0.456,-2.246 23.7,23.7 0 0 1 8.034,-0.24 23.7,23.7 0 0 1 7.657,2.445 c 0.561,0.292 0.7799999,0.984 0.488,1.546 m 13.6119999,-0.036 -0.832,-0.247 c -1.67,-0.495 -2.14,-0.681 -2.14,-1.353 0,-0.637 0.708,-1.327 2.264,-1.327 1.539,0 2.839,0.752 3.51,1.31 0.116,0.096 0.24,0.052 0.24,-0.098 v -2.202 c 0,-0.097 -0.027,-0.15 -0.098,-0.203 -0.83,-0.62 -2.272,-1.07 -3.723,-1.07 -2.953,0 -4.722,1.68 -4.722,3.59 0,2.157 1.371,2.9100005 3.626,3.5460005 l 0.973,0.274 c 1.689,0.478 1.998,0.902 1.998,1.556 0,1.097 -0.831,1.433 -2.07,1.433 -1.556,0 -3.457,-0.911 -4.35,-2.025 -0.08,-0.098 -0.177,-0.053 -0.177,0.062 v 2.423 c 0,0.097 0.01,0.141 0.08,0.22 0.743,0.814 2.52,1.53 4.59,1.53 2.546,0 4.456,-1.485 4.456,-3.784 0,-1.787 -1.052,-2.8650005 -3.625,-3.6350005 m 10.107,-1.76 c -1.68,0 -2.653,1.026 -3.219,2.052 v -1.768 c 0,-0.08 -0.044,-0.124 -0.124,-0.124 h -2.22 c -0.079,0 -0.123,0.044 -0.123,0.124 V 18.854747 c 0,0.08 0.044,0.124 0.124,0.124 h 2.22 c 0.079,0 0.123,-0.044 0.123,-0.124 v -4.536 c 0.566,1.025 1.521,2.034 3.237,2.034 2.264,0 3.89,-1.955 3.89,-4.581 0,-2.6260005 -1.644,-4.5450005 -3.908,-4.5450005 m -0.654,6.9860005 c -1.185,0 -2.211,-1.167 -2.618,-2.458 0.407,-1.362 1.344,-2.4050005 2.618,-2.4050005 1.211,0 2.051,0.9200005 2.051,2.4230005 0,1.503 -0.84,2.44 -2.051,2.44 M 73.62461,7.3867465 h -2.264 c -0.08,0 -0.115,0.017 -0.15,0.097 l -2.282,5.4830005 -2.29,-5.4830005 c -0.035,-0.08 -0.07,-0.097 -0.15,-0.097 h -3.661 v -0.584 c 0,-0.955 0.645,-1.397 1.476,-1.397 0.496,0 1.035,0.256 1.415,0.486 0.089,0.053 0.15,-0.008 0.115,-0.088 l -0.796,-1.901 a 0.26,0.26 0 0 0 -0.124,-0.133 c -0.389,-0.203 -1.025,-0.38 -1.644,-0.38 -1.875,0 -2.954,1.432 -2.954,3.254 v 0.743 h -1.50299 c -0.08,0 -0.124,0.044 -0.124,0.124 v 1.768 c 0,0.08 0.044,0.124 0.124,0.124 h 1.50299 v 6.6680005 c 0,0.08 0.044,0.123 0.124,0.123 h 2.264 c 0.08,0 0.124,-0.044 0.124,-0.123 V 9.4027465 h 1.936 l 2.812,6.1100005 -1.512,3.325 c -0.044,0.098 0.009,0.142 0.097,0.142 h 2.414 c 0.08,0 0.116,-0.018 0.15,-0.097 l 4.997,-11.3550005 c 0.035,-0.08 -0.009,-0.141 -0.097,-0.141 m -30.55199,-0.212 c -2.865,0 -4.837,2.025 -4.837,4.6160005 0,2.573 1.971,4.616 4.837,4.616 2.856,0 4.846,-2.043 4.846,-4.616 0,-2.5910005 -1.99,-4.6160005 -4.846,-4.6160005 m 0.008,7.0650005 c -1.37,0 -2.343,-1.043 -2.343,-2.45 0,-1.405 0.973,-2.4490005 2.343,-2.4490005 1.362,0 2.335,1.0430005 2.335,2.4500005 0,1.406 -0.973,2.45 -2.335,2.45 M 76.62161,7.9067465 a 1.24,1.24 0 0 0 -0.483,-0.471 1.4,1.4 0 0 0 -0.693,-0.17 q -0.384,0 -0.693,0.17 a 1.24,1.24 0 0 0 -0.484,0.471 q -0.174,0.302 -0.174,0.681 0,0.375 0.174,0.677 0.175,0.3 0.484,0.471 0.309,0.171 0.693,0.17 0.384,-10e-4 0.693,-0.17 0.309,-0.169 0.483,-0.471 0.174,-0.302 0.175,-0.676 0,-0.38 -0.175,-0.682 m -0.211,1.247 a 1,1 0 0 1 -0.394,0.39 1.15,1.15 0 0 1 -0.571,0.14 1.16,1.16 0 0 1 -0.576,-0.14 1,1 0 0 1 -0.391,-0.39 1.14,1.14 0 0 1 -0.14,-0.566 q 0,-0.316 0.14,-0.562 0.14,-0.246 0.391,-0.388 0.251,-0.142 0.576,-0.14 0.32,0 0.57,0.14 0.253,0.141 0.395,0.39 0.142,0.249 0.142,0.565 0,0.312 -0.142,0.56 m -19.83499,-5.78 c -0.85,0 -1.468,0.6 -1.468,1.396 0,0.796 0.619,1.397 1.468,1.397 0.866,0 1.485,-0.6 1.485,-1.397 0,-0.796 -0.619,-1.397 -1.485,-1.397 m 19.32899,5.19 a 0.31,0.31 0 0 0 0.134,-0.262 q 0,-0.168 -0.132,-0.266 -0.132,-0.099 -0.381,-0.099 h -0.588 v 1.229 h 0.284 v -0.489 h 0.154 l 0.374,0.489 h 0.35 l -0.41,-0.518 a 0.5,0.5 0 0 0 0.215,-0.084 m -0.424,-0.109 h -0.26 v -0.3 h 0.27 q 0.12,0 0.184,0.036 a 0.12,0.12 0 0 1 0.065,0.116 0.12,0.12 0 0 1 -0.067,0.111 0.4,0.4 0 0 1 -0.192,0.037 m -17.76499,-1.066 h -2.263 c -0.08,0 -0.124,0.044 -0.124,0.124 v 8.5600005 c 0,0.08 0.044,0.123 0.124,0.123 h 2.263 c 0.08,0 0.124,-0.044 0.124,-0.123 V 7.5107465 c 0,-0.08 -0.044,-0.124 -0.124,-0.124 m -3.333,6.6050005 a 2.1,2.1 0 0 1 -1.053,0.257 c -0.725,0 -1.185,-0.425 -1.185,-1.362 V 9.4027465 h 2.211 c 0.08,0 0.124,-0.044 0.124,-0.124 v -1.768 c 0,-0.08 -0.044,-0.124 -0.124,-0.124 h -2.21 v -2.308 c 0,-0.097 -0.063,-0.15 -0.15,-0.08 l -3.954,3.113 c -0.053,0.044 -0.07,0.088 -0.07,0.16 v 1.007 c 0,0.08 0.044,0.124 0.123,0.124 h 1.539 v 3.8550005 c 0,2.087 1.203,3.06 2.918,3.06 0.743,0 1.46,-0.194 1.884,-0.442 0.062,-0.035 0.07,-0.07 0.07,-0.133 v -1.68 c 0,-0.088 -0.044,-0.115 -0.123,-0.07" />
-            </svg>
-          </div>
+    <nav className="w-full fixed top-0 left-0 bg-black shadow-2xl z-50 mx-auto px-6 py-2 flex items-center justify-between">
+      {/* Primo gruppo - 25% */}
+      <div className="flex items-center space-x-7 basis-1/4 flex-shrink-0">
+        <div className="w-12 h-12 flex items-center justify-center rounded-full bg-[#31313100] overflow-hidden">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 30 30"
+            className="w-6 h-6 text-white"
+            fill="currentColor"
+            aria-hidden="true"
+          >
+            <path d="M 3.7500004,26.666668 H 9.3750002 V 16.666665 H 20.625 V 26.666668 H 26.25 V 11.666666 L 14.999999,4.1666664 3.7500004,11.666666 Z M 0,30 V 9.9999999 L 14.999999,0 30,9.9999999 V 30 H 16.874999 V 19.999999 H 13.125001 V 30 Z M 14.999999,15.416666 Z" />
+          </svg>
+        </div>
+        <div className="w-[30px] min-h-[30px] bg-amber-400 m-0.5"></div>
+        <div className="w-[30px] min-h-[30px] bg-amber-400 m-0.5"></div>
+      </div>
 
-          {/*<img src={logo} alt="Logo" className="w-8 h-8 object-contain" />*/}
+      {/* Secondo gruppo - 50% */}
+      <div className="flex items-center space-x-2 w-[500px] flex-shrink-0">
+        {/* Avatar cerchio rosso */}
+        <div className="w-14 h-12 flex items-center justify-center rounded-full bg-[#313131] overflow-hidden">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            className="w-6 h-6 text-white"
+            fill="currentColor"
+            aria-hidden="true"
+          >
+            <path d="M12.5 3.247a1 1 0 0 0-1 0L4 7.577V20h4.5v-6a1 1 0 0 1 1-1h5a1 1 0 0 1 1 1v6H20V7.577zm-2-1.732a3 3 0 0 1 3 0l7.5 4.33a2 2 0 0 1 1 1.732V21a1 1 0 0 1-1 1h-6.5a1 1 0 0 1-1-1v-6h-3v6a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V7.577a2 2 0 0 1 1-1.732z" />
+          </svg>
         </div>
 
-        {/* Secondo gruppo - 50% */}
-        <div className="flex items-center space-x-2 w-[500px] flex-shrink-0">
-          {/* Avatar cerchio rosso */}
-          <div className="w-12 h-12 flex items-center justify-center rounded-full bg-[#313131] overflow-hidden">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              className="w-6 h-6 text-white"
-              fill="currentColor"
-              aria-hidden="true"
-            >
-              <path d="M12.5 3.247a1 1 0 0 0-1 0L4 7.577V20h4.5v-6a1 1 0 0 1 1-1h5a1 1 0 0 1 1 1v6H20V7.577zm-2-1.732a3 3 0 0 1 3 0l7.5 4.33a2 2 0 0 1 1 1.732V21a1 1 0 0 1-1 1h-6.5a1 1 0 0 1-1-1v-6h-3v6a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V7.577a2 2 0 0 1 1-1.732z" />
-            </svg>
-          </div>
+        {/* Form di ricerca */}
+        <form className="w-full">
+          <div className="relative">
+            <input
+              type="search"
+              id="default-search"
+              className="block w-full h-12 ps-10 rounded-[30px] text-white  bg-[#383838]"
+              placeholder="What do you want to play?"
+            />
 
-          {/* Form di ricerca */}
-          <form className="w-full">
-            <div className="relative">
-              <input
-                type="search"
-                id="default-search"
-                className="block w-full h-12 ps-10 rounded-[30px] text-white  bg-[#383838]"
-                placeholder="What do you want to play?"
-              />
+            <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+              <svg
+                className="w-6 h-6 text-white"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
+                />
+              </svg>
+            </div>
 
-              <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-                <svg
-                  className="w-6 h-6 text-white"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 20 20"
-                >
-                  <path
-                    stroke="currentColor"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
-                  />
-                </svg>
-              </div>
-
-              <span className="absolute inset-y-2.5 end-0 flex items-center pl-3 pe-3 border-white pointer-events-none border-l-2 mr-5.5 h-6"></span>
-              <button className="absolute inset-y-0 end-0 flex items-center pl-3 pe-3 pointer-events-none">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                  className="w-6 h-6 text-white"
-                  fill="currentColor"
-                  aria-hidden="true"
-                >
+            <span className="absolute inset-y-2.5 end-0 flex items-center pl-3 pe-3 border-white pointer-events-none border-l-2 mr-5.5 h-6"></span>
+            <button className="absolute inset-y-0 end-0 flex items-center pl-3 pe-3 pointer-events-none">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                className="w-6 h-6 text-white"
+                fill="currentColor"
+                aria-hidden="true"
+              >
                 <path d="m 2.7098137,1 a 1,1 0 0 1 1,-1 H 17.709814 a 1,1 0 0 1 1,1 V 5 H 2.7098137 Z M 0.22281366,8.37 A 1,1 0 0 1 1.0008137,8 H 20.419814 a 1,1 0 0 1 0.978,1.2079999 L 19.227814,19.416 A 2,2 0 0 1 17.271814,21 H 4.1478137 a 2,2 0 0 1 -1.956,-1.584 L 0.02181366,9.2079999 A 1,1 0 0 1 0.22281366,8.371 Z M 10.709814,16.834 c 1.933,0 3.5,-1.044 3.5,-2.333 0,-1.289 -1.567,-2.333 -3.5,-2.333 -1.9330003,0 -3.5000003,1.042 -3.5000003,2.332 0,1.29 1.567,2.333 3.5000003,2.333 z" />
-                </svg>
-              </button>
-            </div>
-          </form>
-        </div>
+              </svg>
+            </button>
+          </div>
+        </form>
+      </div>
 
-        {/* Terzo gruppo - 25% */}
-        <div className="flex items-center justify-end space-x-4 basis-1/4 flex-shrink-0">
-          <div className="w-8 h-8 rounded-full overflow-hidden flex items-center justify-center">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              className="w-5 h-5 text-white"
-              fill="currentColor"
-              aria-hidden="true"
-            >
-              <path d="M 7.9943102,0.938 A 1.2572638,1.1666667 0 0 1 9.2264287,0 h 2.9671423 a 1.2572638,1.1666667 0 0 1 1.232118,0.938 l 0.416155,1.9273333 a 8.792046,8.1585 0 0 1 2.425262,1.3008334 l 2.009107,-0.63 a 1.2572638,1.1666667 0 0 1 1.491115,0.5215 L 21.2509,6.4423333 a 1.2572638,1.1666667 0 0 1 -0.25774,1.4595 l -1.592953,1.2984998 a 8.8599383,8.2215 0 0 1 0,2.5993339 l 1.592953,1.2985 a 1.2572638,1.1666667 0 0 1 0.258997,1.458333 l -1.483572,2.385833 a 1.2572638,1.1666667 0 0 1 -1.492372,0.5215 l -2.009107,-0.63 a 8.792046,8.1585 0 0 1 -2.425262,1.300834 L 13.426947,20.062 A 1.2572638,1.1666667 0 0 1 12.194829,21 H 9.2264287 A 1.2572638,1.1666667 0 0 1 7.9943102,20.062 L 7.5781559,18.134667 A 8.792046,8.1585 0 0 1 5.152894,16.833833 l -2.0091073,0.63 a 1.2572638,1.1666667 0 0 1 -1.4911149,-0.5215 L 0.16910049,14.557667 a 1.2572638,1.1666667 0 0 1 0.25773909,-1.4595 L 2.0197928,11.7985 a 8.8637101,8.225 0 0 1 0,-2.5981669 L 0.42683958,7.9018333 A 1.2572638,1.1666667 0 0 1 0.16784323,6.4435 L 1.6514145,4.0576667 a 1.2572638,1.1666667 0 0 1 1.4923722,-0.5215 l 2.0091073,0.63 A 8.7907888,8.1573333 0 0 1 7.5794132,2.8653333 Z M 10.71,14 a 3.7717915,3.5 0 1 0 0,-7 3.7717915,3.5 0 0 0 0,7 z" />
-            </svg>
-          </div>
-          <div className="w-6 h-6 rounded-full overflow-hidden flex items-center justify-center">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              className="w-5 h-5 text-white"
-              fill="currentColor"
-              aria-hidden="true"
-            >
-              <path d="M 18.27197,3.084375 C 16.329568,1.18125 13.66379,0 10.703302,0 4.7823265,0 0,4.69875 0,10.5 0,16.30125 4.7823265,21 10.703302,21 c 4.99666,0 9.162777,-3.346875 10.355009,-7.875 H 18.27197 c -1.098462,3.058125 -4.072345,5.25 -7.568668,5.25 -4.4340333,0 -8.0375234,-3.530625 -8.0375234,-7.875 0,-4.344375 3.6034901,-7.875 8.0375234,-7.875 2.223714,0 4.206304,0.905625 5.653058,2.33625 L 12.042889,9.1875 H 21.42 V 0 Z" />
-            </svg>
-          </div>
-          <div className="w-10 h-10 rounded-full bg-[#3d3d3d] flex items-center justify-center">
-            <div className="w-7 h-7 rounded-full overflow-hidden bg-gray-200 flex items-center justify-center">
-              <img
-                src={"/img/user.jpeg"}
-                alt="Logo"
-                className="w-full h-full object-cover"
-              />
-            </div>
+      {/* Terzo gruppo - 25% */}
+      <div className="flex items-center justify-end space-x-4 basis-1/4 flex-shrink-0">
+        <div className="w-10 h-10 rounded-full bg-[#3d3d3d] flex items-center justify-center">
+          <div className="w-7 h-7 rounded-full overflow-hidden bg-gray-200 flex items-center justify-center">
+            <img
+              src={"/img/avatar-icon.svg"}
+              alt="Logo"
+              className="w-full h-full object-cover"
+            />
           </div>
         </div>
       </div>
