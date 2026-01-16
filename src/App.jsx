@@ -10,7 +10,7 @@ function App() {
     <div className="h-screen w-full flex flex-col bg-[#000000] overflow-hidden">
       <Nav/>
 
-      <div className="flex flex-grow overflow-hidden border-1 border-red-500">
+      <div className="flex flex-grow overflow-hidden">
         <aside className="w-1/5 flex flex-col overflow-hidden bg-[#121212] m-1 p-0.5 rounded-md">
           <div className="min-h-min max-h-fit flex-grow overflow-hidden m-1 mb-0 border-1 bg-[#121212] rounded-t-md p-0.5">
             <SideBarMenu></SideBarMenu>
@@ -21,7 +21,7 @@ function App() {
           </div>
         </aside>
 
-        <main className="w-4/5 overflow-y-auto overflow-x-hidden">
+        <main className="w-4/5 overflow-y-auto overflow-x-hidden m-1 p-0.5">
           <Connect />
         </main>
       </div>

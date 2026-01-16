@@ -1,7 +1,6 @@
 const SideBar = () => {
   return (
-    <div className="h-full bg-[#121212] px-2 border-white">
-      <div className="h-full overflow-y-auto overflow-x-hidden scrollbar-hidden">
+    <div className="h-full bg-[#121212] px-2 overflow-y-auto overflow-x-hidden scrollbar-hidden">
         <div className="flex items-center space-x-2 text-white mb-2.5 bg-[#1f1e1e] rounded-[10px] p-2">
           <div className="w-12">
             <img src="/album/img1.jpeg" alt="" />
@@ -174,7 +173,6 @@ const SideBar = () => {
           </div>
         </div>
       </div>
-    </div>
   );
 };
 

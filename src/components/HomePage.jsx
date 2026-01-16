@@ -10,7 +10,7 @@ const HomePage = ({ db_data }) => {
   }
 
   return (
-    <div className="w-full max-w-full bg-[#121212] flex-grow pb-3 overflow-y-auto overflow-x-hidden border-l-8 border-[#121212] rounded-tl-[20px]">
+    <div className="w-full max-w-full bg-[#121212] flex-grow p-0.5 pb-3 overflow-y-auto overflow-x-hidden border-l-8 border-[#121212] rounded-t-md">
       <div className="w-full h-auto">
         <h1 className="text-white text-3xl font-bold tracking-tight">
           I tuoi Album

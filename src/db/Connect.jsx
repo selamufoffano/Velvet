@@ -3,7 +3,7 @@ import md5 from "md5";
 import HomePage from "../components/HomePage";
 
 // Server navidrome su Docker
-const BASE_URL = "http://192.168.1.57:4533";
+const BASE_URL = "http://localhost:4533";
 const USERNAME = "selamu";
 const PASSWORD = "admin";
 
