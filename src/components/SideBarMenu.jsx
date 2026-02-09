@@ -14,7 +14,7 @@ function SideBarMenu() {
 
       <div className="w-full h-fit bg-[#121212] flex flex-wrap gap-2 p-1">
         <button className="p-3 pb-0.5 pt-0.5 text-white rounded-2xl bg-[#333333]">
-          Home
+          Recently
         </button>
         <button className="p-3 pb-0.5 pt-0.5 text-white rounded-2xl bg-[#333333]">
           Albums
