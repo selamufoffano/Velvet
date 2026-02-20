@@ -3,9 +3,9 @@ import md5 from "md5";
 import HomePage from "../components/HomePage";
 
 // Server navidrome su Docker
-const BASE_URL = "https://navidrome.s3la.it:443";
-const USERNAME = "selamu";
-const PASSWORD = "243022";
+const BASE_URL = "http://192.168.1.63:4533";
+const USERNAME = "chiara";
+const PASSWORD = "1234";
 
 function Connect() {
   const [albums, setAlbums] = useState([]);
