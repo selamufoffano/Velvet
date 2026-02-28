@@ -1,5 +1,4 @@
-// src/context/audio-player-context.jsx
-import React, { createContext, useContext, useState, useRef } from 'react';
+import { createContext, useContext, useState, useRef } from 'react';
 import { tracks } from '../../data/tracks';
 
 const AudioPlayerContext = createContext(undefined);

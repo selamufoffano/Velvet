@@ -1,5 +1,4 @@
-// src/components/VolumeControl.jsx
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useAudioPlayerContext } from '../store/context/audio-player-context';
 
 export const VolumeControl = () => {

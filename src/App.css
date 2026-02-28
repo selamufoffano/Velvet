@@ -46,8 +46,8 @@
 .custom-range::-webkit-slider-thumb {
   -webkit-appearance: none; /* Rimuove lo stile di default */
   appearance: none;
-  width: 12px; /* Dimensione del cerchio */
-  height: 12px; /* Dimensione del cerchio */
+  width: 10px; /* Dimensione del cerchio */
+  height: 10px; /* Dimensione del cerchio */
   border-radius: 50%; /* Rende il thumb un cerchio perfetto */
   background: white; /* Colore bianco per il cerchio */
   cursor: pointer;
@@ -57,8 +57,8 @@
 
 /* Stile per il thumb in Firefox */
 .custom-range::-moz-range-thumb {
-  width: 16px; /* Dimensione del cerchio */
-  height: 16px; /* Dimensione del cerchio */
+  width: 12px; /* Dimensione del cerchio */
+  height: 12px; /* Dimensione del cerchio */
   border-radius: 50%; /* Rende il thumb un cerchio perfetto */
   background: white; /* Colore bianco per il cerchio */
   cursor: pointer;

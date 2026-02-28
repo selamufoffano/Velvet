@@ -1,7 +1,7 @@
 import { Routes, Route, Navigate } from "react-router-dom";
 import { useAuth } from "./store/context/Auth-context";
 import SideBar from "./components/SideBar";
-import AudioPlayer from "./components/AudioPlayer";
+import AudioPlayer from "./player/AudioPlayer";
 import Connect from "./db/Connect";
 import {Home} from "./pages/Home";
 import Error from "./pages/Error";

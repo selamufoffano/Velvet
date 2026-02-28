@@ -1,5 +1,4 @@
-// src/components/Controls.jsx
-import React, { useEffect, useCallback } from 'react';
+import { useEffect, useCallback } from 'react';
 import { useAudioPlayerContext } from '../store/context/audio-player-context';
 import { tracks } from '../data/tracks';
 

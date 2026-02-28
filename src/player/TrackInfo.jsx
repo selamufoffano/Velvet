@@ -1,5 +1,3 @@
-// src/components/TrackInfo.jsx
-import React from 'react';
 import { BsMusicNoteBeamed } from 'react-icons/bs';
 import { useAudioPlayerContext } from '../store/context/audio-player-context';
 
