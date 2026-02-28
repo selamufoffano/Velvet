@@ -22,26 +22,34 @@ const Search = () => {
           />
         </div>
 
-        {/* Menu Button */}
-        <button className="flex items-center justify-center h-[30px] w-[40px] bg-[#1c1c1c] rounded-md hover:bg-[#2a2a2a] transition-colors">
-          <img src="/img/menu.svg" alt="Menu" className="w-4 h-4 opacity-70" />
-        </button>
-        {/* Menu Button */}
-        <button className="flex items-center justify-center h-[30px] w-[40px] bg-[#1c1c1c] rounded-md hover:bg-[#2a2a2a] transition-colors">
-          <img
-            src="/img/arrow_back.svg"
-            alt="Menu"
-            className="w-4 h-4 opacity-70"
-          />
-        </button>
-        {/* Menu Button */}
-        <button className="flex items-center justify-center h-[30px] w-[40px] bg-[#1c1c1c] rounded-md hover:bg-[#2a2a2a] transition-colors">
-          <img
-            src="/img/arrow_forward.svg"
-            alt="Menu"
-            className="w-4 h-4 opacity-70"
-          />
-        </button>
+        <div className="flex items-center justify-center gap-2">
+          {/* Menu / Settings Button */}
+          <button className="flex items-center justify-center h-[30px] w-[30px] bg-[#1c1c1c] rounded-md hover:bg-[#2a2a2a] transition-colors shadow-sm">
+            <img
+              src="/img/setting.svg"
+              alt="Settings"
+              className="w-4 h-4 opacity-70 block"
+            />
+          </button>
+
+          {/* Back Button (Forward capovolto) */}
+          <button className="flex items-center justify-center h-[30px] w-[30px] bg-[#1c1c1c] rounded-md hover:bg-[#2a2a2a] transition-colors">
+            <img
+              src="/img/arrow_back.svg"
+              alt="Back"
+              className="w-4 h-4 opacity-70 block"
+            />
+          </button>
+
+          {/* Forward Button */}
+          <button className="flex items-center justify-center h-[30px] w-[30px] bg-[#1c1c1c] rounded-md hover:bg-[#2a2a2a] transition-colors">
+            <img
+              src="/img/arrow_back.svg"
+              alt="Forward"
+              className="w-4 h-4 opacity-70 transform scale-x-[-1] block"
+            />
+          </button>
+        </div>
       </div>
     </>
   );

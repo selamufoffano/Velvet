@@ -5,8 +5,8 @@ import Search from "./Search";
 const SideBar = () => {
   const mainLinks = [
     { name: "Home", icon: "/img/home.svg", path: "/" },
-    { name: "Preferiti", icon: "/img/favorite.svg", path: "/AdminPage" },
-    { name: "Album", icon: "/img/album.svg", path: "/AdminPage" },
+    { name: "Preferiti", icon: "/img/favorite.svg", path: "/ArtistPage" },
+    { name: "Album", icon: "/img/album.svg", path: "/AlbumPage" },
     { name: "Tracce", icon: "/img/song.svg", path: "/AdminPage" },
     { name: "Artist", icon: "/img/artist.svg", path: "/AdminPage" },
     { name: "Generi", icon: "/img/generi.svg", path: "/AdminPage" },
@@ -80,7 +80,7 @@ const SideBar = () => {
             />
           ))}
         </NavSection>
-
+{/*
         <NavSectionMod title="Playlist">
           {playlistLinks.map((link) => (
             <NavButton key={link.name} icon={link.icon} label={link.name} to={link.path} />
@@ -92,6 +92,7 @@ const SideBar = () => {
             <NavButton key={link.name} icon={link.icon} label={link.name} to={link.path} />
           ))}
         </NavSection>
+*/}
       </div>
 
       <ServerList />

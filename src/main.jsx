@@ -8,10 +8,11 @@ import { BrowserRouter } from "react-router-dom";
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <BrowserRouter>
+      <AuthProvider>
         <AudioPlayerProvider>
           <App />
         </AudioPlayerProvider>
-      
+      </AuthProvider>
     </BrowserRouter>
   </StrictMode>,
 );
