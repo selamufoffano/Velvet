@@ -31,7 +31,7 @@ const AudioPlayer = () => {
   const [openDrawer, setOpenDrawer] = useState(false);
 
   return (
-    <div className="text-white flex flex-col pr-1 pl-1 bg-[#09090B] border border-white/5">
+    <div className="text-white flex flex-col pr-1 pl-1 bg-[#1a1a1a] border border-white/5">
       <div className="h-[70px] flex items-center justify-between px-2 overflow-hidden">
         <div className="w-1/4 flex items-center space-x-4">
           <div>
