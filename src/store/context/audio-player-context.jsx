@@ -1,10 +1,8 @@
 import { createContext, useContext, useState, useRef } from 'react';
-import { tracks } from '../../data/tracks';
-
 const AudioPlayerContext = createContext(undefined);
 
 export const AudioPlayerProvider = ({ children }) => {
-  const [currentTrack, setCurrentTrack] = useState(tracks[0]);
+  const [currentTrack, setCurrentTrack] = useState();
   const [isPlaying, setIsPlaying] = useState(false);
   const [isShuffle, setIsShuffle] = useState(false);
   const [isRepeat, setIsRepeat] = useState(false);

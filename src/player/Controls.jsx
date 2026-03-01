@@ -1,7 +1,6 @@
 import { useEffect, useCallback } from 'react';
 import { useAudioPlayerContext } from '../store/context/audio-player-context';
-import { useTrack } from '../store/context/Track-context'; // <-- Aggiungi questo import
-import { tracks as fallbackTracks } from '../data/tracks'; // <-- Rinominiamo l'import statico
+import { useTrack } from '../store/context/Track-context'; 
 
 export const Controls = () => {
   const {
@@ -16,34 +15,42 @@ export const Controls = () => {
     audioRef,
   } = useAudioPlayerContext();
 
-  // 1. Recuperiamo i nuovi brani dal Context
   const { newTracks } = useTrack();
 
-  // 2. Scegliamo quale array usare: se il context ha brani usiamo quelli, altrimenti il fallback
-  const activeTracks = newTracks && newTracks.length > 0 ? newTracks : fallbackTracks;
-
   const handleNext = useCallback(() => {
-    // Usiamo activeTracks al posto di tracks
-    const currentIndex = activeTracks.findIndex((t) => t.title === currentTrack.title);
-    const nextIndex = (currentIndex + 1) % activeTracks.length;
-    setCurrentTrack(activeTracks[nextIndex]);
+    if (!newTracks || newTracks.length === 0 || !currentTrack) return;
+
+    const currentIndex = newTracks.findIndex((t) => t.title === currentTrack.title);
+    const nextIndex = (currentIndex + 1) % newTracks.length;
+    
+    setCurrentTrack(newTracks[nextIndex]);
     setIsPlaying(true);
     if (audioRef.current) audioRef.current.currentTime = 0;
-  }, [currentTrack, setCurrentTrack, setIsPlaying, audioRef, activeTracks]);
+  }, [currentTrack, setCurrentTrack, setIsPlaying, audioRef, newTracks]);
 
   const handlePrev = useCallback(() => {
-    // Usiamo activeTracks al posto di tracks
-    const currentIndex = activeTracks.findIndex((t) => t.title === currentTrack.title);
-    const prevIndex = (currentIndex - 1 + activeTracks.length) % activeTracks.length;
-    setCurrentTrack(activeTracks[prevIndex]);
+    if (!newTracks || newTracks.length === 0 || !currentTrack) return;
+
+    const currentIndex = newTracks.findIndex((t) => t.title === currentTrack.title);
+    const prevIndex = (currentIndex - 1 + newTracks.length) % newTracks.length;
+    
+    setCurrentTrack(newTracks[prevIndex]);
     setIsPlaying(true);
     if (audioRef.current) audioRef.current.currentTime = 0;
-  }, [currentTrack, setCurrentTrack, setIsPlaying, audioRef, activeTracks]);
+  }, [currentTrack, setCurrentTrack, setIsPlaying, audioRef, newTracks]);
 
   useEffect(() => {
-    if (isPlaying) audioRef.current?.play();
-    else audioRef.current?.pause();
-  }, [isPlaying, audioRef]);
+    if (isPlaying && audioRef.current) {
+      const playPromise = audioRef.current.play();
+      if (playPromise !== undefined) {
+        playPromise.catch((error) => {
+          console.log("In attesa del caricamento o riproduzione interrotta:", error);
+        });
+      }
+    } else {
+      audioRef.current?.pause();
+    }
+  }, [isPlaying, currentTrack, audioRef]); 
 
   useEffect(() => {
     const handleEnded = () => {
@@ -66,12 +73,7 @@ export const Controls = () => {
   const repeatPath = 'M 3.9999997,5 H 14 V 8 L 18,4 14,0 V 3 H 2 V 9 H 3.9999997 Z M 14,15 H 3.9999997 V 12 L 0,16 3.9999997,20 V 17 H 16 v -6 h -2 z';
 
   const SvgIcon = ({ path, viewBox = '0 0 24 24' }) => (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox={viewBox}
-      fill="currentColor"
-      className="block w-7 h-7"
-    >
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox={viewBox} fill="currentColor" className="block w-7 h-7">
       <path d={path} />
     </svg>
   );
@@ -82,53 +84,23 @@ export const Controls = () => {
     <div className="flex items-center justify-center gap-1">
       <audio src={currentTrack?.src} ref={audioRef} />
 
-      {/* SHUFFLE */}
-      <button
-        onClick={() => setIsShuffle((p) => !p)}
-        aria-label="Shuffle"
-        className={`${btnBase} ${isShuffle ? 'text-green-600' : 'text-gray-400'} bg-transparent`}
-        type="button"
-      >
+      <button onClick={() => setIsShuffle((p) => !p)} aria-label="Shuffle" className={`${btnBase} ${isShuffle ? 'text-green-600' : 'text-gray-400'} bg-transparent`} type="button">
         <SvgIcon path={shafflePath} viewBox="0 1 24 14" />
       </button>
 
-      {/* PREV */}
-      <button
-        onClick={handlePrev}
-        aria-label="Brano precedente"
-        className={`${btnBase} text-[#a8a8a8] hover:text-[#ffffff]`}
-        type="button"
-      >
+      <button onClick={handlePrev} aria-label="Brano precedente" className={`${btnBase} text-[#a8a8a8] hover:text-[#ffffff]`} type="button">
         <SvgIcon path={prevPath} viewBox="0 0 24 14" />
       </button>
 
-      {/* PLAY / PAUSE */}
-      <button
-        onClick={() => setIsPlaying((p) => !p)}
-        aria-label={isPlaying ? 'Metti in pausa' : 'Riproduci'}
-        className={`${btnBase} text-[#a8a8a8] hover:text-[#ffffff]`}
-        type="button"
-      >
+      <button onClick={() => setIsPlaying((p) => !p)} aria-label={isPlaying ? 'Metti in pausa' : 'Riproduci'} className={`${btnBase} text-[#a8a8a8] hover:text-[#ffffff]`} type="button">
         <SvgIcon path={isPlaying ? pausePath : playPath} viewBox="0 0 20 20" />
       </button>
 
-      {/* NEXT */}
-      <button
-        onClick={handleNext}
-        aria-label="Brano successivo"
-        className={`${btnBase} text-[#a8a8a8] hover:text-[#ffffff]`}
-        type="button"
-      >
+      <button onClick={handleNext} aria-label="Brano successivo" className={`${btnBase} text-[#a8a8a8] hover:text-[#ffffff]`} type="button">
         <SvgIcon path={nextPath} viewBox="0 0 24 14" />
       </button>
 
-      {/* REPEAT */}
-      <button
-        onClick={() => setIsRepeat((p) => !p)}
-        aria-label="Ripeti"
-        className={`${btnBase} ${isRepeat ? 'text-green-600' : 'text-gray-400'} bg-transparent`}
-        type="button"
-      >
+      <button onClick={() => setIsRepeat((p) => !p)} aria-label="Ripeti" className={`${btnBase} ${isRepeat ? 'text-green-600' : 'text-gray-400'} bg-transparent`} type="button">
         <SvgIcon path={repeatPath} viewBox="0 3 24 14"  />
       </button>
     </div>
