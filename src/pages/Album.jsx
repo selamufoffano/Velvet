@@ -1,21 +1,30 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useAuth } from "../store/context/Auth-context";
-import { useTrack } from "../store/context/Track-context"; // <--- 1. IMPORTA IL CONTEXT
+import { useTrack } from "../store/context/Track-context";
 
 export const Album = () => {
   const { id } = useParams();
   const { authData } = useAuth();
-  const { playAlbum } = useTrack(); // <--- 2. ESTRAI LA FUNZIONE
+  const { playAlbum } = useTrack();
   
   const [albumDetails, setAlbumDetails] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  // Sposta handlePlayAlbum dopo la dichiarazione di playAlbum
+  // Gestisce il click sul Play principale dell'album
   const handlePlayAlbum = () => {
     if (albumDetails && albumDetails.song) {
+      //console.log("Contenuto dell'album (Play Principale):", albumDetails.song);
       console.log("Invio brani al context...");
       playAlbum(albumDetails.song, authData);
+    }
+  };
+
+  // Gestisce il click su una singola traccia
+  const handlePlaySingleTrack = (index) => {
+    if (albumDetails && albumDetails.song) {
+      //console.log("Contenuto dell'album (Traccia Specifica):", albumDetails.song);
+      playAlbum(albumDetails.song, authData, index);
     }
   };
 
@@ -86,7 +95,7 @@ export const Album = () => {
               <tr
                 key={song.id}
                 className="group hover:bg-white/5 transition-colors cursor-pointer"
-                onClick={() => playAlbum([song], authData)} // Cliccare sulla riga riproduce il singolo brano
+                onClick={() => handlePlaySingleTrack(index)}
               >
                 <td className="py-3 text-gray-400 text-center text-sm">{index + 1}</td>
                 <td className="py-1">
