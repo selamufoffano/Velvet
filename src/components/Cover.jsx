@@ -2,20 +2,17 @@ import React, { useEffect, useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 
 const Cover = ({ album, authData }) => {
-  const navigate = useNavigate(); // Va dentro il componente
+  const navigate = useNavigate(); 
   const [isVisible, setIsVisible] = useState(false);
   const cardRef = useRef();
 
-  // Gestione della navigazione alla pagina album
   const handleNavigate = () => {
     navigate(`/album/${album.id}`);
   };
 
-  // Impedisce al click sui bottoni di attivare la navigazione della card
   const handleAction = (e, action) => {
-    e.stopPropagation(); // Ferma il click qui, non arriva alla card padre
+    e.stopPropagation(); 
     console.log(`Eseguo azione: ${action} per album ${album.id}`);
-    // Qui aggiungerai la logica per il Play o il Menu
   };
 
   useEffect(() => {
@@ -35,6 +32,9 @@ const Cover = ({ album, authData }) => {
 
   const coverUrl = `${authData.baseUrl}/rest/getCoverArt?${authData.authParams}&id=${album.id}&size=300`;
 
+  // Salviamo il nome corretto (Subsonic usa 'name' per gli album e 'title' per i brani)
+  const displayName = album.name || album.title || "Album Sconosciuto";
+
   return (
     <div 
       ref={cardRef} 
@@ -45,7 +45,7 @@ const Cover = ({ album, authData }) => {
         {isVisible ? (
           <img
             src={coverUrl}
-            alt={album.title}
+            alt={displayName}
             className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
             loading="lazy"
           />
@@ -84,10 +84,11 @@ const Cover = ({ album, authData }) => {
       </div>
 
       <div className="mt-3">
+        {/* Adesso usa displayName per stampare il nome corretto */}
         <h3 className="text-white text-sm font-semibold truncate leading-tight">
-          {album.title}
+          {displayName}
         </h3>
-        <p className="text-gray-500 text-xs truncate mt-1">{album.artist}</p>
+        <p className="text-gray-500 text-xs truncate mt-1">{album.artist || "Artista Sconosciuto"}</p>
       </div>
     </div>
   );
