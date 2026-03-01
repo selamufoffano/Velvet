@@ -7,11 +7,12 @@ export const TrackInfo = () => {
   return (
     <div className="flex items-center h-[50px] gap-4">
       <div className="w-13 h-13 flex items-center justify-center">
-        {currentTrack.thumbnail ? (
+        {currentTrack?.thumbnail ? (
           <img
             className="w-full h-full object-cover rounded-[5px]"
-             src="/album/img1.jpeg"
-            alt="audio avatar"
+            // Sostituita l'immagine fissa con il thumbnail della traccia corrente
+            src={currentTrack.thumbnail}
+            alt={`${currentTrack.title} cover`}
           />
         ) : (
           <div className="flex items-center justify-center w-full h-full bg-gray-300 rounded-md">
@@ -23,9 +24,11 @@ export const TrackInfo = () => {
       </div>
       <div className="truncate">
         <p className="font-semibold truncate max-w-[200px] sm:max-w-xs">
-          {currentTrack.title}
+          {currentTrack?.title}
         </p>
-        <p className="text-sm text-gray-400 truncate max-w-[200px] sm:max-w-xs">{currentTrack.author}</p>
+        <p className="text-sm text-gray-400 truncate max-w-[200px] sm:max-w-xs">
+          {currentTrack?.author}
+        </p>
       </div>
     </div>
   );
