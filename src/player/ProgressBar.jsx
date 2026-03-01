@@ -1,5 +1,5 @@
 // src/components/ProgressBar.jsx
-import { useEffect, useCallback } from 'react';
+import { useEffect, useCallback, useState } from 'react';
 import { useAudioPlayerContext } from '../store/context/audio-player-context';
 
 // Funzione di utilità per formattare il tempo in 'MM:SS'
@@ -11,7 +11,7 @@ const formatTime = (time) => {
     const formattedSeconds = String(seconds).padStart(2, '0');
     return `${formattedMinutes}:${formattedSeconds}`;
   }
-  return '00:00';
+  return '0:00';
 };
 
 export const ProgressBar = () => {
@@ -24,11 +24,15 @@ export const ProgressBar = () => {
     setDuration,
   } = useAudioPlayerContext();
 
+  // Stato per gestire il colore della barra in hover
+  const [isHovering, setIsHovering] = useState(false);
+
   // Gestisce il "seeking" (spostamento) quando l'utente trascina lo slider
   const handleProgressChange = () => {
     if (audioRef.current && progressBarRef.current) {
       const newTime = Number(progressBarRef.current.value);
       audioRef.current.currentTime = newTime;
+      setTimeProgress(newTime);
     }
   };
 
@@ -36,17 +40,10 @@ export const ProgressBar = () => {
   const onTimeUpdate = useCallback(() => {
     if (audioRef.current && progressBarRef.current) {
       const currentTime = audioRef.current.currentTime;
-      
       setTimeProgress(currentTime);
       progressBarRef.current.value = currentTime;
-      
-      // Calcolo e aggiornamento per lo stile di avanzamento della barra (opzionale)
-      const percentage = (currentTime / duration) * 100;
-      // Per una visualizzazione completa, dovrai aggiungere stili specifici per l'input range
-      // tramite CSS o librerie.
     }
-  }, [audioRef, setTimeProgress, duration]);
-
+  }, [audioRef, setTimeProgress]);
 
   // Effetto per attaccare gli event listener sull'elemento audio
   useEffect(() => {
@@ -57,36 +54,64 @@ export const ProgressBar = () => {
       }
     };
 
-    audioRef.current?.addEventListener('loadedmetadata', handleLoadedMetadata);
-    audioRef.current?.addEventListener('timeupdate', onTimeUpdate);
+    const currentAudio = audioRef.current;
+    currentAudio?.addEventListener('loadedmetadata', handleLoadedMetadata);
+    currentAudio?.addEventListener('timeupdate', onTimeUpdate);
     
-    // Pulizia
     return () => {
-      audioRef.current?.removeEventListener('loadedmetadata', handleLoadedMetadata);
-      audioRef.current?.removeEventListener('timeupdate', onTimeUpdate);
+      currentAudio?.removeEventListener('loadedmetadata', handleLoadedMetadata);
+      currentAudio?.removeEventListener('timeupdate', onTimeUpdate);
     };
   }, [audioRef, setDuration, onTimeUpdate]);
   
   // Imposta il valore massimo dello slider alla durata del brano
   useEffect(() => {
-    if (progressBarRef.current) {
+    if (progressBarRef.current && duration) {
       progressBarRef.current.max = duration;
     }
-  }, [duration]);
+  }, [duration, progressBarRef]);
 
+  // Calcolo della percentuale per il riempimento della barra
+  const percentage = duration > 0 ? (timeProgress / duration) * 100 : 0;
+  // Colore di riempimento dinamico (Verde se in hover, altrimenti Bianco)
+  const fillColor = isHovering ? '#1db954' : '#ffffff';
 
   return (
-    <div className="flex items-center justify-center gap-5 w-full">
-      <span className="text-xs text-gray-400">{formatTime(timeProgress)}</span>
+    <div 
+      className="flex items-center justify-center gap-3 w-full group"
+      onMouseEnter={() => setIsHovering(true)}
+      onMouseLeave={() => setIsHovering(false)}
+    >
+      <span className="text-xs text-[#a8a8a8] min-w-[35px] text-right font-medium">
+        {formatTime(timeProgress)}
+      </span>
+        
+      {/* Contenitore relativo per sovrapporre input e guida visiva */}
+      <div className="relative w-full flex items-center h-4"> 
+        {/* Track grigia di sfondo */}
+        <div className="absolute top-1/2 -translate-y-1/2 w-full h-1 bg-[#4d4d4d] rounded-full pointer-events-none"></div>
+        
         <input
           type="range"
-          // Rimuovi 'appearance-none' e aggiungi 'accent-red-500'
-          className="custom-range max-w-[80%] w-full h-1 bg-gray-600 cursor-pointer rounded-2xl focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2 accent-green-500"
           ref={progressBarRef}
           defaultValue="0"
           onChange={handleProgressChange}
+          className="absolute top-1/2 -translate-y-1/2 w-full h-1 appearance-none bg-transparent cursor-pointer outline-none z-10 
+            [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-3 [&::-webkit-slider-thumb]:h-3 
+            [&::-webkit-slider-thumb]:bg-white [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:shadow-md 
+            [&::-webkit-slider-thumb]:opacity-0 group-hover:[&::-webkit-slider-thumb]:opacity-100 
+            [&::-moz-range-thumb]:appearance-none [&::-moz-range-thumb]:w-3 [&::-moz-range-thumb]:h-3 [&::-moz-range-thumb]:border-none 
+            [&::-moz-range-thumb]:bg-white [&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:opacity-0 
+            group-hover:[&::-moz-range-thumb]:opacity-100"
+          style={{
+            background: `linear-gradient(to right, ${fillColor} ${percentage}%, transparent ${percentage}%)`
+          }}
         />
-      <span className="text-xs text-gray-400">{formatTime(duration)}</span>
+      </div>
+
+      <span className="text-xs text-[#a8a8a8] min-w-[35px] font-medium">
+        {formatTime(duration)}
+      </span>
     </div>
   );
 };
