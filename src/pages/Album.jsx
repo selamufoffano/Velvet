@@ -1,24 +1,32 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useAuth } from "../store/context/Auth-context";
+import { useTrack } from "../store/context/Track-context"; // <--- 1. IMPORTA IL CONTEXT
 
 export const Album = () => {
-  const { id } = useParams(); // Recupera l'id dall'URL /album/:id
+  const { id } = useParams();
   const { authData } = useAuth();
+  const { playAlbum } = useTrack(); // <--- 2. ESTRAI LA FUNZIONE
+  
   const [albumDetails, setAlbumDetails] = useState(null);
   const [loading, setLoading] = useState(true);
+
+  // Sposta handlePlayAlbum dopo la dichiarazione di playAlbum
+  const handlePlayAlbum = () => {
+    if (albumDetails && albumDetails.song) {
+      console.log("Invio brani al context...");
+      playAlbum(albumDetails.song, authData);
+    }
+  };
 
   useEffect(() => {
     const fetchAlbumData = async () => {
       if (!authData || !id) return;
-
       try {
         setLoading(true);
         const url = `${authData.baseUrl}/rest/getAlbum.view?${authData.authParams}&id=${id}&f=json`;
         const response = await fetch(url);
         const data = await response.json();
-
-        // Salviamo i dettagli dell'album (che contengono l'array .song)
         setAlbumDetails(data["subsonic-response"]?.album);
       } catch (err) {
         console.error("Errore nel recupero dell'album:", err);
@@ -26,14 +34,11 @@ export const Album = () => {
         setLoading(false);
       }
     };
-
     fetchAlbumData();
   }, [id, authData]);
 
-  if (loading)
-    return <div className="p-10 text-white">Caricamento brani...</div>;
-  if (!albumDetails)
-    return <div className="p-10 text-red-500">Album non trovato.</div>;
+  if (loading) return <div className="p-10 text-white">Caricamento brani...</div>;
+  if (!albumDetails) return <div className="p-10 text-red-500">Album non trovato.</div>;
 
   return (
     <div className="w-full h-full bg-[#121212] overflow-y-auto">
@@ -50,21 +55,17 @@ export const Album = () => {
             {albumDetails.name}
           </h1>
           <p className="text-white/70 text-sm font-semibold">
-            {albumDetails.artist} • {albumDetails.songCount} brani •{" "}
-            {albumDetails.year}
+            {albumDetails.artist} • {albumDetails.songCount} brani • {albumDetails.year}
           </p>
-          <div className="">
-            <button className="flex items-center justify-center gap-2 bg-[#ffffff] hover:bg-[#ffabab] px-4 py-0.5 rounded-full transition-colors group">
-              {/* Icona SVG Inline */}
-              <svg
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                className="w-7 h-7 text-black opacity-70"
-              >
+          <div className="mt-4">
+            <button 
+              onClick={handlePlayAlbum} 
+              className="flex items-center justify-center gap-2 bg-[#ffffff] hover:bg-[#eeeeee] active:scale-95 px-6 py-2 rounded-full transition-all group"
+            >
+              <svg viewBox="0 0 24 24" fill="currentColor" className="w-7 h-7 text-black">
                 <path d="M8 5v14l11-7z" />
               </svg>
-
-              <p className="text-black text-sm font-medium">Riproduci</p>
+              <p className="text-black text-sm font-bold">Riproduci</p>
             </button>
           </div>
         </div>
@@ -77,9 +78,7 @@ export const Album = () => {
             <tr className="text-gray-400 text-xs uppercase border-b border-white/10">
               <th className="pb-3 w-10 font-medium text-center">#</th>
               <th className="pb-3 font-medium">Titolo</th>
-              <th className="pb-3 hidden md:table-cell font-medium text-right">
-                Durata
-              </th>
+              <th className="pb-3 hidden md:table-cell font-medium text-right">Durata</th>
             </tr>
           </thead>
           <tbody>
@@ -87,17 +86,15 @@ export const Album = () => {
               <tr
                 key={song.id}
                 className="group hover:bg-white/5 transition-colors cursor-pointer"
+                onClick={() => playAlbum([song], authData)} // Cliccare sulla riga riproduce il singolo brano
               >
                 <td className="py-3 text-gray-400 text-center text-sm">{index + 1}</td>
                 <td className="py-1">
-                  <p className="text-white text-sm font-medium truncate w-64 md:w-full">
-                    {song.title}
-                  </p>
+                  <p className="text-white text-sm font-medium truncate w-64 md:w-full">{song.title}</p>
                   <p className="text-gray-400 text-xs">{song.artist}</p>
                 </td>
-                <td className="py-3 hidden md:table-cell text-right pr-4.5 text-gray-400 text-sm">
-                  {Math.floor(song.duration / 60)}:
-                  {(song.duration % 60).toString().padStart(2, "0")}
+                <td className="py-3 hidden md:table-cell text-right pr-4 text-gray-400 text-sm">
+                  {Math.floor(song.duration / 60)}:{(song.duration % 60).toString().padStart(2, "0")}
                 </td>
               </tr>
             ))}
