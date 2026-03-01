@@ -2,29 +2,33 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useAuth } from "../store/context/Auth-context";
 import { useTrack } from "../store/context/Track-context";
+// IMPORTANTE: Importa il context del player audio
+import { useAudioPlayerContext } from "../store/context/audio-player-context";
 
 export const Album = () => {
   const { id } = useParams();
   const { authData } = useAuth();
   const { playAlbum } = useTrack();
   
+  // Estraiamo i comandi dal player context
+  const { setCurrentTrack, setIsPlaying } = useAudioPlayerContext();
+  
   const [albumDetails, setAlbumDetails] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  // Gestisce il click sul Play principale dell'album
+  // Play principale (parte dall'indice 0)
   const handlePlayAlbum = () => {
     if (albumDetails && albumDetails.song) {
-      //console.log("Contenuto dell'album (Play Principale):", albumDetails.song);
-      console.log("Invio brani al context...");
-      playAlbum(albumDetails.song, authData);
+      // Passiamo i setter del player come argomenti
+      playAlbum(albumDetails.song, authData, 0, setCurrentTrack, setIsPlaying);
     }
   };
 
-  // Gestisce il click su una singola traccia
+  // Play sulla singola traccia
   const handlePlaySingleTrack = (index) => {
     if (albumDetails && albumDetails.song) {
-      //console.log("Contenuto dell'album (Traccia Specifica):", albumDetails.song);
-      playAlbum(albumDetails.song, authData, index);
+      // Passiamo i setter del player come argomenti
+      playAlbum(albumDetails.song, authData, index, setCurrentTrack, setIsPlaying);
     }
   };
 
@@ -51,7 +55,7 @@ export const Album = () => {
 
   return (
     <div className="w-full h-full bg-[#121212] overflow-y-auto">
-      {/* Header Album */}
+      {/* HEADER ALBUM (Uguale a prima) */}
       <div className="flex flex-col md:flex-row p-8 gap-8 items-end bg-gradient-to-b from-[#2a2a2a] to-[#121212]">
         <img
           src={`${authData.baseUrl}/rest/getCoverArt?${authData.authParams}&id=${id}&size=300`}
@@ -80,7 +84,7 @@ export const Album = () => {
         </div>
       </div>
 
-      {/* Lista Brani */}
+      {/* LISTA BRANI */}
       <div className="p-8">
         <table className="w-full text-left border-collapse">
           <thead>
@@ -95,6 +99,7 @@ export const Album = () => {
               <tr
                 key={song.id}
                 className="group hover:bg-white/5 transition-colors cursor-pointer"
+                // Richiama la nuova funzione con l'indice
                 onClick={() => handlePlaySingleTrack(index)}
               >
                 <td className="py-3 text-gray-400 text-center text-sm">{index + 1}</td>
