@@ -39,8 +39,8 @@ function App() {
              * 
              * 
              */}
-            <Route path="/Error" element={<Error />} />
-            <Route path="*" element={<Navigate to="/Error" replace />} />
+            <Route path="/404" element={<Error />} />
+<Route path="*" element={<Error />} />
           </Routes>
         </main>
       </div>
