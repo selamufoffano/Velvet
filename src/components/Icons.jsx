@@ -24,7 +24,7 @@ export const StarIcon = ({ filled }) => (
 );
 
 // SEZIONE VOLUME
-export const volumeMute = ({ className }) => (
+export const VolumeMuteIcon = ({ className }) => (
   <svg 
     xmlns="http://www.w3.org/2000/svg" 
     viewBox="-5 0 24 14" 
@@ -35,7 +35,7 @@ export const volumeMute = ({ className }) => (
   </svg>
 );
 
-export const VolumeHalf = ({ className }) => (
+export const VolumeHalfIcon = ({ className }) => (
   <svg 
     xmlns="http://www.w3.org/2000/svg" 
     viewBox="-5 0 24 14" 
@@ -46,7 +46,7 @@ export const VolumeHalf = ({ className }) => (
   </svg>
 );
 
-export const VolumeFull = ({ className }) => (
+export const VolumeFullIcon = ({ className }) => (
   <svg 
     xmlns="http://www.w3.org/2000/svg" 
     viewBox="-5 0 24 14" 

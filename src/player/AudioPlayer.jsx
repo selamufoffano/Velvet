@@ -3,7 +3,6 @@ import { TrackInfo } from "./TrackInfo";
 import { Controls } from "./Controls";
 import { ProgressBar } from "./ProgressBar";
 import { VolumeControl } from "./VolumeControls";
-
 import { LyricsIcon, CodaIcon, ScreenFullInIcon } from "../components/Icons";
 
 const AudioPlayer = () => {

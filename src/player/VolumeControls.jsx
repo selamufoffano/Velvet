@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useAudioPlayerContext } from '../store/context/audio-player-context';
-import { volumeMute, VolumeFull, VolumeHalf} from "../components/Icons";
+// 1. Importiamo i componenti corretti dal file Icons
+import { VolumeMuteIcon, VolumeHalfIcon, VolumeFullIcon } from "../components/Icons";
+
 export const VolumeControl = () => {
   const { audioRef, volume, setVolume } = useAudioPlayerContext();
   const [isMute, setIsMute] = useState(false);
@@ -35,20 +37,14 @@ export const VolumeControl = () => {
     }
   };
 
-
-  const SvgIcon = ({ path, viewBox = '0 0 24 24' }) => (
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox={viewBox} fill="currentColor" className="block w-7 h-7">
-      <path d={path} />
-    </svg>
-  );
-
+  // 2. Usiamo direttamente i componenti al posto di passare le stringhe!
   const getVolumeIcon = () => {
     if (isMute || volume === 0) {
-      return <SvgIcon path={volumeMute} viewBox="-5 0 24 14" />;
+      return <VolumeMuteIcon className="block w-7 h-7" />;
     } else if (volume < 50) {
-      return <SvgIcon path={VolumeHalf} viewBox="-5 0 24 14" />;
+      return <VolumeHalfIcon className="block w-7 h-7" />;
     } else {
-      return <SvgIcon path={VolumeFull} viewBox="-5 0 24 14" />;
+      return <VolumeFullIcon className="block w-7 h-7" />;
     }
   };
 
