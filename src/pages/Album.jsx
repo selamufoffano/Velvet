@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { useAuth } from "../store/context/Auth-context";
 import { useTrack } from "../store/context/Track-context";
 import { useAudioPlayerContext } from "../store/context/audio-player-context";
-import { MusicNoteIcon, ClockIcon, HeartIcon, StarIcon } from "../components/Icons";
+import { MusicNoteIcon, ClockIcon, HeartIcon, StarIcon, PauseIcon2 } from "../components/Icons";
 
 export const Album = () => {
   const { id } = useParams();
@@ -70,14 +70,12 @@ export const Album = () => {
           <p className="text-[#a8a8a8] text-sm font-medium mt-2">
             {albumDetails.artist} • {albumDetails.songCount} brani • {albumDetails.year}
           </p>
-          <div className="mt-4">
+          <div className="mt-4 flex gap-5">
             <button 
               onClick={handlePlayAlbum} 
-              className="flex items-center justify-center gap-2 bg-[#ffffff] hover:bg-gray-200 active:scale-95 px-8 py-2.5 rounded-full transition-all group"
+              className="flex items-center justify-center gap-2 bg-[#ffffff] hover:bg-gray-200 active:scale-95 px-7 py-1.5 rounded-3xl transition-all group"
             >
-              <svg viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6 text-black">
-                <path d="M8 5v14l11-7z" />
-              </svg>
+              <PauseIcon2/>
               <p className="text-black text-sm font-bold tracking-wide">Riproduci</p>
             </button>
           </div>

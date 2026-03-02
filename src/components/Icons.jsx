@@ -1,34 +1,62 @@
 export const MusicNoteIcon = () => (
-  <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4 text-[#a8a8a8] mx-auto">
+  <svg
+    viewBox="0 0 24 24"
+    fill="currentColor"
+    className="w-4 h-4 text-[#a8a8a8] mx-auto"
+  >
     <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z" />
   </svg>
 );
 
 export const ClockIcon = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4 text-[#a8a8a8] mx-auto">
+  <svg
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className="w-4 h-4 text-[#a8a8a8] mx-auto"
+  >
     <circle cx="12" cy="12" r="10"></circle>
     <polyline points="12 6 12 12 16 14"></polyline>
   </svg>
 );
 
 export const HeartIcon = ({ filled }) => (
-  <svg viewBox="0 0 24 24" fill={filled ? "currentColor" : "none"} stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={`w-4 h-4 mx-auto ${filled ? 'text-[#8a2be2] border-none' : 'text-[#a8a8a8]'}`}>
+  <svg
+    viewBox="0 0 24 24"
+    fill={filled ? "currentColor" : "none"}
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className={`w-4 h-4 mx-auto ${filled ? "text-[#8a2be2] border-none" : "text-[#a8a8a8]"}`}
+  >
     <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
   </svg>
 );
 
 export const StarIcon = ({ filled }) => (
-  <svg viewBox="0 0 24 24" fill={filled ? "currentColor" : "none"} stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={`w-3.5 h-3.5 ${filled ? 'text-[#eab308]' : 'text-gray-600'}`}>
+  <svg
+    viewBox="0 0 24 24"
+    fill={filled ? "currentColor" : "none"}
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className={`w-3.5 h-3.5 ${filled ? "text-[#eab308]" : "text-gray-600"}`}
+  >
     <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
   </svg>
 );
 
 // SEZIONE VOLUME
 export const VolumeMuteIcon = ({ className }) => (
-  <svg 
-    xmlns="http://www.w3.org/2000/svg" 
-    viewBox="-5 0 24 14" 
-    fill="currentColor" 
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="-5 0 24 14"
+    fill="currentColor"
     className={className || "w-5 h-5"}
   >
     <path d="M 9.1368946,2.8682631e-4 A 0.75,0.75 0 0 0 8.7410536,0.10053914 L 1.8158947,4.1008117 A 3.64,3.64 0 0 0 0.48574338,9.0674336 3.64,3.64 0 0 0 1.8158947,10.399652 l 6.9251589,3.999755 a 0.75,0.75 0 0 0 1.124996,-0.649056 V 11.844525 A 4.7,4.7 0 0 1 8.3658826,11.15051 v 1.300179 L 2.5667533,9.1025734 A 2.14,2.14 0 0 1 1.7859224,6.1828551 C 1.9729222,5.8588555 2.2422368,5.5884738 2.5662365,5.400474 L 8.3658826,2.0508076 V 3.3504699 C 8.8158816,3.0374702 9.3220496,2.8004553 9.8660496,2.6564554 V 0.75062864 A 0.75,0.75 0 0 0 9.1368946,2.8682631e-4 Z M 13.521641,4.7529683 A 0.75,0.75 0 0 0 13.044667,4.9710428 L 11.574473,6.4412373 10.104795,4.9710428 A 0.75,0.75 0 0 0 9.0459446,6.0309264 L 10.514589,7.5011209 9.0449106,8.9713154 a 0.75,0.75 0 1 0 1.0598844,1.0598836 l 1.469678,-1.4701944 1.470194,1.4701944 A 0.75,0.75 0 0 0 14.104551,8.9713154 L 12.635907,7.5011209 14.105584,6.0309264 a 0.75,0.75 0 0 0 0,-1.0598836 0.75,0.75 0 0 0 -0.583943,-0.2180745 z" />
@@ -36,10 +64,10 @@ export const VolumeMuteIcon = ({ className }) => (
 );
 
 export const VolumeHalfIcon = ({ className }) => (
-  <svg 
-    xmlns="http://www.w3.org/2000/svg" 
-    viewBox="-5 0 24 14" 
-    fill="currentColor" 
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="-5 0 24 14"
+    fill="currentColor"
     className={className || "w-5 h-5"}
   >
     <path d="M 9.037383,0.00417723 A 0.75,0.75 0 0 0 8.74076,0.10029533 L 1.8161179,4.1000512 A 3.64,3.64 0 0 0 0.48596661,5.4322696 3.64,3.64 0 0 0 1.8161179,10.399408 L 8.74076,14.399164 a 0.75,0.75 0 0 0 1.124996,-0.65009 V 0.74935133 A 0.75,0.75 0 0 0 9.491102,0.09926183 v 0.00103 A 0.75,0.75 0 0 0 9.037383,0.00417723 Z M 8.366622,2.0495304 V 12.449412 L 2.5669765,9.0992293 a 2.14,2.14 0 0 1 0,-3.7000326 z m 2.883029,0.9627319 v 1.6500285 a 3,3 0 0 1 0,5.1748775 v 1.6489947 a 4.502,4.502 0 0 0 0,-8.4739007 z" />
@@ -47,10 +75,10 @@ export const VolumeHalfIcon = ({ className }) => (
 );
 
 export const VolumeFullIcon = ({ className }) => (
-  <svg 
-    xmlns="http://www.w3.org/2000/svg" 
-    viewBox="-5 0 24 14" 
-    fill="currentColor" 
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="-5 0 24 14"
+    fill="currentColor"
     className={className || "w-5 h-5"}
   >
     <path d="M 9.0372887,0.00405467 A 0.75,0.75 0 0 0 8.740666,0.10068957 L 1.8155072,4.1004455 A 3.64,3.64 0 0 0 0.48587263,5.4326639 3.64,3.64 0 0 0 1.8155072,10.399286 L 8.740666,14.399558 A 0.75,0.75 0 0 0 9.8656619,13.749469 V 0.74922887 A 0.75,0.75 0 0 0 9.490491,0.09965607 v 0.00103 A 0.75,0.75 0 0 0 9.0372887,0.00405107 Z M 14.089177,1.6618346 v 1.550293 a 4.252,4.252 0 0 1 0,8.1266354 v 1.551327 a 5.752,5.752 0 0 0 0,-11.2282554 z M 8.3665286,2.0494079 V 12.44929 L 2.5668826,9.0996235 a 2.14,2.14 0 0 1 0,-3.7000325 z m 2.8830284,0.9632487 v 1.6500285 a 3,3 0 0 1 0,5.1748779 v 1.648995 a 4.502,4.502 0 0 0 0,-8.4739014 z" />
@@ -60,10 +88,10 @@ export const VolumeFullIcon = ({ className }) => (
 // SEZIONE TESTO ...
 
 export const LyricsIcon = ({ className }) => (
-  <svg 
-    xmlns="http://www.w3.org/2000/svg" 
-    viewBox="-5 0 24 14" 
-    fill="currentColor" 
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="-5 0 24 14"
+    fill="currentColor"
     className={className || "w-6 h-6"}
   >
     <path d="m 13.178794,2.3291074 a 2.831,2.831 0 0 0 -4.7969996,1.55 l 3.2469996,3.247 a 2.831,2.831 0 0 0 1.55,-4.797 m -2.926,5.544 -2.6189996,-2.62 -3.1410002,3.577 -2.675,3.0449996 a 1.287,1.287 0 0 0 1.816,1.816 l 3.0600002,-2.688 3.5599996,-3.1289996 z m -3.3799996,-4.024 a 4.331,4.331 0 1 1 4.7859996,4.786 L 7.6847944,12.128107 4.6247942,14.817104 A 2.787,2.787 0 0 1 0.69179418,10.884107 L 3.3677942,7.8391074 Z" />
@@ -71,10 +99,10 @@ export const LyricsIcon = ({ className }) => (
 );
 
 export const CodaIcon = ({ className }) => (
-  <svg 
-    xmlns="http://www.w3.org/2000/svg" 
-    viewBox="-5 0 24 14" 
-    fill="currentColor" 
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="-5 0 24 14"
+    fill="currentColor"
     className={className || "w-6 h-6"}
   >
     <path d="M 14,13.999999 H 0 V 12.5 H 14 Z M 14,9.5 H 0 V 8 H 14 Z M 0,2.5 A 2.5,2.5 0 0 1 2.5,0 h 9 a 2.5,2.5 0 0 1 0,5 h -9 A 2.5,2.5 0 0 1 0,2.5 m 2.5,-1 a 1,1 0 0 0 0,2 h 9 a 1,1 0 1 0 0,-2 z" />
@@ -82,10 +110,10 @@ export const CodaIcon = ({ className }) => (
 );
 
 export const ScreenFullInIcon = ({ className }) => (
-  <svg 
-    xmlns="http://www.w3.org/2000/svg" 
-    viewBox="-15 -3 24 14" 
-    fill="currentColor" 
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="-15 -3 24 14"
+    fill="currentColor"
     className={className || "w-6 h-6"}
   >
     <path d="m -10.940012,-0.1148856 c 0,-0.9665 0.7835,-1.75 1.75,-1.75 h 3.375 v 1.5 h -3.375 c -0.13807,0 -0.25,0.11193 -0.25,0.25 v 2.4285699 h -1.5 z m 13.75,-0.25 h -3.375 v -1.5 h 3.375 c 0.9665,0 1.75,0.7835 1.75,1.75 v 2.4285699 h -1.5 v -2.4285699 c 0,-0.13807 -0.1119,-0.25 -0.25,-0.25 z m -12.25,7.8213996 v 2.4286 c 0,0.1381 0.11193,0.25 0.25,0.25 h 3.375 v 1.5 h -3.375 c -0.9665,0 -1.75,-0.7835 -1.75,-1.75 v -2.4286 z m 12.5,2.4286 v -2.4286 h 1.5 v 2.4286 c 0,0.9665 -0.7835,1.75 -1.75,1.75 h -3.375 v -1.5 h 3.375 c 0.1381,0 0.25,-0.1119 0.25,-0.25 z" />
@@ -93,12 +121,93 @@ export const ScreenFullInIcon = ({ className }) => (
 );
 
 export const ScreenFullOutIcon = ({ className }) => (
-  <svg 
-    xmlns="http://www.w3.org/2000/svg" 
-    viewBox="-15 -3 24 14" 
-    fill="currentColor" 
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="-15 -3 24 14"
+    fill="currentColor"
     className={className || "w-6 h-6"}
   >
     <path d="m -10.940012,-0.1148856 c 0,-0.9665 0.7835,-1.75 1.75,-1.75 h 3.375 v 1.5 h -3.375 c -0.13807,0 -0.25,0.11193 -0.25,0.25 v 2.4285699 h -1.5 z m 13.75,-0.25 h -3.375 v -1.5 h 3.375 c 0.9665,0 1.75,0.7835 1.75,1.75 v 2.4285699 h -1.5 v -2.4285699 c 0,-0.13807 -0.1119,-0.25 -0.25,-0.25 z m -12.25,7.8213996 v 2.4286 c 0,0.1381 0.11193,0.25 0.25,0.25 h 3.375 v 1.5 h -3.375 c -0.9665,0 -1.75,-0.7835 -1.75,-1.75 v -2.4286 z m 12.5,2.4286 v -2.4286 h 1.5 v 2.4286 c 0,0.9665 -0.7835,1.75 -1.75,1.75 h -3.375 v -1.5 h 3.375 c 0.1381,0 0.25,-0.1119 0.25,-0.25 z" />
+  </svg>
+);
+
+// SEZIONE BUTTON CONTROLS
+
+export const PrevIcon = ({ className }) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 14"
+    fill="currentColor"
+    className={className || "block w-7 h-7"}
+  >
+    <path d="m 10.48399,13.372 c -0.365,0 -0.672,-0.107 -1.038,-0.323 L 0.93799005,8.0519995 C 0.31499005,7.687 0,7.238 0,6.682 0,6.118 0.30699005,5.694 0.93799005,5.321 L 9.44599,0.324 c 0.366,-0.216 0.68,-0.324 1.046,-0.324 0.73,0 1.337,0.556 1.337,1.569 v 4.773 c 0.108,-0.399 0.406,-0.73 0.904,-1.021 l 8.509002,-4.997 c 0.357,-0.216 0.672,-0.324 1.037,-0.324 0.73,0 1.345,0.556 1.345,1.569 v 10.235 c 0,1.012999 -0.614,1.568999 -1.345,1.568999 -0.365,0 -0.68,-0.108 -1.037,-0.323999 L 12.73299,8.0519995 C 12.24299,7.762 11.93699,7.421 11.82899,7.014 v 4.79 c 0,1.013 -0.615,1.568999 -1.345,1.568999 z" />
+  </svg>
+);
+
+export const NextIcon = ({ className }) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 14"
+    fill="currentColor"
+    className={className || "block w-7 h-7"}
+  >
+    <path d="m 13.140002,13.372 c 0.365,0 0.672,-0.107 1.038,-0.323 l 8.508,-4.997 c 0.623,-0.365 0.93799,-0.814 0.93799,-1.37 0,-0.564 -0.30699,-0.988 -0.93799,-1.361 l -8.508,-4.997 c -0.366,-0.216 -0.68,-0.324 -1.046,-0.324 -0.73,0 -1.337,0.556 -1.337,1.569 v 4.773 c -0.108,-0.399 -0.406,-0.73 -0.904,-1.021 L 2.382,0.324 C 2.025,0.108 1.71,0 1.345,0 0.615,0 0,0.556 0,1.569 v 10.235 c 0,1.013 0.614,1.569 1.345,1.569 0.365,0 0.68,-0.108 1.037,-0.324 l 8.509002,-4.997 c 0.49,-0.29 0.796,-0.631 0.904,-1.038 v 4.79 c 0,1.013 0.615,1.569 1.345,1.569 z" />
+  </svg>
+);
+
+export const PlayIcon = ({ className }) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 20 20"
+    fill="currentColor"
+    className={className || "block w-7 h-7"}
+  >
+    <path d="M2 2v16l14-8L2 2z" />
+  </svg>
+);
+
+export const PauseIcon = ({ className }) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 20 20"
+    fill="currentColor"
+    className={className || "block w-7 h-7"}
+  >
+    <path d="M3 2h4v16H3V2zm10 0h4v16h-4V2z" />
+  </svg>
+);
+
+export const ShuffleIcon = ({ className }) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 20 20"
+    fill="currentColor"
+    className={className || "block w-7 h-7"}
+  >
+    <g transform="translate(2.5 2.5) scale(0.75)">
+      <path d="M15.96 15.99a1 1 0 0 0 .6-.22l3.16-2.66c.39-.33.39-.85 0-1.18l-3.16-2.67a1 1 0 0 0-.6-.22c-.52 0-.84.32-.84.84v1.53h-1.42c-.9 0-1.46-.28-2.1-1.04L9.73 8.11l1.87-2.21c.66-.77 1.17-1.04 2.05-1.04h1.47v1.56c0 .5.32.82.84.82a1 1 0 0 0 .6-.21l3.16-2.67c.39-.33.39-.85 0-1.18L16.56.22a.93.93 0 0 0-.6-.22c-.52 0-.84.32-.84.82v1.7h-1.48c-1.5 0-2.44.42-3.5 1.7L8.42 6.24 6.62 4.1C5.64 2.96 4.7 2.52 3.27 2.52H1.44c-.65 0-1.1.43-1.1 1.04s.45 1.04 1.1 1.04h1.76c.85 0 1.42.28 2.05 1.04l1.85 2.19-1.85 2.2c-.64.76-1.15 1.04-1.99 1.04H1.44c-.65 0-1.1.43-1.1 1.04s.45 1.04 1.1 1.04h1.88c1.43 0 2.3-.43 3.28-1.58l1.81-2.13 1.76 2.09c1 1.2 1.98 1.63 3.43 1.63h1.48v1.73c0 .51.32.83.84.83z" />
+    </g>
+  </svg>
+);
+
+export const RepeatIcon = ({ className }) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 3 24 14"
+    fill="currentColor"
+    className={className || "block w-7 h-7"}
+  >
+    <path d="M 3.9999997,5 H 14 V 8 L 18,4 14,0 V 3 H 2 V 9 H 3.9999997 Z M 14,15 H 3.9999997 V 12 L 0,16 3.9999997,20 V 17 H 16 v -6 h -2 z" />
+  </svg>
+);
+
+export const PauseIcon2 = ({ className }) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 3 24 14"
+    fill="currentColor"
+    className={className || "block w-7 h-7"}
+  >
+    <path d="M8 5v14l11-7z" />
   </svg>
 );

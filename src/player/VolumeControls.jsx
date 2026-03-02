@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import { useAudioPlayerContext } from '../store/context/audio-player-context';
-// 1. Importiamo i componenti corretti dal file Icons
 import { VolumeMuteIcon, VolumeHalfIcon, VolumeFullIcon } from "../components/Icons";
 
 export const VolumeControl = () => {
