@@ -5,7 +5,6 @@ export const TrackInfo = () => {
 
   return (
     <div className="flex items-center h-[50px] gap-4">
-      {/* COVER: Se c'è la mostra, altrimenti div VIOLA animato */}
       <div className="w-12 h-12 sm:w-14 sm:h-14 flex-shrink-0 flex items-center justify-center">
         {currentTrack?.thumbnail ? (
           <img
@@ -17,8 +16,7 @@ export const TrackInfo = () => {
           <div className="w-full h-full bg-gray-400 rounded-[5px] animate-pulse shadow-sm"></div>
         )}
       </div>
-      <div className="flex flex-col justify-center gap-1.5 truncate">
-        {/* TITOLO: Se c'è lo mostra, altrimenti div BLU */}
+      <div className="flex flex-col justify-center gap-1 truncate">
         {currentTrack?.title ? (
           <p className="font-semibold truncate max-w-[200px] sm:max-w-xs text-white">
             {currentTrack.title}
@@ -27,7 +25,6 @@ export const TrackInfo = () => {
           <div className="w-32 h-4 bg-gray-500 rounded-md animate-pulse"></div>
         )}
 
-        {/* AUTORE: Se c'è lo mostra, altrimenti div ROSSO */}
         {currentTrack?.author ? (
           <p className="text-sm text-gray-400 truncate max-w-[200px] sm:max-w-xs">
             {currentTrack.author}

@@ -55,17 +55,35 @@ const AlbumPage = () => {
     return () => { if (target) observer.unobserve(target); };
   }, [fetchAlbums, hasMore, loading]);
 
-  return (
+return (
     <div className="w-full h-full bg-[#121212] p-6 overflow-y-auto">
+      {/* GRIGLIA PRINCIPALE */}
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-6">
+        
+        {/* 1. Album Reali Caricati */}
         {albums.map((album, index) => (
           <AlbumCard key={`${album.id}-${index}`} album={album} authData={authData} />
         ))}
+
+        {/* 2. Skeleton Loaders (10 sagome che pulsano durante il caricamento) */}
+        {loading &&
+          Array.from({ length: 5 }).map((_, index) => (
+            <div key={`skeleton-${index}`} className="w-full">
+              {/* Finta copertina */}
+              <div className="aspect-square bg-white/5 rounded-lg animate-pulse animationDuration: '3s'"></div>
+              
+              {/* Finti testi (Titolo e Artista) */}
+              <div className="mt-3 flex flex-col gap-2">
+                <div className="h-3.5 bg-white/10 rounded w-3/4 animate-pulse animationDuration: '3s'"></div>
+                <div className="h-2.5 bg-white/5 rounded w-1/2 animate-pulse animationDuration: '3s'"></div>
+              </div>
+            </div>
+          ))}
+
       </div>
 
-      {/* Target per l'Infinite Scroll */}
-      <div ref={observerTarget} className="h-40 w-full flex items-center justify-center">
-        {loading && <div className="w-8 h-8 border-4 border-green-500 border-t-transparent rounded-full animate-spin"></div>}
+      {/* Target per l'Infinite Scroll (Ora serve solo per intercettare la fine pagina) */}
+      <div ref={observerTarget} className="h-20 w-full flex items-center justify-center mt-6">
         {!hasMore && albums.length > 0 && (
           <p className="text-gray-600 text-xs uppercase tracking-widest">Fine della collezione</p>
         )}
@@ -73,4 +91,5 @@ const AlbumPage = () => {
     </div>
   );
 };
+
 export default AlbumPage;

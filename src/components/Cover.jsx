@@ -39,7 +39,7 @@ const Cover = ({ album, authData }) => {
     <div 
       ref={cardRef} 
       onClick={handleNavigate} 
-      className="group cursor-pointer w-full transition-transform duration-200"
+      className="group cursor-pointer w-full transition-transform duration-200 bg-[#161616] hover:bg-[#202020] rounded-lg p-4"
     >
       <div className="aspect-square relative overflow-hidden rounded-lg bg-[#1c1c1c]">
         {isVisible ? (

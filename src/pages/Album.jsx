@@ -2,32 +2,27 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useAuth } from "../store/context/Auth-context";
 import { useTrack } from "../store/context/Track-context";
-// IMPORTANTE: Importa il context del player audio
 import { useAudioPlayerContext } from "../store/context/audio-player-context";
+import { MusicNoteIcon, ClockIcon, HeartIcon, StarIcon } from "../components/Icons";
 
 export const Album = () => {
   const { id } = useParams();
   const { authData } = useAuth();
   const { playAlbum } = useTrack();
   
-  // Estraiamo i comandi dal player context
-  const { setCurrentTrack, setIsPlaying } = useAudioPlayerContext();
+  const { currentTrack, setCurrentTrack, setIsPlaying } = useAudioPlayerContext();
   
   const [albumDetails, setAlbumDetails] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  // Play principale (parte dall'indice 0)
   const handlePlayAlbum = () => {
     if (albumDetails && albumDetails.song) {
-      // Passiamo i setter del player come argomenti
       playAlbum(albumDetails.song, authData, 0, setCurrentTrack, setIsPlaying);
     }
   };
 
-  // Play sulla singola traccia
   const handlePlaySingleTrack = (index) => {
     if (albumDetails && albumDetails.song) {
-      // Passiamo i setter del player come argomenti
       playAlbum(albumDetails.song, authData, index, setCurrentTrack, setIsPlaying);
     }
   };
@@ -50,68 +45,105 @@ export const Album = () => {
     fetchAlbumData();
   }, [id, authData]);
 
-  if (loading) return <div className="p-10 text-white">Caricamento brani...</div>;
-  if (!albumDetails) return <div className="p-10 text-red-500">Album non trovato.</div>;
+  if (loading) return (
+    <div className="w-full h-full bg-[#121212] flex justify-center items-center">
+      <div className="w-8 h-8 border-4 border-[#8a2be2] border-t-transparent rounded-full animate-spin"></div>
+    </div>
+  );
+  
+  if (!albumDetails) return <div className="p-10 text-red-500 bg-[#121212] w-full h-full">Album non trovato.</div>;
 
   return (
-    <div className="w-full h-full bg-[#121212] overflow-y-auto">
-      {/* HEADER ALBUM (Uguale a prima) */}
-      <div className="flex flex-col md:flex-row p-8 gap-8 items-end bg-gradient-to-b from-[#2a2a2a] to-[#121212]">
+    <div className="w-full h-full bg-[#18181a] overflow-y-auto pb-32">
+      
+      <div className="flex flex-col md:flex-row p-8 gap-8 items-end bg-gradient-to-b from-[#2a2a2c] to-[#18181a]">
         <img
           src={`${authData.baseUrl}/rest/getCoverArt?${authData.authParams}&id=${id}&size=300`}
           alt={albumDetails.name}
-          className="w-48 h-48 md:w-60 md:h-60 shadow-2xl rounded-lg object-cover"
+          className="w-48 h-48 md:w-56 md:h-56 shadow-2xl rounded-md object-cover"
         />
         <div className="flex flex-col gap-2">
-          <span className="text-white text-xs font-bold uppercase">Album</span>
-          <h1 className="text-white text-5xl md:text-5xl font-black tracking-tighter">
+          <span className="text-gray-300 text-xs font-semibold uppercase tracking-wider">Album</span>
+          <h1 className="text-white text-4xl md:text-5xl font-black tracking-tight mt-1">
             {albumDetails.name}
           </h1>
-          <p className="text-white/70 text-sm font-semibold">
+          <p className="text-[#a8a8a8] text-sm font-medium mt-2">
             {albumDetails.artist} • {albumDetails.songCount} brani • {albumDetails.year}
           </p>
           <div className="mt-4">
             <button 
               onClick={handlePlayAlbum} 
-              className="flex items-center justify-center gap-2 bg-[#ffffff] hover:bg-[#eeeeee] active:scale-95 px-6 py-2 rounded-full transition-all group"
+              className="flex items-center justify-center gap-2 bg-[#ffffff] hover:bg-gray-200 active:scale-95 px-8 py-2.5 rounded-full transition-all group"
             >
-              <svg viewBox="0 0 24 24" fill="currentColor" className="w-7 h-7 text-black">
+              <svg viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6 text-black">
                 <path d="M8 5v14l11-7z" />
               </svg>
-              <p className="text-black text-sm font-bold">Riproduci</p>
+              <p className="text-black text-sm font-bold tracking-wide">Riproduci</p>
             </button>
           </div>
         </div>
       </div>
 
-      {/* LISTA BRANI */}
-      <div className="p-8">
-        <table className="w-full text-left border-collapse">
+      <div className="px-8 mt-2">
+        <table className="w-full text-left border-collapse table-fixed">
+
           <thead>
-            <tr className="text-gray-400 text-xs uppercase border-b border-white/10">
-              <th className="pb-3 w-10 font-medium text-center">#</th>
-              <th className="pb-3 font-medium">Titolo</th>
-              <th className="pb-3 hidden md:table-cell font-medium text-right">Durata</th>
+            <tr className="text-[#a8a8a8] text-xs font-medium border-b border-white/5">
+              <th className="pb-3 w-12 text-center"><MusicNoteIcon /></th>
+              <th className="pb-3 uppercase tracking-wider w-[35%] pl-2">Title</th>
+              <th className="pb-3 w-20 text-center"><ClockIcon /></th>
+              <th className="pb-3 w-14 text-center"></th> {/* Spazio per il cuore */}
+              <th className="pb-3 uppercase tracking-wider w-[25%] hidden sm:table-cell">Artist</th>
+              <th className="pb-3 w-32 pl-2 hidden md:table-cell"></th> {/* Spazio per le stelle */}
             </tr>
           </thead>
+          
           <tbody>
-            {albumDetails.song?.map((song, index) => (
-              <tr
-                key={song.id}
-                className="group hover:bg-white/5 transition-colors cursor-pointer"
-                // Richiama la nuova funzione con l'indice
-                onClick={() => handlePlaySingleTrack(index)}
-              >
-                <td className="py-3 text-gray-400 text-center text-sm">{index + 1}</td>
-                <td className="py-1">
-                  <p className="text-white text-sm font-medium truncate w-64 md:w-full">{song.title}</p>
-                  <p className="text-gray-400 text-xs">{song.artist}</p>
-                </td>
-                <td className="py-3 hidden md:table-cell text-right pr-4 text-gray-400 text-sm">
-                  {Math.floor(song.duration / 60)}:{(song.duration % 60).toString().padStart(2, "0")}
-                </td>
-              </tr>
-            ))}
+            <tr><td colSpan="6" className="h-4"></td></tr>
+            {albumDetails.song?.map((song, index) => {
+              const isPlayingNow = currentTrack?.title === song.title;
+              return (
+                <tr
+                  key={song.id}
+                  className="group hover:bg-white/5 transition-colors cursor-pointer"
+                  onClick={() => handlePlaySingleTrack(index)}
+                >
+                  <td className=" text-[#a8a8a8] text-center text-sm font-medium">
+                    {song.track || index + 1}
+                  </td>
+                  
+                  <td className="pl-2 pr-4 truncate">
+                    <span className={`text-sm font-medium truncate ${isPlayingNow ? 'text-[#8a2be2]' : 'text-gray-200'}`}>
+                      {song.title}
+                    </span>
+                  </td>
+                  
+                  <td className=" text-[#a8a8a8] text-center text-sm">
+                    {Math.floor(song.duration / 60)}:{(song.duration % 60).toString().padStart(2, "0")}
+                  </td>
+                  
+                  <td className=" text-center text-[#a8a8a8] opacity-0 group-hover:opacity-100 transition-opacity">
+                    <button className="hover:text-white transition-colors" onClick={(e) => { e.stopPropagation()}}>
+                      <HeartIcon filled={false} />
+                    </button>
+                  </td>
+                  
+                  <td className="py-2.5 text-[#a8a8a8] text-sm truncate pr-4 hidden sm:table-cell">
+                    {song.artist}
+                  </td>
+                  
+                  <td className="py-2.5 hidden md:table-cell">
+                    <div className="flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+                      <StarIcon filled={false} />
+                      <StarIcon filled={false} />
+                      <StarIcon filled={false} />
+                      <StarIcon filled={false} />
+                      <StarIcon filled={false} />
+                    </div>
+                  </td>
+                </tr>
+              );
+            })}
           </tbody>
         </table>
       </div>

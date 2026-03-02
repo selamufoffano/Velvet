@@ -34,7 +34,7 @@ const SideBar = () => {
           <img src="/img/arrow_down.svg" alt="Espandi" />
         </button>
       </div>
-      <div className="flex flex-col gap-1 p-1">{children}</div>
+      <div className="flex flex-col gap-1 p-1 font-semibold truncate">{children}</div>
     </div>
   );
 
