@@ -20,18 +20,26 @@ export const Carousel = ({}) => {
 
   return (
     <div className="">
-      <div className="flex justify-end w-full h-7 gap-4">
+      <div className="flex justify-end w-full h-7 gap-4 mt-3">
         <button
           onClick={CarouselMoveFlet}
-          class="bg-[#222222] rounded-md border border-white/5 group cursor-pointer hover:bg-[#161616] transition-all px-1 text-white"
+          className="bg-[#222222] rounded-md border border-white/5 group cursor-pointer hover:bg-[#161616] transition-all px-1 text-white"
         >
-          Left
+          <img
+            src="/img/arrow_back.svg"
+            alt="Back"
+            className="w-4 h-4 opacity-70 block"
+          />{" "}
         </button>
         <button
           onClick={CarouselMoveRighet}
-          class="bg-[#222222] rounded-md border border-white/5 group cursor-pointer hover:bg-[#161616] transition-all px-1 text-white"
+          className="bg-[#222222] rounded-md border border-white/5 group cursor-pointer hover:bg-[#161616] transition-all px-1 text-white"
         >
-          Right
+          <img
+            src="/img/arrow_back.svg"
+            alt="Forward"
+            className="w-4 h-4 opacity-70 transform scale-x-[-1] block"
+          />
         </button>
       </div>
       <div

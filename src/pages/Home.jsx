@@ -33,14 +33,22 @@ export const Home = () => {
   }, [fetchAlbums]);
 
   return (
-    <div className="w-full h-full bg-[#121212] p-6 overflow-y-auto">
+    <div className="w-full h-full bg-[#1b102e] p-6 overflow-y-auto">
+      <h1 className="text-4xl text-white font-semibold mb-1.5">Home</h1>
       <NewAlbum 
         albums={albums} 
         loading={loading} 
         authData={authData} 
         PAGE_SIZE={PAGE_SIZE} 
       />
-      <Carousel className="m-1"></Carousel>
+      <Carousel></Carousel>
+
+      <NewAlbum 
+        albums={albums} 
+        loading={loading} 
+        authData={authData} 
+        PAGE_SIZE={PAGE_SIZE} 
+      />
     </div>
   );
 };
