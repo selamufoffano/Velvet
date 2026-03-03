@@ -1,14 +1,13 @@
 import { useEffect, useState, useCallback } from "react";
 import { useAuth } from "../store/context/Auth-context";
-import AlbumCard from "../components/Cover";
-import LoadingSkeleton from "../components/LoadingSkeleton";
-
+import { NewAlbum } from "../components/NewAlbum"; 
+import { Carousel } from "../components/Carousel";
 export const Home = () => {
   const { authData } = useAuth();
   const [albums, setAlbums] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  const PAGE_SIZE = 5;
+  const PAGE_SIZE = 5; 
 
   const fetchAlbums = useCallback(async () => {
     if (!authData) return;
@@ -35,20 +34,13 @@ export const Home = () => {
 
   return (
     <div className="w-full h-full bg-[#121212] p-6 overflow-y-auto">
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
-        {albums.map((album) => (
-          <AlbumCard
-            key={album.id}
-            album={album}
-            authData={authData}
-          />
-        ))}
-
-        {loading &&
-          Array.from({ length: PAGE_SIZE }).map((_, i) => (
-            <LoadingSkeleton key={`skeleton-${i}`} />
-          ))}
-      </div>
+      <NewAlbum 
+        albums={albums} 
+        loading={loading} 
+        authData={authData} 
+        PAGE_SIZE={PAGE_SIZE} 
+      />
+      <Carousel className="m-1"></Carousel>
     </div>
   );
 };
