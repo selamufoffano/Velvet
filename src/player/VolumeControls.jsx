@@ -39,11 +39,11 @@ export const VolumeControl = () => {
   // 2. Usiamo direttamente i componenti al posto di passare le stringhe!
   const getVolumeIcon = () => {
     if (isMute || volume === 0) {
-      return <VolumeMuteIcon className="block w-7 h-7" />;
+      return <VolumeMuteIcon className="block w-6 h-6" />;
     } else if (volume < 50) {
-      return <VolumeHalfIcon className="block w-7 h-7" />;
+      return <VolumeHalfIcon className="block w-6 h-6" />;
     } else {
-      return <VolumeFullIcon className="block w-7 h-7" />;
+      return <VolumeFullIcon className="block w-6 h-6" />;
     }
   };
 

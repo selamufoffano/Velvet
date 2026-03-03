@@ -78,7 +78,7 @@ export const ProgressBar = () => {
 
   return (
     <div 
-      className="flex items-center justify-center gap-3 w-full group"
+      className="flex items-center justify-center gap-3 w-full group p-2"
       onMouseEnter={() => setIsHovering(true)}
       onMouseLeave={() => setIsHovering(false)}
     >

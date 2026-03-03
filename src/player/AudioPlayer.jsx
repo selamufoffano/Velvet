@@ -9,7 +9,7 @@ const AudioPlayer = () => {
   const [openDrawer, setOpenDrawer] = useState(false);
 
   return (
-    <div className="text-white flex flex-col bg-[#1a1a1a] border-t border-white/5 shrink-0 h-[80px] w-full">
+    <div className="text-white flex flex-col bg-[#1a1a1a] border-t border-white/5 shrink-0 h-[90px] w-full">
       <div className="flex-1 flex items-center justify-between px-3 overflow-hidden">
         
         {/* SINISTRA: Track Info */}
@@ -38,7 +38,7 @@ const AudioPlayer = () => {
               className="hover:text-white text-[#a8a8a8] transition-colors"
             >
               {/* 2. Usa il componente direttamente e passagli le classi che preferisci! */}
-              <LyricsIcon className="block w-7 h-7" />
+              <LyricsIcon className="block w-5 h-5" />
             </button>
 
             {/* Bottone Playlist/Coda */}
@@ -47,7 +47,7 @@ const AudioPlayer = () => {
               aria-label={openDrawer ? "Chiudi playlist" : "Apri playlist"}
               className={`${openDrawer ? "text-green-500" : "text-[#a8a8a8]"} hover:text-white transition-colors`}
             >
-              <CodaIcon className="block w-7 h-7" />
+              <CodaIcon className="block w-5 h-5" />
             </button>
 
             {/* Schermo Intero */}
@@ -55,7 +55,7 @@ const AudioPlayer = () => {
               aria-label="Schermo intero"
               className="hover:text-white text-[#a8a8a8] transition-colors"
             >
-              <ScreenFullInIcon className="block w-7 h-7" />
+              <ScreenFullInIcon className="block w-5 h-5" />
             </button>
             
           </div>

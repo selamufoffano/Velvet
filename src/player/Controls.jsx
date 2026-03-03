@@ -69,21 +69,21 @@ export const Controls = () => {
     return () => audio?.removeEventListener('ended', handleEnded);
   }, [audioRef, isRepeat, handleNext]);
 
-  const btnBase = 'flex items-center justify-center w-10 h-10 rounded-md transition-colors p-0 leading-none';
+  const btnBase = 'flex items-center justify-center w-11 h-11 rounded-full transition-colors p-0 leading-none';
 
   return (
     <div className="flex items-center justify-center gap-1">
       <audio src={currentTrack?.src} ref={audioRef} />
 
-    {/* <button onClick={() => setIsShuffle((p) => !p)} aria-label="Shuffle" className={`${btnBase} ${isShuffle ? 'text-green-600' : 'text-[#a8a8a8] hover:text-[#ffffff]'} bg-transparent`} type="button">
+     <button onClick={() => setIsShuffle((p) => !p)} aria-label="Shuffle" className={`${btnBase} ${isShuffle ? 'text-green-600' : 'text-[#a8a8a8] hover:text-[#ffffff]'} bg-transparent`} type="button">
         <ShuffleIcon />
-      </button>*/}
+      </button>
 
       <button onClick={handlePrev} aria-label="Brano precedente" className={`${btnBase} text-[#a8a8a8] hover:text-[#ffffff]`} type="button">
         <PrevIcon />
       </button>
 
-      <button onClick={() => setIsPlaying((p) => !p)} aria-label={isPlaying ? 'Metti in pausa' : 'Riproduci'} className={`${btnBase} text-[#a8a8a8] hover:text-[#ffffff]`} type="button">
+      <button onClick={() => setIsPlaying((p) => !p)} aria-label={isPlaying ? 'Metti in pausa' : 'Riproduci'} className={`${btnBase} text-[#a8a8a8] bg-[#113b57] hover:text-[#ffffff]`} type="button">
         {isPlaying ? <PauseIcon /> : <PlayIcon />}
       </button>
 
@@ -91,9 +91,9 @@ export const Controls = () => {
         <NextIcon />
       </button>
 
-      {/*<button onClick={() => setIsRepeat((p) => !p)} aria-label="Ripeti" className={`${btnBase} ${isRepeat ? 'text-green-600' : 'text-[#a8a8a8] hover:text-[#ffffff]'} bg-transparent`} type="button">
+      <button onClick={() => setIsRepeat((p) => !p)} aria-label="Ripeti" className={`${btnBase} ${isRepeat ? 'text-green-600' : 'text-[#a8a8a8] hover:text-[#ffffff]'} bg-transparent`} type="button">
         <RepeatIcon />
-      </button>*/}
+      </button>
     </div>
   );
 };

@@ -90,33 +90,55 @@ export const VolumeFullIcon = ({ className }) => (
 export const LyricsIcon = ({ className }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    viewBox="-5 0 24 14"
-    fill="currentColor"
-    className={className || "w-6 h-6"}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className={className || "block w-5 h-5"}
   >
-    <path d="m 13.178794,2.3291074 a 2.831,2.831 0 0 0 -4.7969996,1.55 l 3.2469996,3.247 a 2.831,2.831 0 0 0 1.55,-4.797 m -2.926,5.544 -2.6189996,-2.62 -3.1410002,3.577 -2.675,3.0449996 a 1.287,1.287 0 0 0 1.816,1.816 l 3.0600002,-2.688 3.5599996,-3.1289996 z m -3.3799996,-4.024 a 4.331,4.331 0 1 1 4.7859996,4.786 L 7.6847944,12.128107 4.6247942,14.817104 A 2.787,2.787 0 0 1 0.69179418,10.884107 L 3.3677942,7.8391074 Z" />
+    <path d="m 12,19 v 3" />
+    <path d="m 19,10 v 2 A 7,7 0 0 1 5,12 v -2" />
+    <rect x="9" y="2" width="6" height="13" rx="3" />
   </svg>
 );
 
 export const CodaIcon = ({ className }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    viewBox="-5 0 24 14"
-    fill="currentColor"
-    className={className || "w-6 h-6"}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className={className || "block w-5 h-5"}
   >
-    <path d="M 14,13.999999 H 0 V 12.5 H 14 Z M 14,9.5 H 0 V 8 H 14 Z M 0,2.5 A 2.5,2.5 0 0 1 2.5,0 h 9 a 2.5,2.5 0 0 1 0,5 h -9 A 2.5,2.5 0 0 1 0,2.5 m 2.5,-1 a 1,1 0 0 0 0,2 h 9 a 1,1 0 1 0 0,-2 z" />
+    <path d="M 3,5 H 9" />
+    <path d="M 3,12 H 16" />
+    <path d="M 3,19 H 16" />
+    <path d="M 16,8 13,5 16,2" />
+    <path d="M 21,19 V 7 A 2,2 0 0 0 19,5 h -6" />
   </svg>
 );
 
 export const ScreenFullInIcon = ({ className }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    viewBox="-15 -3 24 14"
-    fill="currentColor"
-    className={className || "w-6 h-6"}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className={className || "block w-5 h-5"}
   >
-    <path d="m -10.940012,-0.1148856 c 0,-0.9665 0.7835,-1.75 1.75,-1.75 h 3.375 v 1.5 h -3.375 c -0.13807,0 -0.25,0.11193 -0.25,0.25 v 2.4285699 h -1.5 z m 13.75,-0.25 h -3.375 v -1.5 h 3.375 c 0.9665,0 1.75,0.7835 1.75,1.75 v 2.4285699 h -1.5 v -2.4285699 c 0,-0.13807 -0.1119,-0.25 -0.25,-0.25 z m -12.25,7.8213996 v 2.4286 c 0,0.1381 0.11193,0.25 0.25,0.25 h 3.375 v 1.5 h -3.375 c -0.9665,0 -1.75,-0.7835 -1.75,-1.75 v -2.4286 z m 12.5,2.4286 v -2.4286 h 1.5 v 2.4286 c 0,0.9665 -0.7835,1.75 -1.75,1.75 h -3.375 v -1.5 h 3.375 c 0.1381,0 0.25,-0.1119 0.25,-0.25 z" />
+    <path d="M 3,7 V 5 A 2,2 0 0 1 5,3 h 2" />
+    <path d="m 17,3 h 2 a 2,2 0 0 1 2,2 v 2" />
+    <path d="m 21,17 v 2 a 2,2 0 0 1 -2,2 h -2" />
+    <path d="M 7,21 H 5 A 2,2 0 0 1 3,19 v -2" />
+    <rect x="7" y="8" width="10" height="8" rx="1" />
   </svg>
 );
 
@@ -125,7 +147,7 @@ export const ScreenFullOutIcon = ({ className }) => (
     xmlns="http://www.w3.org/2000/svg"
     viewBox="-15 -3 24 14"
     fill="currentColor"
-    className={className || "w-6 h-6"}
+    className={className || "w-5 h-5"}
   >
     <path d="m -10.940012,-0.1148856 c 0,-0.9665 0.7835,-1.75 1.75,-1.75 h 3.375 v 1.5 h -3.375 c -0.13807,0 -0.25,0.11193 -0.25,0.25 v 2.4285699 h -1.5 z m 13.75,-0.25 h -3.375 v -1.5 h 3.375 c 0.9665,0 1.75,0.7835 1.75,1.75 v 2.4285699 h -1.5 v -2.4285699 c 0,-0.13807 -0.1119,-0.25 -0.25,-0.25 z m -12.25,7.8213996 v 2.4286 c 0,0.1381 0.11193,0.25 0.25,0.25 h 3.375 v 1.5 h -3.375 c -0.9665,0 -1.75,-0.7835 -1.75,-1.75 v -2.4286 z m 12.5,2.4286 v -2.4286 h 1.5 v 2.4286 c 0,0.9665 -0.7835,1.75 -1.75,1.75 h -3.375 v -1.5 h 3.375 c 0.1381,0 0.25,-0.1119 0.25,-0.25 z" />
   </svg>
@@ -136,33 +158,49 @@ export const ScreenFullOutIcon = ({ className }) => (
 export const PrevIcon = ({ className }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 24 14"
-    fill="currentColor"
-    className={className || "block w-7 h-7"}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className={className || "block w-6 h-6"}
   >
-    <path d="m 10.48399,13.372 c -0.365,0 -0.672,-0.107 -1.038,-0.323 L 0.93799005,8.0519995 C 0.31499005,7.687 0,7.238 0,6.682 0,6.118 0.30699005,5.694 0.93799005,5.321 L 9.44599,0.324 c 0.366,-0.216 0.68,-0.324 1.046,-0.324 0.73,0 1.337,0.556 1.337,1.569 v 4.773 c 0.108,-0.399 0.406,-0.73 0.904,-1.021 l 8.509002,-4.997 c 0.357,-0.216 0.672,-0.324 1.037,-0.324 0.73,0 1.345,0.556 1.345,1.569 v 10.235 c 0,1.012999 -0.614,1.568999 -1.345,1.568999 -0.365,0 -0.68,-0.108 -1.037,-0.323999 L 12.73299,8.0519995 C 12.24299,7.762 11.93699,7.421 11.82899,7.014 v 4.79 c 0,1.013 -0.615,1.568999 -1.345,1.568999 z" />
+    <path d="M 3,19 V 5" />
+    <path d="M 7,12 H 21" />
+    <path d="m 13,6 -6,6 6,6" />
   </svg>
 );
 
 export const NextIcon = ({ className }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 24 14"
-    fill="currentColor"
-    className={className || "block w-7 h-7"}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className={className || "block w-6 h-6"}
   >
-    <path d="m 13.140002,13.372 c 0.365,0 0.672,-0.107 1.038,-0.323 l 8.508,-4.997 c 0.623,-0.365 0.93799,-0.814 0.93799,-1.37 0,-0.564 -0.30699,-0.988 -0.93799,-1.361 l -8.508,-4.997 c -0.366,-0.216 -0.68,-0.324 -1.046,-0.324 -0.73,0 -1.337,0.556 -1.337,1.569 v 4.773 c -0.108,-0.399 -0.406,-0.73 -0.904,-1.021 L 2.382,0.324 C 2.025,0.108 1.71,0 1.345,0 0.615,0 0,0.556 0,1.569 v 10.235 c 0,1.013 0.614,1.569 1.345,1.569 0.365,0 0.68,-0.108 1.037,-0.324 l 8.509002,-4.997 c 0.49,-0.29 0.796,-0.631 0.904,-1.038 v 4.79 c 0,1.013 0.615,1.569 1.345,1.569 z" />
+    <path d="M3 12H17" />
+    <path d="M11 6L17 12L11 18" />
+    <path d="M21 5V19" />
   </svg>
 );
 
 export const PlayIcon = ({ className }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 20 20"
-    fill="currentColor"
-    className={className || "block w-7 h-7"}
+    viewBox="0 0 24 24"
+    fill="white"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className={className || "block w-5 h-5"}
   >
-    <path d="M2 2v16l14-8L2 2z" />
+    <path d="M 5,5 A 2,2 0 0 1 8.008,3.272 l 11.997,6.998 a 2,2 0 0 1 0.003,3.458 l -12,7 A 2,2 0 0 1 5,19 Z" />
   </svg>
 );
 
@@ -171,7 +209,7 @@ export const PauseIcon = ({ className }) => (
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 20 20"
     fill="currentColor"
-    className={className || "block w-7 h-7"}
+    className={className || "block w-5 h-5"}
   >
     <path d="M3 2h4v16H3V2zm10 0h4v16h-4V2z" />
   </svg>
@@ -180,34 +218,36 @@ export const PauseIcon = ({ className }) => (
 export const ShuffleIcon = ({ className }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 20 20"
-    fill="currentColor"
-    className={className || "block w-7 h-7"}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className={className || "block w-5 h-5"}
   >
-    <g transform="translate(2.5 2.5) scale(0.75)">
-      <path d="M15.96 15.99a1 1 0 0 0 .6-.22l3.16-2.66c.39-.33.39-.85 0-1.18l-3.16-2.67a1 1 0 0 0-.6-.22c-.52 0-.84.32-.84.84v1.53h-1.42c-.9 0-1.46-.28-2.1-1.04L9.73 8.11l1.87-2.21c.66-.77 1.17-1.04 2.05-1.04h1.47v1.56c0 .5.32.82.84.82a1 1 0 0 0 .6-.21l3.16-2.67c.39-.33.39-.85 0-1.18L16.56.22a.93.93 0 0 0-.6-.22c-.52 0-.84.32-.84.82v1.7h-1.48c-1.5 0-2.44.42-3.5 1.7L8.42 6.24 6.62 4.1C5.64 2.96 4.7 2.52 3.27 2.52H1.44c-.65 0-1.1.43-1.1 1.04s.45 1.04 1.1 1.04h1.76c.85 0 1.42.28 2.05 1.04l1.85 2.19-1.85 2.2c-.64.76-1.15 1.04-1.99 1.04H1.44c-.65 0-1.1.43-1.1 1.04s.45 1.04 1.1 1.04h1.88c1.43 0 2.3-.43 3.28-1.58l1.81-2.13 1.76 2.09c1 1.2 1.98 1.63 3.43 1.63h1.48v1.73c0 .51.32.83.84.83z" />
-    </g>
+    <path d="m 18,14 4,4 -4,4" />
+    <path d="m 18,2 4,4 -4,4" />
+    <path d="m 2,18 h 1.973 a 4,4 0 0 0 3.3,-1.7 L 12.727,7.7 A 4,4 0 0 1 16.027,6 H 22" />
+    <path d="m 2,6 h 1.972 a 4,4 0 0 1 3.6,2.2" />
+    <path d="m 22,18 h -6.041 a 4,4 0 0 1 -3.3,-1.8 L 12.3,15.75" />
   </svg>
 );
 
 export const RepeatIcon = ({ className }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 3 24 14"
-    fill="currentColor"
-    className={className || "block w-7 h-7"}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className={className || "block w-5 h-5"}
   >
-    <path d="M 3.9999997,5 H 14 V 8 L 18,4 14,0 V 3 H 2 V 9 H 3.9999997 Z M 14,15 H 3.9999997 V 12 L 0,16 3.9999997,20 V 17 H 16 v -6 h -2 z" />
-  </svg>
-);
-
-export const PauseIcon2 = ({ className }) => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 3 24 14"
-    fill="currentColor"
-    className={className || "block w-7 h-7"}
-  >
-    <path d="M8 5v14l11-7z" />
+    <path d="m 17,2 4,4 -4,4" />
+    <path d="M 3,11 V 10 A 4,4 0 0 1 7,6 h 14" />
+    <path d="M 7,22 3,18 7,14" />
+    <path d="m 21,13 v 1 a 4,4 0 0 1 -4,4 H 3" />
   </svg>
 );
