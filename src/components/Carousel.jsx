@@ -20,9 +20,9 @@ export const Carousel = ({ albums, loading, authData, PAGE_SIZE, Titolo }) => {
   };
 
   return (
-    <div className="mt-10 mb-10">
+    <div className="mt-10 mb-20">
       <div className="flex justify-between items-center w-full h-7 mt-3">
-        <h1 className="text-white font-semibold text-2xl mb-2">{Titolo}</h1>
+        <h1 className="text-white font-semibold text-2xl mb-4">{Titolo}</h1>
 
         <div className="flex gap-4">
           <button
