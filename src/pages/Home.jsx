@@ -1,6 +1,7 @@
 import { useEffect, useState, useCallback } from "react";
 import { useAuth } from "../store/context/Auth-context";
 import { Carousel } from "../components/Carousel";
+import { GenreCard } from "../components/GenreCard";
 
 export const Home = () => {
   const { authData } = useAuth();
@@ -10,13 +11,13 @@ export const Home = () => {
   const [newestAlbums, setNewestAlbums] = useState([]);
   const [randomAlbums, setRandomAlbums] = useState([]);
   const [recentAlbums, setRecentAlbums] = useState([]);
-  const [byYearAlbums, setByYearAlbums] = useState([]);
+  const [genres, setGenres] = useState([]);
 
   const [loading, setLoading] = useState({
     newest: true,
     random: true,
     recent: true,
-    byYear: true,
+    genres: true,
   });
 
   const fetchAlbums = useCallback(
@@ -31,8 +32,7 @@ export const Home = () => {
         const response = await fetch(url);
         const data = await response.json();
 
-        const albumList =
-          data["subsonic-response"]?.albumList2?.album || [];
+        const albumList = data["subsonic-response"]?.albumList2?.album || [];
 
         setter(albumList);
       } catch (err) {
@@ -41,39 +41,51 @@ export const Home = () => {
         setLoading((prev) => ({ ...prev, [loadingKey]: false }));
       }
     },
-    [authData]
+    [authData],
   );
 
-  const fetchAlbumsByYear = async (year = 2025) => {
-  if (!authData) return [];
+  const fetchGenres = useCallback(async () => {
+    if (!authData) return;
 
-  try {
-    const url = `${authData.baseUrl}/rest/search3?${authData.authParams}&year=${year}&albumCount=${PAGE_SIZE}&f=json`;
+    try {
+      setLoading((prev) => ({ ...prev, genres: true }));
 
-    const res = await fetch(url);
-    const data = await res.json();
-    console.log(data);
-    return data["subsonic-response"]?.searchResult3?.album || [];
-  } catch (err) {
-    console.error(`Errore fetch albums ${year}:`, err);
-    return [];
-  }
-};
+      const url = `${authData.baseUrl}/rest/getGenres?${authData.authParams}&f=json`;
 
-useEffect(() => {
-  if (!authData) return;
+      const response = await fetch(url);
+      const data = await response.json();
 
-  fetchAlbums("newest", setNewestAlbums, "newest");
-  fetchAlbums("random", setRandomAlbums, "random");
-  fetchAlbums("recent", setRecentAlbums, "recent");
+      const genreList = data["subsonic-response"]?.genres?.genre || [];
 
-  fetchAlbumsByYear(2025).then((albums) => setByYearAlbums(albums))
-}, [fetchAlbums, authData]);
+      setGenres(genreList);
+    } catch (err) {
+      console.error("Errore fetch generi:", err);
+    } finally {
+      setLoading((prev) => ({ ...prev, genres: false }));
+    }
+  }, [authData]);
+
+  useEffect(() => {
+    if (!authData) return;
+
+    fetchAlbums("newest", setNewestAlbums, "newest");
+    fetchAlbums("random", setRandomAlbums, "random");
+    fetchAlbums("recent", setRecentAlbums, "recent");
+    fetchGenres();
+  }, [fetchAlbums, fetchGenres, authData]);
 
   return (
     <div className="w-full h-full bg-[#0a0a0a] p-6 overflow-y-auto border-l border-white/20">
       <h1 className="text-4xl text-white font-semibold mb-6">Home</h1>
-
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-6">
+        {loading.genres
+          ? Array.from({ length: 12 }).map((_, i) => (
+              <GenreCard key={`skeleton-${i}`} />
+            ))
+          : genres.map((genre) => (
+              <GenreCard key={genre.value} genre={genre} />
+            ))}
+      </div>
       <Carousel
         albums={newestAlbums}
         loading={loading.newest}
@@ -96,14 +108,6 @@ useEffect(() => {
         authData={authData}
         PAGE_SIZE={PAGE_SIZE}
         Titolo="Riprodotti recentemente"
-      />
-
-      <Carousel
-        albums={byYearAlbums}
-        loading={loading.byYear}
-        authData={authData}
-        PAGE_SIZE={PAGE_SIZE}
-        Titolo="Appena pubblicato"
       />
     </div>
   );
