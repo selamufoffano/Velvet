@@ -134,11 +134,10 @@ export const ScreenFullInIcon = ({ className }) => (
     strokeLinejoin="round"
     className={className || "block w-5 h-5"}
   >
-    <path d="M 3,7 V 5 A 2,2 0 0 1 5,3 h 2" />
-    <path d="m 17,3 h 2 a 2,2 0 0 1 2,2 v 2" />
-    <path d="m 21,17 v 2 a 2,2 0 0 1 -2,2 h -2" />
-    <path d="M 7,21 H 5 A 2,2 0 0 1 3,19 v -2" />
-    <rect x="7" y="8" width="10" height="8" rx="1" />
+    <path d="M 8,3 H 5 A 2,2 0 0 0 3,5 v 3" />
+    <path d="M 21,8 V 5 A 2,2 0 0 0 19,3 h -3" />
+    <path d="m 3,16 v 3 a 2,2 0 0 0 2,2 h 3" />
+    <path d="m 16,21 h 3 a 2,2 0 0 0 2,-2 v -3" />
   </svg>
 );
 
@@ -149,7 +148,11 @@ export const ScreenFullOutIcon = ({ className }) => (
     fill="currentColor"
     className={className || "w-5 h-5"}
   >
-    <path d="m -10.940012,-0.1148856 c 0,-0.9665 0.7835,-1.75 1.75,-1.75 h 3.375 v 1.5 h -3.375 c -0.13807,0 -0.25,0.11193 -0.25,0.25 v 2.4285699 h -1.5 z m 13.75,-0.25 h -3.375 v -1.5 h 3.375 c 0.9665,0 1.75,0.7835 1.75,1.75 v 2.4285699 h -1.5 v -2.4285699 c 0,-0.13807 -0.1119,-0.25 -0.25,-0.25 z m -12.25,7.8213996 v 2.4286 c 0,0.1381 0.11193,0.25 0.25,0.25 h 3.375 v 1.5 h -3.375 c -0.9665,0 -1.75,-0.7835 -1.75,-1.75 v -2.4286 z m 12.5,2.4286 v -2.4286 h 1.5 v 2.4286 c 0,0.9665 -0.7835,1.75 -1.75,1.75 h -3.375 v -1.5 h 3.375 c 0.1381,0 0.25,-0.1119 0.25,-0.25 z" />
+    <path d="M 8,3 V 6 A 2,2 0 0 1 6,8 H 3" />
+    <path d="M 21,8 H 18 A 2,2 0 0 1 16,6 V 3" />
+    <path d="m 3,16 h 3 a 2,2 0 0 1 2,2 v 3" />
+    <path d="m 16,21 v -3 a 2,2 0 0 1 2,-2 h 3" />
+    <rect x="7" y="8" width="10" height="8" rx="1" />{" "}
   </svg>
 );
 
@@ -252,7 +255,6 @@ export const RepeatIcon = ({ className }) => (
   </svg>
 );
 
-
 export const RefreshIcon = ({ className }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
@@ -270,4 +272,3 @@ export const RefreshIcon = ({ className }) => (
     <path d="m 16,16 h 5 v 5" />
   </svg>
 );
-

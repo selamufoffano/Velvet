@@ -1,8 +1,11 @@
+import { useNavigate } from "react-router-dom";
+
 const Search = () => {
+  const navigate = useNavigate();
+
   return (
     <>
       <div className="flex items-center gap-2 mt-2 mb-5">
-        {/* Search Bar Container */}
         <div className="relative flex items-center w-full max-w-[240px]">
           <button
             type="button"
@@ -23,7 +26,6 @@ const Search = () => {
         </div>
 
         <div className="flex items-center justify-center gap-2">
-          {/* Menu / Settings Button */}
           <button className="flex items-center justify-center h-[30px] w-[30px] bg-[#1c1c1c] rounded-md hover:bg-[#2a2a2a] transition-colors shadow-sm">
             <img
               src="/img/setting.svg"
@@ -32,8 +34,10 @@ const Search = () => {
             />
           </button>
 
-          {/* Back Button (Forward capovolto) */}
-          <button className="flex items-center justify-center h-[30px] w-[30px] bg-[#1c1c1c] rounded-md hover:bg-[#2a2a2a] transition-colors">
+          <button
+            onClick={() => navigate(-1)}
+            className="cursor-pointer flex items-center justify-center h-[30px] w-[30px] bg-[#1c1c1c] rounded-md hover:bg-[#2a2a2a] transition-colors"
+          >
             <img
               src="/img/arrow_back.svg"
               alt="Back"
@@ -41,8 +45,10 @@ const Search = () => {
             />
           </button>
 
-          {/* Forward Button */}
-          <button className="flex items-center justify-center h-[30px] w-[30px] bg-[#1c1c1c] rounded-md hover:bg-[#2a2a2a] transition-colors">
+          <button
+            onClick={() => navigate(1)}
+            className="cursor-pointer flex items-center justify-center h-[30px] w-[30px] bg-[#1c1c1c] rounded-md hover:bg-[#2a2a2a] transition-colors"
+          >
             <img
               src="/img/arrow_back.svg"
               alt="Forward"
