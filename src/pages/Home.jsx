@@ -52,7 +52,7 @@ export const Home = () => {
 
     const res = await fetch(url);
     const data = await res.json();
-
+    console.log(data);
     return data["subsonic-response"]?.searchResult3?.album || [];
   } catch (err) {
     console.error(`Errore fetch albums ${year}:`, err);
@@ -67,7 +67,6 @@ useEffect(() => {
   fetchAlbums("random", setRandomAlbums, "random");
   fetchAlbums("recent", setRecentAlbums, "recent");
 
-  // Appena pubblicati 2025
   fetchAlbumsByYear(2025).then((albums) => setByYearAlbums(albums))
 }, [fetchAlbums, authData]);
 

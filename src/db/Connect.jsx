@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useAuth } from "../store/context/Auth-context"; 
 
+//import script from "../scripts"
 function Connect() {
   const { login } = useAuth();
   
@@ -28,7 +29,7 @@ function Connect() {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-black text-white p-6">
+    <div className="screen flex flex-col items-center justify-center min-h-screen bg-black text-white p-6">
       <div className="w-full max-w-md bg-[#121212] p-8 rounded-lg border border-white/10 shadow-xl">
         
         <div className="text-center mb-8">
