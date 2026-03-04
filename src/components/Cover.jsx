@@ -1,10 +1,15 @@
 import React, { useEffect, useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
+import { useTrack } from "../store/context/Track-context";
+import { useAudioPlayerContext } from "../store/context/audio-player-context";
 
 const Cover = ({ album, authData }) => {
   const navigate = useNavigate();
   const [isVisible, setIsVisible] = useState(false);
   const cardRef = useRef();
+
+  const { playAlbum } = useTrack();
+  const { setCurrentTrack, setIsPlaying } = useAudioPlayerContext();
 
   const handleNavigate = () => {
     navigate(`/album/${album.id}`);
@@ -13,6 +18,38 @@ const Cover = ({ album, authData }) => {
   const handleAction = (e, action) => {
     e.stopPropagation();
     console.log(`Eseguo azione: ${action} per album ${album.id}`);
+  };
+
+  const handlePlayFromCover = async (e) => {
+    e.stopPropagation();
+    e.preventDefault();
+
+    if (!authData) return;
+
+    try {
+      const url = `${authData.baseUrl}/rest/getAlbum.view?${authData.authParams}&id=${album.id}&f=json`;
+      const response = await fetch(url);
+      const data = await response.json();
+
+      const albumDetails = data["subsonic-response"]?.album;
+
+      if (albumDetails && albumDetails.song) {
+        playAlbum(
+          albumDetails.song,
+          authData,
+          0,
+          setCurrentTrack,
+          setIsPlaying,
+        );
+      } else {
+        console.warn("Nessun brano trovato in questo album.");
+      }
+    } catch (err) {
+      console.error(
+        "Errore durante il recupero dei brani dell'album per la riproduzione:",
+        err,
+      );
+    }
   };
 
   useEffect(() => {
@@ -57,7 +94,7 @@ const Cover = ({ album, authData }) => {
         <div className="absolute inset-0 flex items-end">
           <div className="hidden group-hover:flex w-full h-[45px] backdrop-blur-md bg-white/5 border-t border-white/10 items-center justify-between px-4">
             <button
-              onClick={(e) => handleAction(e, "play")}
+              onClick={handlePlayFromCover}
               className="flex items-center justify-center w-8 h-8 bg-black/40 hover:bg-black/60 rounded-full text-white active:scale-90"
             >
               <svg
@@ -68,14 +105,15 @@ const Cover = ({ album, authData }) => {
                 <path d="M8 5v14l11-7z" />
               </svg>
             </button>
-            <button
+
+            {/*<button
               onClick={(e) => handleAction(e, "menu")}
               className="flex items-center justify-center w-8 h-8 bg-black/40 hover:bg-black/60 rounded-full text-white active:scale-90"
             >
               <svg viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">
                 <path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z" />
               </svg>
-            </button>
+            </button>*/}
           </div>
         </div>
       </div>

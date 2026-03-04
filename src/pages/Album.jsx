@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { useAuth } from "../store/context/Auth-context";
 import { useTrack } from "../store/context/Track-context";
 import { useAudioPlayerContext } from "../store/context/audio-player-context";
+import Cover from "../components/Cover";
 import {
   MusicNoteIcon,
   ClockIcon,
@@ -94,9 +95,9 @@ export const Album = () => {
           <div className="mt-4 flex gap-5">
             <button
               onClick={handlePlayAlbum}
-              className="flex items-center justify-center gap-2 bg-[#ffffff] hover:bg-gray-200 active:scale-95 px-7 py-1.5 rounded-3xl transition-all group"
+              className="flex items-center justify-center gap-2 bg-[#ffffff] hover:bg-gray-200 active:scale-95 px-5 py-1.5 rounded-3xl transition-all group"
             >
-              <PlayIcon className="fill-red-400 w-5 h-5" />
+              <PlayIcon className="fill-black w-5 h-5" />
               <p className="text-black text-sm font-bold tracking-wide">
                 Riproduci
               </p>
@@ -119,12 +120,10 @@ export const Album = () => {
                 <ClockIcon />
               </th>
               <th className="pb-3 w-14 text-center"></th>{" "}
-              {/* Spazio per il cuore */}
               <th className="pb-3 uppercase tracking-wider w-[25%] hidden sm:table-cell">
                 Artist
               </th>
               <th className="pb-3 w-32 pl-2 hidden md:table-cell"></th>{" "}
-              {/* Spazio per le stelle */}
             </tr>
           </thead>
 

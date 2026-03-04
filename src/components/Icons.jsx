@@ -194,8 +194,8 @@ export const PlayIcon = ({ className }) => (
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 24 24"
     fill="white"
-    stroke="currentColor"
-    strokeWidth="2"
+    stroke=""
+    strokeWidth=""
     strokeLinecap="round"
     strokeLinejoin="round"
     className={className || "block w-5 h-5"}
@@ -251,3 +251,23 @@ export const RepeatIcon = ({ className }) => (
     <path d="m 21,13 v 1 a 4,4 0 0 1 -4,4 H 3" />
   </svg>
 );
+
+
+export const RefreshIcon = ({ className }) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className={className || "block w-4 h-4"}
+  >
+    <path d="M 21,12 A 9,9 0 0 0 12,3 9.75,9.75 0 0 0 5.26,5.74 L 3,8" />
+    <path d="M 3,3 V 8 H 8" />
+    <path d="m 3,12 a 9,9 0 0 0 9,9 9.75,9.75 0 0 0 6.74,-2.74 L 21,16" />
+    <path d="m 16,16 h 5 v 5" />
+  </svg>
+);
+

@@ -9,7 +9,7 @@ export const SphereBackground = ()=> {
     if (!screen) return;
 
     const pointSize = 6;
-    const radius = 20;
+    const radius = 30;
     const qualityX = 20;
     const qualityY = 20;
 

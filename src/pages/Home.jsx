@@ -86,12 +86,14 @@ export const Home = () => {
               <GenreCard key={genre.value} genre={genre} />
             ))}
       </div>
+      
       <Carousel
         albums={newestAlbums}
         loading={loading.newest}
         authData={authData}
         PAGE_SIZE={PAGE_SIZE}
         Titolo="New Albums"
+        onRefresh={() => fetchAlbums("newest", setNewestAlbums, "newest")}
       />
 
       <Carousel
@@ -100,6 +102,7 @@ export const Home = () => {
         authData={authData}
         PAGE_SIZE={PAGE_SIZE}
         Titolo="Album casuali"
+        onRefresh={() => fetchAlbums("random", setRandomAlbums, "random")}
       />
 
       <Carousel
@@ -108,6 +111,7 @@ export const Home = () => {
         authData={authData}
         PAGE_SIZE={PAGE_SIZE}
         Titolo="Riprodotti recentemente"
+        onRefresh={() => fetchAlbums("recent", setRecentAlbums, "recent")}
       />
     </div>
   );

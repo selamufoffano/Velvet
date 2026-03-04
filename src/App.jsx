@@ -3,7 +3,7 @@ import { useAuth } from "./store/context/Auth-context";
 import SideBar from "./components/SideBar";
 import AudioPlayer from "./player/AudioPlayer";
 import Connect from "./db/Connect";
-import {Home} from "./pages/Home";
+import { Home } from "./pages/Home";
 import Error from "./pages/Error";
 import AlbumPage from "./pages/AlbumPage";
 import { Album } from "./pages/Album";
@@ -35,12 +35,12 @@ function App() {
             <Route path="/AlbumPage" element={<AlbumPage />} />
             <Route path="/album/:id" element={<Album />} />
             {/**
-             * 
-             * 
-             * 
+             *
+             *
+             *
              */}
             <Route path="/404" element={<Error />} />
-<Route path="*" element={<Error />} />
+            <Route path="*" element={<Error />} />
           </Routes>
         </main>
       </div>
