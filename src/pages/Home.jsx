@@ -1,13 +1,13 @@
 import { useEffect, useState, useCallback } from "react";
 import { useAuth } from "../store/context/Auth-context";
-import { NewAlbum } from "../components/NewAlbum"; 
+import { NewAlbum } from "../components/NewAlbum";
 import { Carousel } from "../components/Carousel";
 export const Home = () => {
   const { authData } = useAuth();
   const [albums, setAlbums] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  const PAGE_SIZE = 5; 
+  const PAGE_SIZE = 20;
 
   const fetchAlbums = useCallback(async () => {
     if (!authData) return;
@@ -33,21 +33,21 @@ export const Home = () => {
   }, [fetchAlbums]);
 
   return (
-    <div className="w-full h-full bg-[#1b102e] p-6 overflow-y-auto">
+    <div className="w-full h-full bg-[#0a0a0a] p-6 overflow-y-auto border-l border-white/20">
       <h1 className="text-4xl text-white font-semibold mb-1.5">Home</h1>
-      <NewAlbum 
-        albums={albums} 
-        loading={loading} 
-        authData={authData} 
-        PAGE_SIZE={PAGE_SIZE} 
+      <Carousel
+        albums={albums}
+        loading={loading}
+        authData={authData}
+        PAGE_SIZE={PAGE_SIZE}
+        Titolo="New Albums"
       />
-      <Carousel></Carousel>
 
-      <NewAlbum 
-        albums={albums} 
-        loading={loading} 
-        authData={authData} 
-        PAGE_SIZE={PAGE_SIZE} 
+      <NewAlbum
+        albums={albums}
+        loading={loading}
+        authData={authData}
+        PAGE_SIZE={PAGE_SIZE}
       />
     </div>
   );
