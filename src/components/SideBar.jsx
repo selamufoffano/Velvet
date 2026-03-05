@@ -81,7 +81,7 @@ const SideBar = () => {
 
 
   return (
-    <div className="h-full bg-[#222222] w-full flex flex-col px-1.5 pb-1">
+    <div className="h-full bg-[#252526] w-full flex flex-col px-1.5 pb-1">
       
       <Search />
 

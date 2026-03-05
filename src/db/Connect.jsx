@@ -6,9 +6,9 @@ import { SphereBackground } from "../animation/SphereBackground";
 function Connect() {
   const { login } = useAuth();
 
-  const [serverUrl, setServerUrl] = useState("");
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+  const [serverUrl, setServerUrl] = useState("https://navidrome.s3la.it:443");
+  const [username, setUsername] = useState("selamu");
+  const [password, setPassword] = useState("223024");
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
 

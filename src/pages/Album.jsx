@@ -92,13 +92,13 @@ export const Album = () => {
             {albumDetails.name}
           </h1>
           <p className="text-[#a8a8a8] text-sm font-medium mt-2">
-            {albumDetails.artist} • {albumDetails.songCount} brani •{" "}
-
-            {Math.floor(albumDetails.duration /3600)}h {" "}
-            {Math.floor(albumDetails.duration / 60) - (Math.floor(albumDetails.duration /3600) * 60)}m {" "}
-            {(albumDetails.duration % 60).toString().padStart(2, "0")}s{" • "}
-
-            {albumDetails.year}
+            {albumDetails.artist} • {albumDetails.year}
+            {" • "}
+            {albumDetails.songCount} brani {" [ "}
+            {Math.floor(albumDetails.duration / 3600)}h{" "}
+            {Math.floor(albumDetails.duration / 60) -
+              Math.floor(albumDetails.duration / 3600) * 60}
+            m {(albumDetails.duration % 60).toString().padStart(2, "0")}s {"]"}
           </p>
           <div className="mt-4 flex gap-5">
             <button
@@ -147,7 +147,10 @@ export const Album = () => {
                   onClick={() => handlePlaySingleTrack(index)}
                 >
                   <td className=" text-[#a8a8a8] text-center text-sm font-medium">
-                    {song.discNumber} -{" "}
+
+
+                    {song.discNumber ?  song.discNumber + " - " : ""}
+
                     {/** Se il discNumber Maggiore di 1 Aumenta mb */}
                     {song.track || index + 1}
                   </td>

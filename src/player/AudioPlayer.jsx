@@ -5,11 +5,12 @@ import { ProgressBar } from "./ProgressBar";
 import { VolumeControl } from "./VolumeControls";
 import { LyricsIcon, CodaIcon, ScreenFullInIcon } from "../components/Icons";
 
-const AudioPlayer = () => {
+
+const AudioPlayer = ({ openLyric, setOpenLyric }) => {
   const [openDrawer, setOpenDrawer] = useState(false);
 
   return (
-    <div className="text-white flex flex-col bg-[#1a1a1a] border-t border-white/5 shrink-0 h-[90px] w-full">
+    <div className="text-white flex flex-col bg-[#2C2C2C] border-t border-white/5 shrink-0 h-[90px] w-full">
       <div className="flex-1 flex items-center justify-between px-3 overflow-hidden">
         
         {/* SINISTRA: Track Info */}
@@ -34,10 +35,10 @@ const AudioPlayer = () => {
             
             {/* Lyrics */}
             <button
+              onClick={() => setOpenLyric((prev) => !prev)}
               aria-label="Testo della canzone"
-              className="hover:text-white text-[#a8a8a8] transition-colors"
+              className={`${openLyric ? "text-green-500" : "text-[#a8a8a8]"} hover:text-white transition-colors`}
             >
-              {/* 2. Usa il componente direttamente e passagli le classi che preferisci! */}
               <LyricsIcon className="block w-5 h-5" />
             </button>
 

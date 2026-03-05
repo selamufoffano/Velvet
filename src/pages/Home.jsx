@@ -2,7 +2,6 @@ import { useEffect, useState, useCallback } from "react";
 import { useAuth } from "../store/context/Auth-context";
 import { Carousel } from "../components/Carousel";
 import { GenreCard } from "../components/GenreCard";
-
 export const Home = () => {
   const { authData } = useAuth();
 
@@ -75,8 +74,9 @@ export const Home = () => {
   }, [fetchAlbums, fetchGenres, authData]);
 
   return (
-    <div className="w-full h-full bg-[#0a0a0a] p-6 overflow-y-auto border-l border-white/20">
+    <div className="w-full h-full bg-[#42424285] p-6 overflow-y-auto overflow-x-hidden border-l border-white/10">
       <h1 className="text-4xl text-white font-semibold mb-6">Home</h1>
+
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-6">
         {loading.genres
           ? Array.from({ length: 12 }).map((_, i) => (
@@ -86,7 +86,7 @@ export const Home = () => {
               <GenreCard key={genre.value} genre={genre} />
             ))}
       </div>
-      
+
       <Carousel
         albums={newestAlbums}
         loading={loading.newest}
