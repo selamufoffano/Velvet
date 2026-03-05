@@ -12,12 +12,12 @@ const SideBar = () => {
   const mainLinks = [
     { name: "Home", icon: "/img/home.svg", path: "/" },
     { name: "Album", icon: "/img/album.svg", path: "/AlbumPage" },
-    { name: "Preferiti", icon: "/img/favorite.svg", path: "/ArtistPage" },
-    { name: "Tracce", icon: "/img/song.svg", path: "/AdminPage" },
-    { name: "Artist", icon: "/img/artist.svg", path: "/AdminPage" },
-    { name: "Generi", icon: "/img/generi.svg", path: "/AdminPage" },
-    { name: "Radio", icon: "/img/radio.svg", path: "/AdminPage" },
-    { name: "Folder", icon: "/img/folder.svg", path: "/AdminPage" },
+    { name: "Tracce", icon: "/img/song.svg", path: "/Songs" },
+    { name: "Preferiti", icon: "/img/favorite.svg", path: "/Preferiti" },
+    { name: "Artist", icon: "/img/artist.svg", path: "/Artist" },
+    { name: "Generi", icon: "/img/generi.svg", path: "/Generi" },
+    { name: "Radio", icon: "/img/radio.svg", path: "/Radio" },
+    { name: "Folder", icon: "/img/folder.svg", path: "/Folder" },
   ];
 
   const playlistLinks = [
@@ -55,7 +55,7 @@ const SideBar = () => {
         </div>
 
         <div
-          className={`flex flex-col gap-1 p-1 transition-all duration-300 ${
+          className={`flex flex-col gap-1 p-1 transition-all duration-300 font-semibold ${
             isCollapsed ? "hidden" : ""
           }`}
         >

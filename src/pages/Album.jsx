@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { useAuth } from "../store/context/Auth-context";
 import { useTrack } from "../store/context/Track-context";
 import { useAudioPlayerContext } from "../store/context/audio-player-context";
-import Cover from "../components/Cover";
+
 import {
   MusicNoteIcon,
   ClockIcon,
@@ -16,6 +16,9 @@ export const Album = () => {
   const { id } = useParams();
   const { authData } = useAuth();
   const { playAlbum } = useTrack();
+  const [focusTrack, setFocusTrack] = useState(null);
+
+  const handleFocus = {};
 
   const { currentTrack, setCurrentTrack, setIsPlaying } =
     useAudioPlayerContext();
@@ -90,6 +93,11 @@ export const Album = () => {
           </h1>
           <p className="text-[#a8a8a8] text-sm font-medium mt-2">
             {albumDetails.artist} • {albumDetails.songCount} brani •{" "}
+
+            {Math.floor(albumDetails.duration /3600)}h {" "}
+            {Math.floor(albumDetails.duration / 60) - (Math.floor(albumDetails.duration /3600) * 60)}m {" "}
+            {(albumDetails.duration % 60).toString().padStart(2, "0")}s{" • "}
+
             {albumDetails.year}
           </p>
           <div className="mt-4 flex gap-5">
@@ -119,11 +127,9 @@ export const Album = () => {
               <th className="pb-3 w-20 text-center">
                 <ClockIcon />
               </th>
-              <th className="pb-3 w-14 text-center"></th>{" "}
               <th className="pb-3 uppercase tracking-wider w-[25%] hidden sm:table-cell">
                 Artist
               </th>
-              <th className="pb-3 w-32 pl-2 hidden md:table-cell"></th>{" "}
             </tr>
           </thead>
 
@@ -133,13 +139,16 @@ export const Album = () => {
             </tr>
             {albumDetails.song?.map((song, index) => {
               const isPlayingNow = currentTrack?.title === song.title;
+              //console.log(albumDetails);
               return (
                 <tr
                   key={song.id}
-                  className="group hover:bg-white/5 transition-colors cursor-pointer"
+                  className="group hover:bg-[#3d3d3d] transition-colors cursor-pointer even:bg-[#1f1f1f] odd:bg-[#18181A]"
                   onClick={() => handlePlaySingleTrack(index)}
                 >
                   <td className=" text-[#a8a8a8] text-center text-sm font-medium">
+                    {song.discNumber} -{" "}
+                    {/** Se il discNumber Maggiore di 1 Aumenta mb */}
                     {song.track || index + 1}
                   </td>
 
@@ -156,29 +165,8 @@ export const Album = () => {
                     {(song.duration % 60).toString().padStart(2, "0")}
                   </td>
 
-                  <td className=" text-center text-[#a8a8a8] opacity-0 group-hover:opacity-100 transition-opacity">
-                    <button
-                      className="hover:text-white transition-colors"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                      }}
-                    >
-                      <HeartIcon filled={false} />
-                    </button>
-                  </td>
-
                   <td className="py-2.5 text-[#a8a8a8] text-sm truncate pr-4 hidden sm:table-cell">
                     {song.artist}
-                  </td>
-
-                  <td className="py-2.5 hidden md:table-cell">
-                    <div className="flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
-                      <StarIcon filled={false} />
-                      <StarIcon filled={false} />
-                      <StarIcon filled={false} />
-                      <StarIcon filled={false} />
-                      <StarIcon filled={false} />
-                    </div>
                   </td>
                 </tr>
               );
