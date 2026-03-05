@@ -46,17 +46,22 @@ function App() {
       </div>
 
       <div
-        className={`fixed top-0 bottom-[90px] right-0 w-[30%] backdrop-blur-2xl bg-[#4e4e4e52] border-l border-white/20 z-50 transform transition-transform duration-300 ${
+        className={`fixed top-0 bottom-[90px] right-0 ${
+          openLyricFull ? "w-full" : "w-[30%]"
+        } backdrop-blur-2xl bg-[#4e4e4e52] border-l border-white/20 z-50 transform transition-transform duration-300 ${
           openLyric ? "translate-x-0" : "translate-x-full"
         }`}
       >
         <div className="p-6 pt-4 text-white overflow-y-auto h-full">
           <div className="flex w-full justify-between items-center border-b border-white/10 pb-4">
-            <button >
+            <button onClick={() => setOpenLyricFull((prev) => !prev)}>
               <CloseLyricsIcon />
             </button>
 
-            <button onClick={() => setOpenLyric(false)} className="rounded-full bg-[#3a3a3a] hover:bg-[#202020] transition-colors">
+            <button
+              onClick={() => setOpenLyric(false)}
+              className="rounded-full bg-[#3a3a3a] hover:bg-[#202020] transition-colors"
+            >
               <CloseLyricsIcon2 className="" />
             </button>
           </div>

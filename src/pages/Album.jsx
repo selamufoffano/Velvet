@@ -139,7 +139,7 @@ export const Album = () => {
             </tr>
             {albumDetails.song?.map((song, index) => {
               const isPlayingNow = currentTrack?.title === song.title;
-              //console.log(albumDetails);
+              console.log(albumDetails);
               return (
                 <tr
                   key={song.id}
