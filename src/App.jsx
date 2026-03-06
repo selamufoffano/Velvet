@@ -26,7 +26,7 @@ function App() {
 
   const [openLyric, setOpenLyric] = useState(null);
   const [openLyricFull, setOpenLyricFull] = useState(false);
-  const [openSearch, setOpenSearch] = useState(true);
+  const [openSearch, setOpenSearch] = useState(false);
   
   return (
     <div className="h-screen w-full flex flex-col bg-[#000000] overflow-hidden">
