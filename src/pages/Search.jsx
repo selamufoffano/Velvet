@@ -3,14 +3,14 @@ import { useAuth } from "../store/context/Auth-context";
 import LoadingSkeleton from "../components/LoadingSkeleton";
 import { useNavigate } from "react-router-dom";
 
-export const Search = () => {
+export const Search = ({ setOpenSearch }) => {
   const { authData } = useAuth();
   const navigate = useNavigate();
 
   const handleNavigation = (albumId) => {
     navigate(`/album/${albumId}`);
   };
-  
+
   const [albums, setAlbums] = useState([]);
   const [loading, setLoading] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
@@ -49,7 +49,10 @@ export const Search = () => {
     return () => clearTimeout(delay);
   }, [searchQuery]);
 
-
+  const handleAlbumClick = (albumId) => {
+    handleNavigation(albumId);
+    setOpenSearch((prev) => !prev);
+  };
 
   return (
     <div>
@@ -65,14 +68,12 @@ export const Search = () => {
         <h1 className="text-2xl font-bold">Album Name</h1>
       </div>
 
-      <div
-        className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-6"
-      >
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-6">
         {albums.map((album, index) => (
           <div
             key={album.id || index}
-            onClick={() => handleNavigation(album.id)}
-            className="border p-4 rounded shadow-sm cursor-pointer hover:bg-[#727272] transition"
+            onClick={() => handleAlbumClick(album.id)}
+            className="border p-4 rounded shadow-sm cursor-pointer hover:bg-[#4d4d4d] transition"
           >
             <div>
               {album.coverArt && (

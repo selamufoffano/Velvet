@@ -90,7 +90,7 @@ function App() {
           </div>
 
           <div>
-            <Search />
+            <Search setOpenSearch={setOpenSearch}/>
           </div>
         </div>
       </div>

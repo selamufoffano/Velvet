@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import Navigation from "./Navigation";
 import { useState } from "react";
 
-const SideBar = ({openSearch, setOpenSearch}) => {
+const SideBar = ({openSearch, setOpenSearch}) => { // i pros che vengono inviate al file navigation
 
   const [SectionLib, setSectionLib] = useState(false);
   const [SectionMylist, setSectionMylist] = useState(false);
