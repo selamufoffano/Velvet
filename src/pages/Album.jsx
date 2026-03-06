@@ -4,18 +4,15 @@ import { useAuth } from "../store/context/Auth-context";
 import { useTrack } from "../store/context/Track-context";
 import { useAudioPlayerContext } from "../store/context/audio-player-context";
 
-import {
-  MusicNoteIcon,
-  ClockIcon,
-  PlayIcon,
-} from "../components/Icons";
+import { MusicNoteIcon, ClockIcon, PlayIcon } from "../components/Icons";
 
 export const Album = () => {
   const { id } = useParams();
   const { authData } = useAuth();
   const { playAlbum } = useTrack();
 
-  const { currentTrack, setCurrentTrack, setIsPlaying } = useAudioPlayerContext();
+  const { currentTrack, setCurrentTrack, setIsPlaying } =
+    useAudioPlayerContext();
 
   const [albumDetails, setAlbumDetails] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -72,38 +69,53 @@ export const Album = () => {
 
   return (
     <div className="w-full h-full bg-[#18181a] overflow-y-auto pb-32">
-      <div className="flex flex-col md:flex-row p-8 gap-8 items-end bg-gradient-to-b from-[#2a2a2c] to-[#18181a]">
+      <div className="relative flex flex-col md:flex-row p-8 gap-8 items-end overflow-hidden">
         <img
           src={`${authData.baseUrl}/rest/getCoverArt?${authData.authParams}&id=${id}&size=300`}
-          alt={albumDetails.name}
-          className="w-48 h-48 md:w-56 md:h-56 shadow-2xl rounded-md object-cover"
+          alt=""
+          className="absolute inset-0 w-full h-full object-cover blur-3xl scale-110 opacity-40"
         />
-        <div className="flex flex-col gap-2">
-          <span className="text-gray-300 text-xs font-semibold uppercase tracking-wider">
-            Album
-          </span>
-          <h1 className="text-white text-4xl md:text-5xl font-black tracking-tight mt-1">
-            {albumDetails.name}
-          </h1>
-          <p className="text-[#a8a8a8] text-sm font-medium mt-2">
-            {albumDetails.artist} • {albumDetails.year}
-            {" • "}
-            {albumDetails.songCount} brani {" [ "}
-            {Math.floor(albumDetails.duration / 3600)}h{" "}
-            {Math.floor(albumDetails.duration / 60) -
-              Math.floor(albumDetails.duration / 3600) * 60}
-            m {(albumDetails.duration % 60).toString().padStart(2, "0")}s {"]"}
-          </p>
-          <div className="mt-4 flex gap-5">
-            <button
-              onClick={handlePlayAlbum}
-              className="flex items-center justify-center gap-2 bg-[#ffffff] hover:bg-gray-200 active:scale-95 px-5 py-1.5 rounded-3xl transition-all group"
-            >
-              <PlayIcon className="fill-black w-5 h-5" />
-              <p className="text-black text-sm font-bold tracking-wide">
-                Riproduci
-              </p>
-            </button>
+
+        <div className="absolute inset-0 bg-gradient-to-t from-[#18181a] via-[#18181a]/20 to-transparent"></div>
+
+        <div className="relative z-10 flex flex-col md:flex-row gap-8 items-end">
+          <img
+            src={`${authData.baseUrl}/rest/getCoverArt?${authData.authParams}&id=${id}&size=300`}
+            alt={albumDetails.name}
+            className="w-48 h-48 md:w-56 md:h-56 shadow-2xl rounded-md object-cover"
+          />
+
+          <div className="flex flex-col gap-2">
+            <span className="text-gray-300 text-xs font-semibold uppercase tracking-wider">
+              Album
+            </span>
+
+            <h1 className="text-white text-4xl md:text-5xl font-black tracking-tight mt-1">
+              {albumDetails.name}
+            </h1>
+
+            <p className="text-[#a8a8a8] text-sm font-medium mt-2">
+              {albumDetails.artist} • {albumDetails.year}
+              {" • "}
+              {albumDetails.songCount} brani {" [ "}
+              {Math.floor(albumDetails.duration / 3600)}h{" "}
+              {Math.floor(albumDetails.duration / 60) -
+                Math.floor(albumDetails.duration / 3600) * 60}
+              m {(albumDetails.duration % 60).toString().padStart(2, "0")}s{" "}
+              {"]"}
+            </p>
+
+            <div className="mt-4 flex gap-5">
+              <button
+                onClick={handlePlayAlbum}
+                className="flex items-center justify-center gap-2 bg-[#ffffff] hover:bg-blue-600 active:scale-95 px-5 py-1.5 rounded-3xl transition-all group"
+              >
+                <PlayIcon className="fill-black w-5 h-5" />
+                <p className="text-black text-sm font-bold tracking-wide">
+                  Riproduci
+                </p>
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -137,13 +149,11 @@ export const Album = () => {
               return (
                 <tr
                   key={song.id}
-                  className="group hover:bg-[#3d3d3d] transition-colors cursor-pointer even:bg-[#1f1f1f] odd:bg-[#18181A]"
+                  className={`group hover:bg-[#303030] transition-colors cursor-pointer ${isPlayingNow ? "border-l-2 border-blue-600" : ""} even:bg-[#18181A] odd:bg-[#18181A]`}
                   onClick={() => handlePlaySingleTrack(index)}
                 >
                   <td className=" text-[#a8a8a8] text-center text-sm font-medium">
-
-
-                    {song.discNumber ?  song.discNumber + " - " : ""}
+                    {song.discNumber ? song.discNumber + " • " : ""}
 
                     {/** Se il discNumber Maggiore di 1 Aumenta mb */}
                     {song.track || index + 1}
@@ -151,7 +161,7 @@ export const Album = () => {
 
                   <td className="pl-2 pr-4 truncate">
                     <span
-                      className={`text-sm font-medium truncate ${isPlayingNow ? "text-[#8a2be2]" : "text-gray-200"}`}
+                      className={`text-sm truncate ${isPlayingNow ? "text-blue-600 font-semibold" : "font-medium text-gray-200"}`}
                     >
                       {song.title}
                     </span>

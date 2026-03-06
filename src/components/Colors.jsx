@@ -6,7 +6,6 @@ export const COLORS = [
   { name: "Azure", hex: "#F0FFFF" },
   { name: "Beige", hex: "#F5F5DC" },
   { name: "Bisque", hex: "#FFE4C4" },
-  { name: "Black", hex: "#000000" },
   { name: "BlanchedAlmond", hex: "#FFEBCD" },
   { name: "Blue", hex: "#0000FF" },
   { name: "BlueViolet", hex: "#8A2BE2" },

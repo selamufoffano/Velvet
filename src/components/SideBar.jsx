@@ -68,7 +68,7 @@ const SideBar = ({openSearch, setOpenSearch}) => { // i pros che vengono inviate
       to={to}
       className={`text-white flex items-center gap-3 w-full p-1.5 rounded-md no-underline
       ${isActive ? "bg-[#333333]" : "hover:bg-[#181818]"}
-      hover:text-red-500 transition-colors`}
+      hover:text-blue-600 transition-colors`}
     >
       <img src={icon} alt="" className="w-5 h-5" />
       <span className="text-xs">{label}</span>

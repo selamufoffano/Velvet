@@ -17,7 +17,7 @@ export const GenreCard = ({ genre }) => {
         style={{ backgroundColor: getColor }}
         className="flex w-full h-20  transition-all rounded-lg gap-3 items-center pl-3 border"
       >
-        <div className="flex w-full h-20 bg-[#1a1a1a] hover:bg-[#222222] transition-all rounded-md gap-3 items-center px-4">
+        <div className="flex w-full h-20 bg-[#131313] hover:bg-[#222222] transition-all rounded-md gap-3 items-center px-4">
           <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-sm font-bold">
             <button
               onClick={(e) => handleAction(e, "play")}
