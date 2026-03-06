@@ -13,6 +13,8 @@ export const TrackProvider = ({ children }) => {
 
     // 1. Formattiamo i dati per il player
     const formattedTracks = subsonicSongs.map((song) => ({
+      id: song.albumId,
+      album: song.album,
       title: song.title,
       author: song.artist,
       src: `${authData.baseUrl}/rest/stream?${authData.authParams}&id=${song.id}`,

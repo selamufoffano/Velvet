@@ -8,7 +8,7 @@ function Connect() {
 
   const [serverUrl, setServerUrl] = useState("https://navidrome.s3la.it:443");
   const [username, setUsername] = useState("selamu");
-  const [password, setPassword] = useState("223024");
+  const [password, setPassword] = useState("messi");
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
 

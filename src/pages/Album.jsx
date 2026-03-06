@@ -7,8 +7,6 @@ import { useAudioPlayerContext } from "../store/context/audio-player-context";
 import {
   MusicNoteIcon,
   ClockIcon,
-  HeartIcon,
-  StarIcon,
   PlayIcon,
 } from "../components/Icons";
 
@@ -16,12 +14,8 @@ export const Album = () => {
   const { id } = useParams();
   const { authData } = useAuth();
   const { playAlbum } = useTrack();
-  const [focusTrack, setFocusTrack] = useState(null);
 
-  const handleFocus = {};
-
-  const { currentTrack, setCurrentTrack, setIsPlaying } =
-    useAudioPlayerContext();
+  const { currentTrack, setCurrentTrack, setIsPlaying } = useAudioPlayerContext();
 
   const [albumDetails, setAlbumDetails] = useState(null);
   const [loading, setLoading] = useState(true);
