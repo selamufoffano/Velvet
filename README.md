@@ -17,6 +17,20 @@ However, if you want to build and customize your own PWA client, this project ca
 | Folder | Not started |
 ---
 # Screenshot:
-
+<table>
+<tr>
+<td><img src="./public/screen/Album.png" alt="Album" width="100%"></td>
+<td><img src="./public/screen/AlbumPage.png" alt="Album Page" width="100%"></td>
+</tr>
+<tr>
+<td><img src="./public/screen/HomePage.png" alt="Home Page" width="100%"></td>
+<td><img src="./public/screen/SearchForm.png" alt="Search Form" width="100%"></td>
+</tr>
+</table>
 ---
+
 # Credits:
+Velvet App is heavily inspired by these project:
+- Feishn: https://github.com/jeffvli/feishin.git
+- Monochrome: https://github.com/monochrome-music/monochrome.git
+- Login Animation from @ssebastianoo: https://github.com/ssebastianoo/html-3d-plane.git
