@@ -1,9 +1,9 @@
 import ServerList from "./Serverlist";
 import { Link } from "react-router-dom";
-import Search from "./Search";
+import Navigation from "./Navigation";
 import { useState } from "react";
 
-const SideBar = () => {
+const SideBar = ({openSearch, setOpenSearch}) => {
 
   const [SectionLib, setSectionLib] = useState(false);
   const [SectionMylist, setSectionMylist] = useState(false);
@@ -12,24 +12,20 @@ const SideBar = () => {
   const mainLinks = [
     { name: "Home", icon: "/img/home.svg", path: "/" },
     { name: "Album", icon: "/img/album.svg", path: "/AlbumPage" },
-    { name: "Tracce", icon: "/img/song.svg", path: "/Songs" },
-    { name: "Preferiti", icon: "/img/favorite.svg", path: "/Preferiti" },
-    { name: "Artist", icon: "/img/artist.svg", path: "/Artist" },
-    { name: "Generi", icon: "/img/generi.svg", path: "/Generi" },
-    { name: "Radio", icon: "/img/radio.svg", path: "/Radio" },
-    { name: "Folder", icon: "/img/folder.svg", path: "/Folder" },
+    { name: "Tracce (Not yet)", icon: "/img/song.svg", path: "/Songs" },
+    { name: "Preferiti (Not yet)", icon: "/img/favorite.svg", path: "/Preferiti" },
+    { name: "Artist (Not yet)", icon: "/img/artist.svg", path: "/Artist" },
+    { name: "Generi (Not yet)", icon: "/img/generi.svg", path: "/Generi" },
+    { name: "Radio (Not yet)", icon: "/img/radio.svg", path: "/Radio" },
+    { name: "Folder (Not yet)", icon: "/img/folder.svg", path: "/Folder" },
   ];
 
   const playlistLinks = [
-    { name: "Playlist One", icon: "/img/home.svg", path: "/404" },
-    { name: "Rap", icon: "/img/favorite.svg", path: "/404" },
+    { name: "Playlist One (Not yet)", icon: "/img/home.svg", path: "/404" },
   ];
 
   const playlistShareLinks = [
-    { name: "Hip-Hop", icon: "/img/home.svg", path: "/" },
-    { name: "Rock", icon: "/img/favorite.svg", path: "/404" },
-    { name: "Real", icon: "/img/album.svg", path: "/404" },
-    { name: "Tracce", icon: "/img/song.svg", path: "/404" },
+    { name: "Hip-Hop (Not yet)", icon: "/img/home.svg", path: "/" },
   ];
 
 
@@ -83,7 +79,7 @@ const SideBar = () => {
   return (
     <div className="h-full bg-[#252526] w-full flex flex-col px-1.5 pb-1">
       
-      <Search />
+      <Navigation openSearch={openSearch} setOpenSearch={setOpenSearch}/>
 
       <div className="h-full flex flex-col gap-1 overflow-y-auto overflow-x-hidden scrollbar-hide">
 

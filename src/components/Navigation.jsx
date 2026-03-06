@@ -1,12 +1,15 @@
 import { useNavigate } from "react-router-dom";
 
-const Search = () => {
+const Navigation = ({openSearch, setOpenSearch}) => {
   const navigate = useNavigate();
 
   return (
     <>
       <div className="flex items-center gap-2 mt-2 mb-5">
-        <div className="relative flex items-center w-full max-w-[240px]">
+        <div
+          onClick={() => setOpenSearch((prev) => !prev)}
+          className="relative flex items-center w-full max-w-[240px]"
+        >
           <button
             type="button"
             className="absolute left-3 top-1/2 -translate-y-1/2"
@@ -60,4 +63,4 @@ const Search = () => {
     </>
   );
 };
-export default Search;
+export default Navigation;
