@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useAuth } from "../store/context/Auth-context";
 import { useTrack } from "../store/context/Track-context";
@@ -17,6 +17,8 @@ export const Album = () => {
   const [albumDetails, setAlbumDetails] = useState(null);
   const [loading, setLoading] = useState(true);
 
+  const fetchedRef = useRef(false);
+
   const handlePlayAlbum = () => {
     if (albumDetails && albumDetails.song) {
       playAlbum(albumDetails.song, authData, 0, setCurrentTrack, setIsPlaying);
@@ -30,26 +32,34 @@ export const Album = () => {
         authData,
         index,
         setCurrentTrack,
-        setIsPlaying,
+        setIsPlaying
       );
     }
   };
 
   useEffect(() => {
     const fetchAlbumData = async () => {
-      if (!authData || !id) return;
+      if (!authData || !id || fetchedRef.current) return;
+
+      fetchedRef.current = true;
+
       try {
         setLoading(true);
-        const url = `${authData.baseUrl}/rest/getAlbum.view?${authData.authParams}&id=${id}&f=json`;
+
+        const url = `${authData.baseUrl}/rest/getAlbum.view?${authData.authParams}&id=${id}&f=json}`;
+
         const response = await fetch(url);
         const data = await response.json();
+
         setAlbumDetails(data["subsonic-response"]?.album);
+        //console.log(data);
       } catch (err) {
         console.error("Errore nel recupero dell'album:", err);
       } finally {
         setLoading(false);
       }
     };
+
     fetchAlbumData();
   }, [id, authData]);
 
@@ -95,8 +105,7 @@ export const Album = () => {
             </h1>
 
             <p className="text-[#a8a8a8] text-sm font-medium mt-2">
-              {albumDetails.artist} • {albumDetails.year}
-              {" • "}
+              {albumDetails.artist} • {albumDetails.year} {" • "}
               {albumDetails.songCount} brani {" [ "}
               {Math.floor(albumDetails.duration / 3600)}h{" "}
               {Math.floor(albumDetails.duration / 60) -
@@ -143,31 +152,36 @@ export const Album = () => {
             <tr>
               <td colSpan="6" className="h-4"></td>
             </tr>
+
             {albumDetails.song?.map((song, index) => {
               const isPlayingNow = currentTrack?.title === song.title;
-              console.log(albumDetails);
+
               return (
                 <tr
                   key={song.id}
-                  className={`group hover:bg-[#303030] transition-colors cursor-pointer ${isPlayingNow ? "border-l-2 border-blue-600" : ""} even:bg-[#18181A] odd:bg-[#18181A]`}
+                  className={`group hover:bg-[#303030] transition-colors cursor-pointer ${
+                    isPlayingNow ? "border-l-2 border-blue-600" : ""
+                  } even:bg-[#18181A] odd:bg-[#18181A]`}
                   onClick={() => handlePlaySingleTrack(index)}
                 >
-                  <td className=" text-[#a8a8a8] text-center text-sm font-medium">
+                  <td className="text-[#a8a8a8] text-center text-sm font-medium">
                     {song.discNumber ? song.discNumber + " • " : ""}
-
-                    {/** Se il discNumber Maggiore di 1 Aumenta mb */}
                     {song.track || index + 1}
                   </td>
 
                   <td className="pl-2 pr-4 truncate">
                     <span
-                      className={`text-sm truncate ${isPlayingNow ? "text-blue-600 font-semibold" : "font-medium text-gray-200"}`}
+                      className={`text-sm truncate ${
+                        isPlayingNow
+                          ? "text-blue-600 font-semibold"
+                          : "font-medium text-gray-200"
+                      }`}
                     >
                       {song.title}
                     </span>
                   </td>
 
-                  <td className=" text-[#a8a8a8] text-center text-sm">
+                  <td className="text-[#a8a8a8] text-center text-sm">
                     {Math.floor(song.duration / 60)}:
                     {(song.duration % 60).toString().padStart(2, "0")}
                   </td>

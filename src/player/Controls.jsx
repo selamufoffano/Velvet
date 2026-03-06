@@ -83,7 +83,7 @@ export const Controls = () => {
         <PrevIcon />
       </button>
 
-      <button onClick={() => setIsPlaying((p) => !p)} aria-label={isPlaying ? 'Metti in pausa' : 'Riproduci'} className={`${btnBase} text-[#a8a8a8] bg-[#113b57] hover:text-[#ffffff]`} type="button">
+      <button onClick={() => setIsPlaying((p) => !p)} aria-label={isPlaying ? 'Metti in pausa' : 'Riproduci'} className={`${btnBase} text-[#a8a8a8] bg-blue-600/40 hover:text-[#ffffff]`} type="button">
         {isPlaying ? <PauseIcon /> : <PlayIcon />}
       </button>
 

@@ -77,7 +77,7 @@ export const VolumeControl = () => {
             [&::-moz-range-thumb]:bg-white [&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:opacity-0 
             group-hover:[&::-moz-range-thumb]:opacity-100"
           style={{
-            background: `linear-gradient(to right, #1db954 ${currentVolumeValue}%, transparent ${currentVolumeValue}%)`
+            background: `linear-gradient(to right, #327BFC ${currentVolumeValue}%, transparent ${currentVolumeValue}%)`
           }}
         />
       </div>

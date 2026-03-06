@@ -322,3 +322,25 @@ export const CloseLyricsIcon3 = ({ className }) => (
     <rect x="3" y="3" width="18" height="18" rx="2" />
   </svg>
 );
+
+export const searchIcon = ({ className }) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className={className || "block w-10 h-10"}
+  >
+    <path
+      d="M 796,-121 533,-384 q -30,26 -69.96,40.5 Q 423.08,-329 378,-
+    329 269.84,-329 194.92,-404 120,-479 120,-585 q 0,-106 75,-181 75,-75 
+    181.5,-75 106.5,0 181,75 74.5,75 74.5,181.15 0,42.85 -14,82.85 -14,40 -42,75 l 
+    264,262 z M 377,-389 q 81.25,0 138.13,-57.5 Q 572,-504 572,-585 572,-666 515.13,
+    -723.5 458.25,-781 377,-781 294.92,-781 237.46,-723.5 180,-666 180,-585 q 0,81 
+    57.46,138.5 57.46,57.5 139.54,57.5 z"
+    />
+  </svg>
+);

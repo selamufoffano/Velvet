@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 
-const Navigation = ({openSearch, setOpenSearch}) => {
+const Navigation = ({setOpenSearch}) => {
   const navigate = useNavigate();
 
   return (

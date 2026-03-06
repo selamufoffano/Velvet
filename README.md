@@ -1,11 +1,22 @@
-# Spotify Clone. 
-REACT & TailwindCSS 
+# Velvet — Navidrome / Subsonic Client
 
+This web app is built with React and is heavily inspired by other PWA clients.
 
-![alt text](https://github.com/selamufoffano/Velvet/blob/main/public/album/ex.png?raw=true)
+If you are looking for something ready to use, this app is probably **not for you**.  
+However, if you want to build and customize your own PWA client, this project can be a good starting point.
 
-# Purpose
-This project has two purpose:
-- to learn how to program a web app in react with routing
-- to create a working music streaming services
+| Pages | Status |
+| --- | --- |
+| Home | Almost completed |
+| Album | **Finished** |
+| Tracks | Not started |
+| Favorites | Not started |
+| Artist | Not started |
+| Genre | Currently in development |
+| Radio | Not started |
+| Folder | Not started |
+---
+# Screenshot:
 
+---
+# Credits:

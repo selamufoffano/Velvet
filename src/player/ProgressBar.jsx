@@ -71,10 +71,8 @@ export const ProgressBar = () => {
     }
   }, [duration, progressBarRef]);
 
-  // Calcolo della percentuale per il riempimento della barra
   const percentage = duration > 0 ? (timeProgress / duration) * 100 : 0;
-  // Colore di riempimento dinamico (Verde se in hover, altrimenti Bianco)
-  const fillColor = isHovering ? '#1db954' : '#ffffff';
+  const fillColor = isHovering ? '#327BFC' : '#ffffff';
 
   return (
     <div 
