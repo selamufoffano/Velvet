@@ -51,7 +51,8 @@ export const Search = ({ setOpenSearch }) => {
 
   const handleAlbumClick = (albumId) => {
     handleNavigation(albumId);
-    setOpenSearch((prev) => !prev);
+    setOpenSearch(false); 
+    setSearchQuery("");
   };
 
   return (
