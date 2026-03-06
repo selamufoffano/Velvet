@@ -1,7 +1,7 @@
 import { useEffect, useState, useCallback, useRef } from "react";
 import { useAuth } from "../store/context/Auth-context";
 import AlbumCard from "../components/Cover";
-import LoadingSkeleton from "../components/LoadingSkeleton"; // Assicurati che il componente inizi con maiuscola
+import LoadingSkeleton from "../components/LoadingSkeleton";
 
 const AlbumPage = () => {
   const { authData } = useAuth();

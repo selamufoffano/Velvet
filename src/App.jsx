@@ -10,7 +10,7 @@ import AlbumPage from "./pages/AlbumPage";
 import { Album } from "./pages/Album";
 import { Lyric } from "./components/Lyric";
 import { Search } from "./pages/Search";
-import { CloseLyricsIcon, CloseLyricsIcon2 } from "./components/Icons";
+import { CloseLyricsIcon2, CloseLyricsIcon3 } from "./components/Icons";
 import "./App.css";
 
 function App() {
@@ -57,7 +57,7 @@ function App() {
         <div className="p-6 pt-4 text-white overflow-y-auto h-full">
           <div className="flex w-full justify-between items-center border-b border-white/10 pb-4">
             <button onClick={() => setOpenLyricFull((prev) => !prev)}>
-              <CloseLyricsIcon />
+              <CloseLyricsIcon3 />
             </button>
 
             <button
