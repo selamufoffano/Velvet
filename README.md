@@ -27,7 +27,6 @@ However, if you want to build and customize your own PWA client, this project ca
 <td><img src="./public/screen/SearchForm.png" alt="Search Form" width="100%"></td>
 </tr>
 </table>
----
 
 # Credits:
 Velvet App is heavily inspired by these projects:

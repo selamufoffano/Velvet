@@ -17,7 +17,11 @@ export const Album = () => {
   const [albumDetails, setAlbumDetails] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  const fetchedRef = useRef(false);
+  //const fetchedRef = useRef(false);
+  /**
+   * Errore durante il caricamento degli album
+   * Dati vecchio album non cancellati 
+  */
 
   const [fullscreenCover, setFullscreenCover] = useState(false);
   const coverUrl = `${authData.baseUrl}/rest/getCoverArt?${authData.authParams}&id=${id}&size=1000`;
@@ -41,15 +45,14 @@ export const Album = () => {
   };
 
   useEffect(() => {
-    const fetchAlbumData = async () => {
-      if (!authData || !id || fetchedRef.current) return;
+    setAlbumDetails(null); // svuota chache
+    setLoading(true);
 
-      fetchedRef.current = true;
+    const fetchAlbumData = async () => {
+      if (!authData || !id) return; 
 
       try {
-        setLoading(true);
-
-        const url = `${authData.baseUrl}/rest/getAlbum.view?${authData.authParams}&id=${id}&f=json}`;
+        const url = `${authData.baseUrl}/rest/getAlbum.view?${authData.authParams}&id=${id}&f=json`;
 
         const response = await fetch(url);
         const data = await response.json();
@@ -87,7 +90,7 @@ export const Album = () => {
 
       {fullscreenCover && (
         <div
-          className="fixed inset-0 bg-black/90 flex items-center justify-center z-50"
+          className="fixed inset-0 bg-black/90 flex items-center justify-center z-60"
           onClick={() => setFullscreenCover(false)}
         >
           <img
