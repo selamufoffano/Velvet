@@ -28,6 +28,7 @@ However, if you want to build and customize your own PWA client, this project ca
 </tr>
 </table>
 
+---
 # Credits:
 Velvet App is heavily inspired by these projects:
 - Feishn: https://github.com/jeffvli/feishin.git

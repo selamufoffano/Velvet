@@ -76,13 +76,13 @@ export const Home = () => {
   return (
     <div className="w-full h-full bg-[#1a1a1a] p-6 overflow-y-auto overflow-x-hidden border-l border-white/10">
       <h1 className="text-4xl text-white font-semibold mb-6">Home</h1>
-
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-6">
+      
+    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-6">
         {loading.genres
           ? Array.from({ length: 12 }).map((_, i) => (
               <GenreCard key={`skeleton-${i}`} />
             ))
-          : genres.map((genre) => (
+          : genres.slice(0, 12).map((genre) => (
               <GenreCard key={genre.value} genre={genre} />
             ))}
       </div>

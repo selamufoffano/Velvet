@@ -28,11 +28,19 @@ function App() {
   const [openLyricFull, setOpenLyricFull] = useState(false);
   const [openSearch, setOpenSearch] = useState(false);
   
+  const [searchTerm, setSearchTerm] = useState("");
+  
   return (
     <div className="h-screen w-full flex flex-col bg-[#000000] overflow-hidden">
       <div className="flex flex-grow overflow-hidden">
         <aside className="w-[15%] flex flex-col bg-[#121212] border-white/5 group">
-          <SideBar openSearch={openSearch} setOpenSearch={setOpenSearch} />
+
+          <SideBar 
+            openSearch={openSearch} 
+            setOpenSearch={setOpenSearch} 
+            searchTerm={searchTerm} 
+            onSearchInput={setSearchTerm} 
+          />
         </aside>
 
         <main className="w-[85%] overflow-y-auto overflow-x-hidden">
@@ -90,7 +98,12 @@ function App() {
           </div>
 
           <div>
-            <Search setOpenSearch={setOpenSearch}/>
+            {/* 3. MODIFICA QUI: Fai la stessa cosa, passa setSearchTerm a onSearchInput */}
+            <Search 
+              setOpenSearch={setOpenSearch} 
+              searchTerm={searchTerm} 
+              onSearchInput={setSearchTerm}
+            />
           </div>
         </div>
       </div>

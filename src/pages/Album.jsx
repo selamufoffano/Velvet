@@ -20,8 +20,8 @@ export const Album = () => {
   //const fetchedRef = useRef(false);
   /**
    * Errore durante il caricamento degli album
-   * Dati vecchio album non cancellati 
-  */
+   * Dati vecchio album non cancellati
+   */
 
   const [fullscreenCover, setFullscreenCover] = useState(false);
   const coverUrl = `${authData.baseUrl}/rest/getCoverArt?${authData.authParams}&id=${id}&size=1000`;
@@ -49,7 +49,7 @@ export const Album = () => {
     setLoading(true);
 
     const fetchAlbumData = async () => {
-      if (!authData || !id) return; 
+      if (!authData || !id) return;
 
       try {
         const url = `${authData.baseUrl}/rest/getAlbum.view?${authData.authParams}&id=${id}&f=json`;
@@ -87,16 +87,15 @@ export const Album = () => {
 
   return (
     <div className="w-full h-full bg-[#18181a] overflow-y-auto pb-32">
-
       {fullscreenCover && (
         <div
-          className="fixed inset-0 bg-black/90 flex items-center justify-center z-60"
+          className="fixed inset-0 bg-black/70 flex items-center justify-center z-60"
           onClick={() => setFullscreenCover(false)}
         >
           <img
             src={coverUrl}
             alt={albumDetails.name}
-            className="max-w-[90vw] max-h-[90vh] rounded-lg shadow-2xl"
+            className="max-w-[90vw] max-h-[90vh] shadow-2xl"
           />
         </div>
       )}
@@ -123,25 +122,32 @@ export const Album = () => {
               Album
             </span>
 
-            <h1 className="text-white text-4xl md:text-5xl font-black tracking-tight mt-1">
+            <h1 className="text-white text-3xl md:text-4xl font-black tracking-tight mt-1">
               {albumDetails.name}
             </h1>
 
             <p className="text-gray-300 text-sm font-semibold ">
-              {albumDetails.artist}
+              {albumDetails.artist} {" • "} {albumDetails.year}
             </p>
 
-            <p className="text-[#a8a8a8] text-sm font-medium ">
-              {albumDetails.year} {" • "}
-              {albumDetails.songCount} brani {" [ "}
-              {Math.floor(albumDetails.duration / 3600) > 0
-                ? Math.floor(albumDetails.duration / 3600) + "h "
-                : ""}
-              {Math.floor(albumDetails.duration / 60) -
-                Math.floor(albumDetails.duration / 3600) * 60 +
-                "m "}
-              {(albumDetails.duration % 60).toString().padStart(2, "0")}s {"]"}
-            </p>
+            <div className="flex items-center gap-4 text-[#a8a8a8] text-sm font-medium">
+              <div className="flex items-center gap-1.5">
+                <MusicNoteIcon />
+                <span>{albumDetails.songCount} brani</span>
+              </div>
+              <div className="flex items-center gap-1.5">
+                <ClockIcon />
+                <span>
+                  {Math.floor(albumDetails.duration / 3600) > 0
+                    ? Math.floor(albumDetails.duration / 3600) + ":"
+                    : ""}
+                  {Math.floor(albumDetails.duration / 60) -
+                    Math.floor(albumDetails.duration / 3600) * 60 +
+                    ":"}
+                  {(albumDetails.duration % 60).toString().padStart(2, "0")}
+                </span>
+              </div>
+            </div>
 
             <div
               className={`${albumDetails.genres?.length ? "block" : "hidden"} text-[#a8a8a8] text-sm font-medium mt-2`}

@@ -3,7 +3,8 @@ import { Link } from "react-router-dom";
 import Navigation from "./Navigation";
 import { useState } from "react";
 
-const SideBar = ({openSearch, setOpenSearch}) => { // i pros che vengono inviate al file navigation
+const SideBar = ({ openSearch, setOpenSearch, onSearchInput, searchTerm }) => {
+  // i pros che vengono inviate al file navigation
 
   const [SectionLib, setSectionLib] = useState(false);
   const [SectionMylist, setSectionMylist] = useState(false);
@@ -13,7 +14,11 @@ const SideBar = ({openSearch, setOpenSearch}) => { // i pros che vengono inviate
     { name: "Home", icon: "/img/home.svg", path: "/" },
     { name: "Album", icon: "/img/album.svg", path: "/AlbumPage" },
     { name: "Tracce (Not yet)", icon: "/img/song.svg", path: "/Songs" },
-    { name: "Preferiti (Not yet)", icon: "/img/favorite.svg", path: "/Preferiti" },
+    {
+      name: "Preferiti (Not yet)",
+      icon: "/img/favorite.svg",
+      path: "/Preferiti",
+    },
     { name: "Artist (Not yet)", icon: "/img/artist.svg", path: "/Artist" },
     { name: "Generi (Not yet)", icon: "/img/generi.svg", path: "/Generi" },
     { name: "Radio (Not yet)", icon: "/img/radio.svg", path: "/Radio" },
@@ -28,11 +33,9 @@ const SideBar = ({openSearch, setOpenSearch}) => { // i pros che vengono inviate
     { name: "Hip-Hop (Not yet)", icon: "/img/home.svg", path: "/" },
   ];
 
-
   const NavSection = ({ title, children, isCollapsed, onToggle }) => {
     return (
       <div className="flex flex-col mb-4 border border-white/5 rounded-md">
-        
         <div
           onClick={onToggle}
           className="w-full flex justify-between items-center p-2 hover:bg-[#161616] transition-all rounded-md cursor-pointer"
@@ -57,11 +60,9 @@ const SideBar = ({openSearch, setOpenSearch}) => { // i pros che vengono inviate
         >
           {children}
         </div>
-
       </div>
     );
   };
-
 
   const NavButton = ({ icon, label, isActive = false, to = "/" }) => (
     <Link
@@ -75,18 +76,20 @@ const SideBar = ({openSearch, setOpenSearch}) => { // i pros che vengono inviate
     </Link>
   );
 
-
   return (
     <div className="h-full bg-[#252526] w-full flex flex-col px-1.5 pb-1">
-      
-      <Navigation openSearch={openSearch} setOpenSearch={setOpenSearch}/>
+      <Navigation
+        openSearch={openSearch}
+        setOpenSearch={setOpenSearch}
+        onSearchInput={onSearchInput}
+        searchTerm={searchTerm}
+      />
 
       <div className="h-full flex flex-col gap-1 overflow-y-auto overflow-x-hidden scrollbar-hide">
-
         <NavSection
           title="LA TUA LIBRERIA"
           isCollapsed={SectionLib}
-          onToggle={() => setSectionLib(prev => !prev)}
+          onToggle={() => setSectionLib((prev) => !prev)}
         >
           {mainLinks.map((link) => (
             <NavButton
@@ -101,7 +104,7 @@ const SideBar = ({openSearch, setOpenSearch}) => { // i pros che vengono inviate
         <NavSection
           title="Playlist"
           isCollapsed={SectionMylist}
-          onToggle={() => setSectionMylist(prev => !prev)}
+          onToggle={() => setSectionMylist((prev) => !prev)}
         >
           {playlistLinks.map((link) => (
             <NavButton
@@ -116,7 +119,7 @@ const SideBar = ({openSearch, setOpenSearch}) => { // i pros che vengono inviate
         <NavSection
           title="Playlist share"
           isCollapsed={SectionShared}
-          onToggle={() => setSectionShared(prev => !prev)}
+          onToggle={() => setSectionShared((prev) => !prev)}
         >
           {playlistShareLinks.map((link) => (
             <NavButton
@@ -127,11 +130,9 @@ const SideBar = ({openSearch, setOpenSearch}) => { // i pros che vengono inviate
             />
           ))}
         </NavSection>
-
       </div>
 
       <ServerList />
-
     </div>
   );
 };

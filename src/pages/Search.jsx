@@ -3,7 +3,7 @@ import { useAuth } from "../store/context/Auth-context";
 import LoadingSkeleton from "../components/LoadingSkeleton";
 import { useNavigate } from "react-router-dom";
 
-export const Search = ({ setOpenSearch }) => {
+export const Search = ({ setOpenSearch, searchTerm, onSearchInput }) => {
   const { authData } = useAuth();
   const navigate = useNavigate();
 
@@ -11,9 +11,30 @@ export const Search = ({ setOpenSearch }) => {
     navigate(`/album/${albumId}`);
   };
 
+  // Ripristiniamo lo stato locale per l'input interno
+  const [searchQuery, setSearchQuery] = useState(searchTerm || "");
   const [albums, setAlbums] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [searchQuery, setSearchQuery] = useState("");
+
+  // 1. SINCRONIZZAZIONE DAL PADRE AL FIGLIO
+  // Se l'utente scrive nella Navigation (il padre), aggiorniamo l'input locale
+  useEffect(() => {
+    if (searchTerm !== undefined) {
+      setSearchQuery(searchTerm);
+    }
+  }, [searchTerm]);
+
+  // 2. SINCRONIZZAZIONE DAL FIGLIO AL PADRE
+  // Se l'utente scrive direttamente nell'input qui sotto
+  const handleLocalInputChange = (e) => {
+    const nuovoTesto = e.target.value;
+    setSearchQuery(nuovoTesto); // Aggiorna l'input locale
+    
+    // Invia il testo anche al padre per tenere sincronizzata la barra in alto!
+    if (onSearchInput) {
+      onSearchInput(nuovoTesto);
+    }
+  };
 
   const fetchAlbums = async (query) => {
     if (!authData || !query) {
@@ -41,6 +62,7 @@ export const Search = ({ setOpenSearch }) => {
     }
   };
 
+  // Ascolta i input che arriva da fuori
   useEffect(() => {
     const delay = setTimeout(() => {
       fetchAlbums(searchQuery);
@@ -53,20 +75,24 @@ export const Search = ({ setOpenSearch }) => {
     handleNavigation(albumId);
     setOpenSearch(false); 
     setSearchQuery("");
+    if (onSearchInput) onSearchInput(""); 
   };
 
   return (
     <div>
       <div className="flex flex-col gap-2 mb-5">
+
         <input
           type="text"
           value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
-          placeholder="Cerca album..."
-          className="border p-2 rounded"
+          onChange={handleLocalInputChange}
+          placeholder="Cerca album dal figlio..."
+          className="border border-[#333] bg-[#1c1c1c] text-white p-2 rounded focus:outline-none focus:border-blue-500 transition-colors"
         />
 
-        <h1 className="text-2xl font-bold">Album Name</h1>
+        <h1 className="text-2xl font-bold mt-2">
+          {searchQuery ? `Risultati per: "${searchQuery}"` : "Cerca un album"}
+        </h1>
       </div>
 
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-6">
@@ -74,29 +100,33 @@ export const Search = ({ setOpenSearch }) => {
           <div
             key={album.id || index}
             onClick={() => handleAlbumClick(album.id)}
-            className="border p-4 rounded shadow-sm cursor-pointer hover:bg-[#4d4d4d] transition"
+            className="border border-transparent p-4 rounded-lg shadow-sm cursor-pointer hover:bg-[#2a2a2a] transition-all"
           >
             <div>
               {album.coverArt && (
                 <img
                   src={`${authData.baseUrl}/rest/getCoverArt?id=${album.coverArt}&${authData.authParams}`}
                   alt={album.name}
-                  className="rounded mb-2"
+                  className="rounded mb-3 w-full object-cover aspect-square shadow-md"
                 />
               )}
             </div>
 
             <div>
-              <p className="truncate font-semibold">
+              <p className="truncate font-bold text-white">
                 {album.name || album.title || "Unknown Album"}
               </p>
 
               {album.artist && (
-                <p className="text-sm text-gray-500 truncate">{album.artist}</p>
+                <p className="text-sm text-[#a8a8a8] font-medium truncate mt-1">
+                  {album.artist}
+                </p>
               )}
 
               {album.year && (
-                <p className="text-xs text-gray-400">{album.year}</p>
+                <p className="text-xs text-[#707070] font-semibold mt-1">
+                  {album.year}
+                </p>
               )}
             </div>
           </div>
