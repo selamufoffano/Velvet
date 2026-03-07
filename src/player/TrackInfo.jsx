@@ -36,7 +36,7 @@ export const TrackInfo = () => {
             {currentTrack.author}
           </p>
         ) : (
-          <div className="w-20 h-3 bg-gray-500 rounded-md animate-pulse"></div>
+          <div className="w-20 h-3 bg-gray-500 rounded-md animate-pulse mt-1 mb-1"></div>
         )}
 
         {currentTrack?.album ? (

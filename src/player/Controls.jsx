@@ -75,7 +75,7 @@ export const Controls = () => {
     <div className="flex items-center justify-center gap-1">
       <audio src={currentTrack?.src} ref={audioRef} />
 
-     <button onClick={() => setIsShuffle((p) => !p)} aria-label="Shuffle" className={`${btnBase} ${isShuffle ? 'text-green-600' : 'text-[#a8a8a8] hover:text-[#ffffff]'} bg-transparent`} type="button">
+     <button onClick={() => setIsShuffle((p) => !p)} aria-label="Shuffle" className={`${btnBase} ${isShuffle ? 'text-blue-600' : 'text-[#a8a8a8] hover:text-[#ffffff]'} bg-transparent`} type="button">
         <ShuffleIcon />
       </button>
 
@@ -91,7 +91,7 @@ export const Controls = () => {
         <NextIcon />
       </button>
 
-      <button onClick={() => setIsRepeat((p) => !p)} aria-label="Ripeti" className={`${btnBase} ${isRepeat ? 'text-green-600' : 'text-[#a8a8a8] hover:text-[#ffffff]'} bg-transparent`} type="button">
+      <button onClick={() => setIsRepeat((p) => !p)} aria-label="Ripeti" className={`${btnBase} ${isRepeat ? 'text-blue-600' : 'text-[#a8a8a8] hover:text-[#ffffff]'} bg-transparent`} type="button">
         <RepeatIcon />
       </button>
     </div>

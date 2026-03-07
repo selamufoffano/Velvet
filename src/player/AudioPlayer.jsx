@@ -3,7 +3,7 @@ import { TrackInfo } from "./TrackInfo";
 import { Controls } from "./Controls";
 import { ProgressBar } from "./ProgressBar";
 import { VolumeControl } from "./VolumeControls";
-import { LyricsIcon, CodaIcon, ScreenFullInIcon } from "../components/Icons";
+import { LyricsIcon, CodaIcon2, ScreenFullInIcon } from "../components/Icons";
 
 
 const AudioPlayer = ({ openLyric, setOpenLyric }) => {
@@ -37,7 +37,7 @@ const AudioPlayer = ({ openLyric, setOpenLyric }) => {
             <button
               onClick={() => setOpenLyric((prev) => !prev)}
               aria-label="Testo della canzone"
-              className={`${openLyric ? "text-green-500" : "text-[#a8a8a8]"} hover:text-white transition-colors`}
+              className={`${openLyric ? "text-blue-600" : "text-[#a8a8a8]"} hover:text-white transition-colors`}
             >
               <LyricsIcon className="block w-5 h-5" />
             </button>
@@ -46,9 +46,9 @@ const AudioPlayer = ({ openLyric, setOpenLyric }) => {
             <button
               onClick={() => setOpenDrawer((prev) => !prev)}
               aria-label={openDrawer ? "Chiudi playlist" : "Apri playlist"}
-              className={`${openDrawer ? "text-green-500" : "text-[#a8a8a8]"} hover:text-white transition-colors`}
+              className={`${openDrawer ? "text-blue-600" : "text-[#a8a8a8]"} hover:text-white transition-colors`}
             >
-              <CodaIcon className="block w-5 h-5" />
+              <CodaIcon2 className="block w-5 h-5" />
             </button>
 
             {/* Schermo Intero */}

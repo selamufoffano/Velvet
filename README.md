@@ -30,7 +30,7 @@ However, if you want to build and customize your own PWA client, this project ca
 ---
 
 # Credits:
-Velvet App is heavily inspired by these project:
+Velvet App is heavily inspired by these projects:
 - Feishn: https://github.com/jeffvli/feishin.git
 - Monochrome: https://github.com/monochrome-music/monochrome.git
 - Login Animation from @ssebastianoo: https://github.com/ssebastianoo/html-3d-plane.git

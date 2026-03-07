@@ -122,6 +122,24 @@ export const CodaIcon = ({ className }) => (
     <path d="M 21,19 V 7 A 2,2 0 0 0 19,5 h -6" />
   </svg>
 );
+export const CodaIcon2 = ({ className }) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className={className || "block w-5 h-5"}
+  >
+    <path d="M 16,5 H 3" />
+    <path d="M 11,12 H 3" />
+    <path d="M 11,19 H 3" />
+    <path d="M 21,16 V 5" />
+    <circle cx="18" cy="16" r="3" />
+  </svg>
+);
 
 export const ScreenFullInIcon = ({ className }) => (
   <svg

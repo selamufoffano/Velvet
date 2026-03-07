@@ -19,6 +19,9 @@ export const Album = () => {
 
   const fetchedRef = useRef(false);
 
+  const [fullscreenCover, setFullscreenCover] = useState(false);
+  const coverUrl = `${authData.baseUrl}/rest/getCoverArt?${authData.authParams}&id=${id}&size=1000`;
+
   const handlePlayAlbum = () => {
     if (albumDetails && albumDetails.song) {
       playAlbum(albumDetails.song, authData, 0, setCurrentTrack, setIsPlaying);
@@ -32,7 +35,7 @@ export const Album = () => {
         authData,
         index,
         setCurrentTrack,
-        setIsPlaying
+        setIsPlaying,
       );
     }
   };
@@ -52,7 +55,9 @@ export const Album = () => {
         const data = await response.json();
 
         setAlbumDetails(data["subsonic-response"]?.album);
-        //console.log(data);
+        ////////////
+        console.log(data);
+        /////////////////
       } catch (err) {
         console.error("Errore nel recupero dell'album:", err);
       } finally {
@@ -79,9 +84,23 @@ export const Album = () => {
 
   return (
     <div className="w-full h-full bg-[#18181a] overflow-y-auto pb-32">
+
+      {fullscreenCover && (
+        <div
+          className="fixed inset-0 bg-black/90 flex items-center justify-center z-50"
+          onClick={() => setFullscreenCover(false)}
+        >
+          <img
+            src={coverUrl}
+            alt={albumDetails.name}
+            className="max-w-[90vw] max-h-[90vh] rounded-lg shadow-2xl"
+          />
+        </div>
+      )}
+
       <div className="relative flex flex-col md:flex-row p-8 gap-8 items-end overflow-hidden">
         <img
-          src={`${authData.baseUrl}/rest/getCoverArt?${authData.authParams}&id=${id}&size=300`}
+          src={coverUrl}
           alt=""
           className="absolute inset-0 w-full h-full object-cover blur-3xl scale-110 opacity-40"
         />
@@ -90,9 +109,10 @@ export const Album = () => {
 
         <div className="relative z-10 flex flex-col md:flex-row gap-8 items-end">
           <img
-            src={`${authData.baseUrl}/rest/getCoverArt?${authData.authParams}&id=${id}&size=300`}
+            src={coverUrl}
             alt={albumDetails.name}
-            className="w-48 h-48 md:w-56 md:h-56 shadow-2xl rounded-md object-cover"
+            onClick={() => setFullscreenCover(true)}
+            className="w-48 h-48 md:w-56 md:h-56 shadow-2xl rounded-md object-cover cursor-pointer"
           />
 
           <div className="flex flex-col gap-2">
@@ -104,17 +124,36 @@ export const Album = () => {
               {albumDetails.name}
             </h1>
 
-            <p className="text-[#a8a8a8] text-sm font-medium mt-2">
-              {albumDetails.artist} • {albumDetails.year} {" • "}
-              {albumDetails.songCount} brani {" [ "}
-              {Math.floor(albumDetails.duration / 3600)}h{" "}
-              {Math.floor(albumDetails.duration / 60) -
-                Math.floor(albumDetails.duration / 3600) * 60}
-              m {(albumDetails.duration % 60).toString().padStart(2, "0")}s{" "}
-              {"]"}
+            <p className="text-gray-300 text-sm font-semibold ">
+              {albumDetails.artist}
             </p>
 
-            <div className="mt-4 flex gap-5">
+            <p className="text-[#a8a8a8] text-sm font-medium ">
+              {albumDetails.year} {" • "}
+              {albumDetails.songCount} brani {" [ "}
+              {Math.floor(albumDetails.duration / 3600) > 0
+                ? Math.floor(albumDetails.duration / 3600) + "h "
+                : ""}
+              {Math.floor(albumDetails.duration / 60) -
+                Math.floor(albumDetails.duration / 3600) * 60 +
+                "m "}
+              {(albumDetails.duration % 60).toString().padStart(2, "0")}s {"]"}
+            </p>
+
+            <div
+              className={`${albumDetails.genres?.length ? "block" : "hidden"} text-[#a8a8a8] text-sm font-medium mt-2`}
+            >
+              {albumDetails.genres?.map((genre, index) => (
+                <button
+                  className="backdrop-blur-md mr-4 pl-2 pr-2 rounded-md border border-white/5 group cursor-pointer hover:bg-[#161616] transition-all text-white"
+                  key={index}
+                >
+                  {genre.name}
+                </button>
+              ))}
+            </div>
+
+            <div className="mt-2 flex gap-5">
               <button
                 onClick={handlePlayAlbum}
                 className="flex items-center justify-center gap-2 bg-[#ffffff] hover:bg-blue-600 active:scale-95 px-5 py-1.5 rounded-3xl transition-all group"
@@ -160,8 +199,10 @@ export const Album = () => {
                 <tr
                   key={song.id}
                   className={`group hover:bg-[#303030] transition-colors cursor-pointer ${
-                    isPlayingNow ? "border-l-2 border-blue-600" : ""
-                  } even:bg-[#18181A] odd:bg-[#18181A]`}
+                    isPlayingNow
+                      ? "border-l-2 border-blue-600 even:bg-[#1f1f1f] odd:bg-[#1f1f1f]"
+                      : ""
+                  }`}
                   onClick={() => handlePlaySingleTrack(index)}
                 >
                   <td className="text-[#a8a8a8] text-center text-sm font-medium">
