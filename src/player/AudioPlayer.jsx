@@ -22,7 +22,7 @@ const AudioPlayer = ({ openLyric, setOpenLyric, openCoda, setOpenCoda }) => {
     }
   };
 
-  const IconScreen = isFullScreen ? ScreenFullInIcon : ScreenFullOutIcon;
+  const IconScreen = isFullScreen ? ScreenFullOutIcon : ScreenFullInIcon;
 
   return (
     <div className="text-white flex flex-col bg-[#2C2C2C] border-t border-white/5 shrink-0 h-[90px] w-full">

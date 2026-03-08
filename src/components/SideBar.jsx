@@ -77,7 +77,7 @@ const SideBar = ({ openSearch, setOpenSearch, onSearchInput, searchTerm }) => {
   );
 
   return (
-    <div className="h-full bg-[#252526] w-full flex flex-col px-1.5 pb-1">
+    <div className="h-full bg-[#252526] w-full flex flex-col px-1.5 pt-1.5 pb-1">
       <Navigation
         openSearch={openSearch}
         setOpenSearch={setOpenSearch}
