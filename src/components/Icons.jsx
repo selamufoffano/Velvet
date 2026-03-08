@@ -162,15 +162,18 @@ export const ScreenFullInIcon = ({ className }) => (
 export const ScreenFullOutIcon = ({ className }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    viewBox="-15 -3 24 14"
-    fill="currentColor"
-    className={className || "w-5 h-5"}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className={className || "block w-5 h-5"}
   >
     <path d="M 8,3 V 6 A 2,2 0 0 1 6,8 H 3" />
     <path d="M 21,8 H 18 A 2,2 0 0 1 16,6 V 3" />
     <path d="m 3,16 h 3 a 2,2 0 0 1 2,2 v 3" />
     <path d="m 16,21 v -3 a 2,2 0 0 1 2,-2 h 3" />
-    <rect x="7" y="8" width="10" height="8" rx="1" />{" "}
   </svg>
 );
 

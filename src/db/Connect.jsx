@@ -1,16 +1,22 @@
-import React, { useState } from "react";
+import { useState, useEffect } from "react";
 import { useAuth } from "../store/context/Auth-context";
-
 import { SphereBackground } from "../animation/SphereBackground";
+import { useNavigate } from "react-router-dom";
 
 function Connect() {
-  const { login } = useAuth();
+  const { login, isLoggedIn } = useAuth();
+  const navigate = useNavigate(); 
 
   const [serverUrl, setServerUrl] = useState("https://demo.navidrome.org/");
   const [username, setUsername] = useState("demo");
   const [password, setPassword] = useState("demo");
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
+  useEffect(() => {
+    if (isLoggedIn) {
+      navigate("/home"); 
+    }
+  }, [isLoggedIn, navigate]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -19,7 +25,9 @@ function Connect() {
 
     try {
       const success = await login(serverUrl, username, password);
-      if (!success) {
+      if (success) {
+        navigate("/home");
+      } else {
         setError("Credenziali non valide o server non raggiungibile");
       }
     } catch (err) {

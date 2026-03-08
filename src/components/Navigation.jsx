@@ -1,16 +1,12 @@
 import { useNavigate } from "react-router-dom";
 
-// 1. Aggiungi 'searchTerm' tra le prop in ingresso
 const Navigation = ({ setOpenSearch, onSearchInput, searchTerm }) => {
   const navigate = useNavigate();
 
   return (
     <>
       <div className="flex items-center gap-2 mt-2 mb-5">
-        <div
-          // rimosso l'onClick da qui!
-          className="relative flex items-center w-full max-w-[240px]"
-        >
+        <div className="relative flex items-center w-full max-w-[240px]">
           <button
             type="button"
             // 2. Sposta qui l'apertura/chiusura della ricerca
@@ -26,10 +22,10 @@ const Navigation = ({ setOpenSearch, onSearchInput, searchTerm }) => {
 
           <input
             // 3. Collega il valore al testo condiviso col Padre
-            value={searchTerm || ""} 
+            value={searchTerm || ""}
             onChange={(e) => {
               if (onSearchInput) {
-                onSearchInput(e.target.value); 
+                onSearchInput(e.target.value);
               }
             }}
             // Apri la tendina automaticamente quando l'utente clicca per scrivere
@@ -41,7 +37,10 @@ const Navigation = ({ setOpenSearch, onSearchInput, searchTerm }) => {
         </div>
 
         <div className="flex items-center justify-center gap-2">
-          <button className="flex items-center justify-center h-[30px] w-[30px] bg-[#1c1c1c] rounded-md hover:bg-[#2a2a2a] transition-colors shadow-sm">
+          <button
+            onClick={() => navigate("/Setting")}
+            className="flex items-center justify-center h-[30px] w-[30px] bg-[#1c1c1c] rounded-md hover:bg-[#2a2a2a] transition-colors shadow-sm"
+          >
             <img
               src="/img/setting.svg"
               alt="Settings"

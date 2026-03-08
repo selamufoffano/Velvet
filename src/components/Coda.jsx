@@ -2,12 +2,12 @@ import { useAudioPlayerContext } from '../store/context/audio-player-context';
 import { tracks } from '../data/tracks';
 import { BsMusicNoteBeamed } from 'react-icons/bs';
 
-const Coda = () => {
+export const Coda = () => {
   const { currentTrack, setIsPlaying, setCurrentTrack } = useAudioPlayerContext();
 
   const handleClick = (track) => {
     setCurrentTrack(track);
-    setIsPlaying(true); // Avvia la riproduzione del nuovo brano
+    setIsPlaying(true); 
   };
 
   return (
@@ -31,7 +31,6 @@ const Coda = () => {
               <img className="w-full h-full object-cover" src={track.thumbnail} alt="track avatar" />
             ) : (
               <span className="text-gray-600">
-                <BsMusicNoteBeamed />
               </span>
             )}
           </div>
