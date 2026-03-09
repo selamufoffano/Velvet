@@ -1,9 +1,15 @@
+import { useAuth } from "../store/context/Auth-context";
+
 const ServerList = () => {
+  const { logout } = useAuth();
   return (
     <>
-      <div className="flex items-center justify-between w-full max-w-sm bg-[#222222] p-1 rounded-md border border-white/5 group cursor-pointer hover:bg-[#161616] transition-all">
+      <div
+      onClick={logout}
+        className="flex items-center justify-between w-full max-w-sm bg-[#222222] p-1 rounded-md border border-white/5 group cursor-pointer hover:bg-[#161616] transition-all"
+      >
         <div className="flex items-center gap-4">
-          <div className="flex items-center justify-center h-[52px] w-[52px]  rounded-lg shadow-inner">
+          <div className="flex items-center justify-center h-[52px] w-[52px] rounded-lg shadow-inner">
             <img
               src="/img/navidrome.svg"
               alt="Server Icon"
@@ -13,10 +19,10 @@ const ServerList = () => {
 
           <div className="flex flex-col">
             <span className="text-white font-bold text-[15px] leading-tight">
-              My Server
+              Navidrome Server
             </span>
             <span className="text-[#8a8a8a] text-xs">
-              No music folder selected
+              Click To Logout
             </span>
           </div>
         </div>

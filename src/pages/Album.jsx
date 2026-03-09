@@ -1,8 +1,9 @@
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useAuth } from "../store/context/Auth-context";
 import { useTrack } from "../store/context/Track-context";
 import { useAudioPlayerContext } from "../store/context/audio-player-context";
+import { LoadingSong } from "../components/LoadingSong";
 
 import { MusicNoteIcon, ClockIcon, PlayIcon } from "../components/Icons";
 
@@ -71,16 +72,11 @@ export const Album = () => {
     fetchAlbumData();
   }, [id, authData]);
 
-  if (loading)
-    return (
-      <div className="w-full h-full bg-[#121212] flex justify-center items-center">
-        <div className="w-8 h-8 border-4 border-[#8a2be2] border-t-transparent rounded-full animate-spin"></div>
-      </div>
-    );
+  if (loading) return <LoadingSong />;
 
   if (!albumDetails)
     return (
-      <div className="p-10 text-red-500 bg-[#121212] w-full h-full">
+      <div className="p-10 text-red-500 bg-[#5d5d5d] w-full h-full">
         Album non trovato.
       </div>
     );
@@ -239,7 +235,7 @@ export const Album = () => {
                   <td className="py-2.5 text-[#a8a8a8] text-sm truncate pr-4 hidden sm:table-cell">
                     {song.artist}
                   </td>
-                </tr>
+                </tr>                
               );
             })}
           </tbody>

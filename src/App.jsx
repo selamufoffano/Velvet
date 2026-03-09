@@ -12,6 +12,7 @@ import { Lyric } from "./components/Lyric";
 import { Search } from "./pages/Search";
 import { CloseLyricsIcon2, CloseLyricsIcon3 } from "./components/Icons";
 import { Settings } from "./pages/Settings";
+import { LoadingSong } from "./components/LoadingSong";
 import "./App.css";
 
 function App() {
@@ -54,6 +55,7 @@ function App() {
                     <Route path="/albumpage" element={<AlbumPage />} />
                     <Route path="/album/:id" element={<Album />} />
                     <Route path="/setting" element={<Settings />} />
+                    <Route path="/loadingsong" element={<LoadingSong />} />
                     <Route path="*" element={<Error />} />
                   </Routes>
                 </main>
