@@ -13,6 +13,7 @@ import { Search } from "./pages/Search";
 import { CloseLyricsIcon2, CloseLyricsIcon3 } from "./components/Icons";
 import { Settings } from "./pages/Settings";
 import { LoadingSong } from "./components/LoadingSong";
+import { AlbumGnre } from "./pages/AlbumGenre";
 import "./App.css";
 
 function App() {
@@ -56,6 +57,7 @@ function App() {
                     <Route path="/album/:id" element={<Album />} />
                     <Route path="/setting" element={<Settings />} />
                     <Route path="/loadingsong" element={<LoadingSong />} />
+                    <Route path="/gnres" element={<AlbumGnre />} />
                     <Route path="*" element={<Error />} />
                   </Routes>
                 </main>
