@@ -86,7 +86,7 @@ export const Search = ({ setOpenSearch, searchTerm, onSearchInput }) => {
           type="text"
           value={searchQuery}
           onChange={handleLocalInputChange}
-          placeholder="Cerca album dal figlio..."
+          placeholder="Cerca album artista ..."
           className="border border-[#333] bg-[#1c1c1c] text-white p-2 rounded focus:outline-none focus:border-blue-500 transition-colors"
         />
 

@@ -1,6 +1,7 @@
 import { useEffect, useState, useMemo } from "react";
 import { useAuth } from "../store/context/Auth-context";
 import { COLORS } from "./Colors";
+import LoadingGenreSkeleton from "./LoadingGenreSkeleton";
 
 /**
  * I dati vengono inviati ad Home.jsx
@@ -63,12 +64,21 @@ export const GenreCard = ({ sedGnre, limit }) => {
     });
   }, [genres, limit]);
 
-  if (loading) return <p className="p-6">Caricamento generi...</p>;
+  if (loading) {
+    return (
+      <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
+        {Array.from({ length: 6 }).map((_, i) => (
+          <LoadingGenreSkeleton/>
+        ))}
+      </div>
+    );
+  }
+
   if (error) return <p className="p-6 text-red-500">{error}</p>;
   if (!authData) return <p className="p-6">Utente non autenticato.</p>;
 
   return (
-    <div className="w-full p-6 bg-[#1A1A1A] h-full">
+    <div className="w-full p-6 h-full">
       <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
         {genresWithColors.map((genre) => (
           <div

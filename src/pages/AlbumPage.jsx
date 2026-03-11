@@ -58,6 +58,7 @@ const AlbumPage = () => {
 
   return (
     <div className="w-full h-full bg-[#121212] p-6 overflow-y-auto">
+                  <h1 className="text-4xl text-white font-semibold mb-6">Albums</h1>
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-6">
         {albums.map((album, index) => (
           <AlbumCard
