@@ -15,6 +15,8 @@ import { Settings } from "./pages/Settings";
 import { LoadingSong } from "./components/LoadingSong";
 import { AlbumGenre } from "./pages/AlbumGenre";
 import { Categories } from "./pages/Categories";
+import { ShowArtist } from "./pages/ShowArtist";
+import { Artist } from "./pages/Artist";
 import "./App.css";
 
 function App() {
@@ -68,6 +70,8 @@ function App() {
                     <Route path="/loadingsong" element={<LoadingSong />} />
                     <Route path="/genre" element={<AlbumGenre getGenre={getGenre} />} />
                     <Route path="/categories" element={<Categories sedGnre={handleGenreSelection}/>} />
+                    <Route path="/artists" element={<ShowArtist/>} />
+                    <Route path="/artist" element={<Artist/>} />
                     
                     <Route path="*" element={<Error />} />
                   </Routes>
