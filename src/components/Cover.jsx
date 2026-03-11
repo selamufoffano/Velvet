@@ -75,7 +75,7 @@ const Cover = ({ album, authData }) => {
     <div
       ref={cardRef}
       onClick={handleNavigate}
-      className="group cursor-pointer w-full transition-transform duration-200 bg-[#161616] hover:bg-[#202020] rounded-lg p-4"
+      className="group cursor-pointer w-full transition-transform duration-200 bg-[#292929] hover:bg-[#333333] rounded-lg p-4"
     >
       <div className="aspect-square relative overflow-hidden rounded-lg bg-[#1c1c1c]">
         {isVisible ? (
@@ -119,12 +119,13 @@ const Cover = ({ album, authData }) => {
       </div>
 
       <div className="mt-3">
-        <h3 className="text-white text-sm font-semibold truncate leading-tight">
-          {displayName}
+        <h3 className="font-semibold text-sm truncate text-white">
+          {album.name}
         </h3>
-        <p className="text-gray-500 text-xs truncate mt-1">
-          {album.artist || "Artista Sconosciuto"}
-        </p>
+
+        <p className="text-xs text-white truncate">{album.artist}</p>
+
+        <p className="text-xs text-white">{album.year || "Anno sconosciuto"}</p>
       </div>
     </div>
   );

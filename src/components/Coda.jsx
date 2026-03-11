@@ -1,6 +1,5 @@
 import { useAudioPlayerContext } from '../store/context/audio-player-context';
 import { tracks } from '../data/tracks';
-import { BsMusicNoteBeamed } from 'react-icons/bs';
 
 export const Coda = () => {
   const { currentTrack, setIsPlaying, setCurrentTrack } = useAudioPlayerContext();

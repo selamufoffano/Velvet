@@ -1,50 +1,85 @@
-import LoadingGenreSkeleton from "./LoadingGenreSkeleton";
+import { useEffect, useState, useMemo } from "react";
+import { useAuth } from "../store/context/Auth-context";
 import { COLORS } from "./Colors";
-import { useMemo } from "react";
-export const GenreCard = ({ genre }) => {
-  if (!genre) {
-    return <LoadingGenreSkeleton />;
-  }
 
-  const getColor = useMemo(() => {
-    const randomIndex = Math.floor(Math.random() * COLORS.length);
-    return COLORS[randomIndex].hex;
-  }, []);
+/**
+ * I dati vengono inviati ad Home.jsx
+ * Da Home.jsx -> App.jsx
+ * Dentro App.jsx il passaggio AlbumGenre.jsx * */
+
+export const GenreCard = ({ sedGnre, limit }) => {
+  const { authData } = useAuth();
+
+  const [genres, setGenres] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    if (!authData) {
+      setLoading(false);
+      return;
+    }
+
+    const fetchGenres = async () => {
+      setLoading(true);
+      setError(null);
+
+      try {
+        const url = `${authData.baseUrl}/rest/getGenres?${authData.authParams}&f=json`;
+        const response = await fetch(url);
+
+        if (!response.ok) {
+          throw new Error(`Errore HTTP: ${response.status}`);
+        }
+
+        const data = await response.json();
+        const genreList = data["subsonic-response"]?.genres?.genre || [];
+
+        setGenres(genreList);
+      } catch (err) {
+        console.error("Errore nel recupero generi:", err);
+        setError("Errore nel caricamento generi");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchGenres();
+  }, [authData]);
+
+  const genresWithColors = useMemo(() => {
+    if (genres.length === 0) return [];
+
+    const listToProcess = limit
+      ? [...genres].sort(() => 0.5 - Math.random()).slice(0, limit)
+      : genres;
+
+    return listToProcess.map((genre) => {
+      const randomIndex = Math.floor(Math.random() * COLORS.length);
+      return {
+        ...genre,
+        color: COLORS[randomIndex].hex,
+      };
+    });
+  }, [genres, limit]);
+
+  if (loading) return <p className="p-6">Caricamento generi...</p>;
+  if (error) return <p className="p-6 text-red-500">{error}</p>;
+  if (!authData) return <p className="p-6">Utente non autenticato.</p>;
 
   return (
-    <div className="flex flex-col gap-3 group cursor-pointer">
-      <div
-        style={{ backgroundColor: getColor }}
-        className="flex w-full h-20  transition-all rounded-lg gap-3 items-center pl-3 border"
-      >
-        <div className="flex w-full h-20 bg-[#131313] hover:bg-[#222222] transition-all rounded-md gap-3 items-center px-4">
-          <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-sm font-bold">
-            <button
-              onClick={(e) => handleAction(e, "play")}
-              className="flex items-center justify-center w-8 h-8 bg-[#113B57] rounded-full text-white active:scale-90"
-            >
-              <svg
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                className="w-5 h-5 ml-0.5"
-              >
-                <path d="M8 5v14l11-7z" />
-              </svg>
-            </button>
+    <div className="w-full p-6 bg-[#1A1A1A] h-full">
+      <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
+        {genresWithColors.map((genre) => (
+          <div
+            key={genre.value}
+            onClick={() => sedGnre(genre.value)}
+            style={{ backgroundColor: genre.color }}
+            className="aspect-square flex justify-center items-center text-black hover:brightness-110 cursor-pointer p-6 rounded-xl text-center font-semibold shadow-md hover:shadow-xl transition duration-300 hover:-translate-y-1"
+          >
+            {genre.value}
           </div>
-
-          <div className="flex flex-col">
-            <span className="text-white font-semibold text-sm">
-              {genre.value}
-            </span>
-
-            {genre.songCount && (
-              <span className="text-xs text-gray-400">
-                {genre.songCount} brani
-              </span>
-            )}
-          </div>
-        </div>
+        ))}
       </div>
     </div>
   );
