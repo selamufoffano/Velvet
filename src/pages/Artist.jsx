@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useAuth } from "../store/context/Auth-context";
 import { useNavigate } from "react-router-dom";
 
-export const Artist = () => {
+export const Artist = ({getIdArtist}) => {
   const { authData } = useAuth();
   const navigate = useNavigate();
 
@@ -13,7 +13,7 @@ export const Artist = () => {
   const [getArtist, setArtist] = useState();
   const [loading, setLoading] = useState(false);
 
-  const id = "5SiBUsAF1qtbJeoQ5yKTza";
+  const id = getIdArtist;
   useEffect(() => {
     setArtist(null);
     setLoading(true);

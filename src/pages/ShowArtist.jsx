@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useAuth } from "../store/context/Auth-context";
 
-export const ShowArtist = () => {
+export const ShowArtist = ({idSingle}) => {
   const { authData } = useAuth();
 
   const [artistList, setArtistList] = useState(null);
@@ -50,6 +50,7 @@ export const ShowArtist = () => {
   if (loading) return <p>Caricamento...</p>;
   const userIcon = "/img/circle.svg";
 
+
   return (
     <div className="w-full min-h-full bg-[#2d2d2d] p-6">
       <h1 className="text-white text-2xl font-bold mb-6">Artisti</h1>
@@ -58,6 +59,7 @@ export const ShowArtist = () => {
         {artistList?.artists?.index?.map((indexItem) =>
           indexItem.artist?.map((artist) => (
             <div
+            onClick={()=>idSingle(artist.id)}
               key={artist.id}
               className="flex flex-col items-center justify-center text-center"
             >

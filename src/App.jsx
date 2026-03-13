@@ -36,6 +36,12 @@ function App() {
     navigate("/genre");
   };
 
+  const [idArtist, setIdArtist] = useState(null);
+  const handleArtist = (artist) => {
+    setIdArtist(artist);
+    navigate("/artist");
+  };
+
   return (
     <Routes>
       {!isLoggedIn && (
@@ -70,8 +76,9 @@ function App() {
                     <Route path="/loadingsong" element={<LoadingSong />} />
                     <Route path="/genre" element={<AlbumGenre getGenre={getGenre} />} />
                     <Route path="/categories" element={<Categories sedGnre={handleGenreSelection}/>} />
-                    <Route path="/artists" element={<ShowArtist/>} />
-                    <Route path="/artist" element={<Artist/>} />
+                    <Route path="/artists" element={<ShowArtist idSingle={handleArtist}/>} />
+
+                    <Route path="/artist" element={<Artist getIdArtist={idArtist} />} />
                     
                     <Route path="*" element={<Error />} />
                   </Routes>
