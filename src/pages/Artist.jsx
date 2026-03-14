@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import { useAuth } from "../store/context/Auth-context";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
-export const Artist = ({getIdArtist}) => {
+export const Artist = () => {
   const { authData } = useAuth();
   const navigate = useNavigate();
+  const {id} = useParams();
 
   const handleNavigation = (albumId) => {
     navigate(`/album/${albumId}`);
@@ -13,7 +14,6 @@ export const Artist = ({getIdArtist}) => {
   const [getArtist, setArtist] = useState();
   const [loading, setLoading] = useState(false);
 
-  const id = getIdArtist;
   useEffect(() => {
     setArtist(null);
     setLoading(true);

@@ -1,4 +1,4 @@
-import { Routes, Route, Navigate, useNavigate } from "react-router-dom"; // Aggiunto useNavigate
+import { Routes, Route, Navigate } from "react-router-dom"; // Aggiunto useNavigate
 import { useAuth } from "./store/context/Auth-context";
 import { useState } from "react";
 import SideBar from "./components/SideBar";
@@ -21,7 +21,6 @@ import "./App.css";
 
 function App() {
   const { isLoggedIn } = useAuth();
-  const navigate = useNavigate(); // Inizializziamo useNavigate per cambiare pagina
 
   const [openLyric, setOpenLyric] = useState(null);
   const [openLyricFull, setOpenLyricFull] = useState(false);
@@ -29,12 +28,6 @@ function App() {
   const [searchTerm, setSearchTerm] = useState("");
   const [openCoda, setOpenCoda] = useState(false);
   
-
-  const [idArtist, setIdArtist] = useState(null);
-  const handleArtist = (artist) => {
-    setIdArtist(artist);
-    navigate("/artist");
-  };
 
   return (
     <Routes>
@@ -74,8 +67,8 @@ function App() {
                     <Route path="/categories" element={<Categories/>} />
 
 
-                    <Route path="/artists" element={<ShowArtist idSingle={handleArtist}/>} />
-                    <Route path="/artist" element={<Artist getIdArtist={idArtist} />} />
+                    <Route path="/artists" element={<ShowArtist/>} />
+                    <Route path="/artist/:id" element={<Artist />} />
                     
                     <Route path="*" element={<Error />} />
                   </Routes>

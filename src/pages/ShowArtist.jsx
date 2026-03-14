@@ -1,11 +1,17 @@
 import { useEffect, useState } from "react";
 import { useAuth } from "../store/context/Auth-context";
+import { useNavigate } from "react-router-dom";
 
 export const ShowArtist = ({idSingle}) => {
   const { authData } = useAuth();
 
   const [artistList, setArtistList] = useState(null);
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
+  
+  const handleNavigation = (artistId) => {
+    navigate(`/artist/${artistId}`);
+  };
 
   useEffect(() => {
     setArtistList(null);
@@ -59,7 +65,7 @@ export const ShowArtist = ({idSingle}) => {
         {artistList?.artists?.index?.map((indexItem) =>
           indexItem.artist?.map((artist) => (
             <div
-            onClick={()=>idSingle(artist.id)}
+            onClick={()=>handleNavigation(artist.id)}
               key={artist.id}
               className="flex flex-col items-center justify-center text-center"
             >
