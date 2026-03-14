@@ -3,7 +3,7 @@ import { useAuth } from "../store/context/Auth-context";
 import { Carousel } from "../components/Carousel";
 import { GenreCard } from "../components/GenreCard";
 
-export const Home = ({ sedGnre }) => {
+export const Home = () => {
   const { authData } = useAuth();
 
   const PAGE_SIZE = 20;
@@ -56,7 +56,7 @@ export const Home = ({ sedGnre }) => {
 
       <h1 className="text-white font-semibold text-2xl">Generi</h1>
       <div>
-        <GenreCard sedGnre={sedGnre} limit={6} />
+        <GenreCard  limit={6} />
       </div>
 
       <Carousel

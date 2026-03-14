@@ -1,12 +1,14 @@
 import { useEffect, useState } from "react";
 import { useAuth } from "../store/context/Auth-context";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import LoadingSkeleton from "../components/LoadingSkeleton";
 
-export const AlbumGenre = ({ getGenre }) => {
+export const AlbumGenre = ({}) => {
   const navigate = useNavigate();
   const { authData } = useAuth();
 
+  const { getGenre } = useParams();
+  
   const [albums, setAlbums] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);

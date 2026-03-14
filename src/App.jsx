@@ -30,12 +30,6 @@ function App() {
   const [openCoda, setOpenCoda] = useState(false);
   
 
-  const [getGenre, setGetGenre] = useState("");
-  const handleGenreSelection = (genereSelezionato) => {
-    setGetGenre(genereSelezionato);
-    navigate("/genre");
-  };
-
   const [idArtist, setIdArtist] = useState(null);
   const handleArtist = (artist) => {
     setIdArtist(artist);
@@ -69,15 +63,18 @@ function App() {
                 <main className="w-[85%] overflow-y-auto overflow-x-hidden">
                   <Routes>
                     <Route path="/" element={<Navigate to="/home" replace />} />
-                    <Route path="/home" element={<Home sedGnre={handleGenreSelection} />} />
+                    <Route path="/home" element={<Home />} />
                     <Route path="/albumpage" element={<AlbumPage />} />
                     <Route path="/album/:id" element={<Album />} />
                     <Route path="/setting" element={<Settings />} />
                     <Route path="/loadingsong" element={<LoadingSong />} />
-                    <Route path="/genre" element={<AlbumGenre getGenre={getGenre} />} />
-                    <Route path="/categories" element={<Categories sedGnre={handleGenreSelection}/>} />
-                    <Route path="/artists" element={<ShowArtist idSingle={handleArtist}/>} />
 
+
+                    <Route path="/genre/:getGenre" element={<AlbumGenre />} />
+                    <Route path="/categories" element={<Categories/>} />
+
+
+                    <Route path="/artists" element={<ShowArtist idSingle={handleArtist}/>} />
                     <Route path="/artist" element={<Artist getIdArtist={idArtist} />} />
                     
                     <Route path="*" element={<Error />} />

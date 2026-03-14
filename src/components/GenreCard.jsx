@@ -2,18 +2,24 @@ import { useEffect, useState, useMemo } from "react";
 import { useAuth } from "../store/context/Auth-context";
 import { COLORS } from "./Colors";
 import LoadingGenreSkeleton from "./LoadingGenreSkeleton";
+import { useNavigate } from "react-router-dom";
 
 /**
  * I dati vengono inviati ad Home.jsx
  * Da Home.jsx -> App.jsx
  * Dentro App.jsx il passaggio AlbumGenre.jsx * */
 
-export const GenreCard = ({ sedGnre, limit }) => {
+export const GenreCard = ({limit }) => {
   const { authData } = useAuth();
 
   const [genres, setGenres] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const navigate = useNavigate();
+
+    const handleNavigate = (idAlbum) => {
+    navigate(`/genre/${idAlbum}`);
+  };
 
   useEffect(() => {
     if (!authData) {
@@ -83,7 +89,7 @@ export const GenreCard = ({ sedGnre, limit }) => {
         {genresWithColors.map((genre) => (
           <div
             key={genre.value}
-            onClick={() => sedGnre(genre.value)}
+            onClick={()=>handleNavigate(genre.value)}
             style={{ backgroundColor: genre.color }}
             className="aspect-square flex justify-center items-center text-black hover:brightness-110 cursor-pointer p-6 rounded-xl text-center font-semibold shadow-md hover:shadow-xl transition duration-300 hover:-translate-y-1"
           >
