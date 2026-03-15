@@ -12,10 +12,13 @@ export const TrackProvider = ({ children }) => {
     if (!subsonicSongs || !authData) return;
 
     // 1. Formattiamo i dati per il player
+
+    //console.log("-->" + subsonicSongs);
     const formattedTracks = subsonicSongs.map((song) => ({
       id: song.albumId,
       album: song.album,
       title: song.title,
+      artistId: song.artistId,
       author: song.artist,
       src: `${authData.baseUrl}/rest/stream?${authData.authParams}&id=${song.id}`,
       thumbnail: `${authData.baseUrl}/rest/getCoverArt?${authData.authParams}&id=${song.coverArt || song.albumId}&size=300`,

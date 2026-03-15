@@ -1,12 +1,16 @@
 import { useAudioPlayerContext } from "../store/context/audio-player-context";
 import { useNavigate } from "react-router-dom";
 
+
 export const TrackInfo = () => {
   const navigate = useNavigate();
 
   const handleNavigate = () => {
     navigate(`/album/${currentTrack.id}`);
   };
+  const handleNavigateArtist = () =>{
+    navigate(`/artist/${currentTrack.artistId}`);
+  }
 
   const { currentTrack } = useAudioPlayerContext();
   return (
@@ -32,7 +36,7 @@ export const TrackInfo = () => {
         )}
 
         {currentTrack?.author ? (
-          <p className="text-[14px] text-gray-400 truncate max-w-[200px] sm:max-w-xs hover:underline cursor-pointer">
+          <p onClick={handleNavigateArtist} className="text-[14px] text-gray-400 truncate max-w-[200px] sm:max-w-xs hover:underline cursor-pointer">
             {currentTrack.author}
           </p>
         ) : (

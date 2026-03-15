@@ -60,7 +60,7 @@ export const Artist = () => {
     : "";
 
   return (
-    <div className="w-full min-h-screen bg-[#333] text-white font-sans">
+    <div className="w-full min-h-screen bg-[#333] text-white font-sans pb-8">
       <div className="relative flex flex-col md:flex-row items-end gap-6 mb-8 p-8 md:pt-16 overflow-hidden">
         <div
           className="absolute inset-0 z-0 bg-cover bg-center blur-2xl opacity-50 scale-110"
@@ -73,7 +73,7 @@ export const Artist = () => {
           <img
             src={profileUrl}
             alt={getArtist?.artist?.name}
-            className="w-48 h-48 md:w-60 md:h-60 object-cover rounded-md shadow-2xl"
+            className="w-48 h-48 md:w-60 md:h-60 object-cover rounded-full shadow-2xl"
           />
           <div className="flex flex-col mb-2 text-white">
             <h1 className="text-5xl md:text-5xl font-black tracking-tighter mb-4 drop-shadow-lg">
@@ -99,7 +99,7 @@ export const Artist = () => {
             <div
               onClick={() => handleNavigation(album.id)}
               key={album.id}
-              className="bg-[#181818] hover:bg-[#282828] transition-all duration-300 p-4 rounded-2xl flex flex-col group cursor-pointer"
+              className="bg-[#181818] hover:bg-[#282828] transition-all duration-300 p-4 rounded-xl flex flex-col group cursor-pointer"
             >
               <div className="relative mb-4 w-full aspect-square shadow-lg">
                 <img
@@ -111,9 +111,10 @@ export const Artist = () => {
               <p className="font-bold text-base text-white truncate w-full">
                 {album.name}
               </p>
-              <p className="text-sm text-[#b3b3b3] mt-1 truncate w-full">
+
+              {/*<p className="text-sm text-[#b3b3b3] mt-1 truncate w-full">
                 Album • ID: {album.id}
-              </p>
+              </p>*/}
               <p className="text-sm text-[#b3b3b3] mt-1 truncate w-full">
                 {album.year} {" • " + album.genre}
               </p>

@@ -123,9 +123,7 @@ const Cover = ({ album, authData }) => {
           {album.name}
         </h3>
 
-        <p className="text-xs text-white truncate">{album.artist}</p>
-
-        <p className="text-xs text-white">{album.year || "Anno sconosciuto"}</p>
+        <p className="text-xs text-white truncate">{album.artist} • {album.year}</p>
       </div>
     </div>
   );

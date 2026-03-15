@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { useAuth } from "../store/context/Auth-context";
 import { useTrack } from "../store/context/Track-context";
 import { useAudioPlayerContext } from "../store/context/audio-player-context";
@@ -11,18 +11,19 @@ export const Album = () => {
   const { id } = useParams();
   const { authData } = useAuth();
   const { playAlbum } = useTrack();
-
+  const navigate = useNavigate();
   const { currentTrack, setCurrentTrack, setIsPlaying } =
     useAudioPlayerContext();
 
   const [albumDetails, setAlbumDetails] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  //const fetchedRef = useRef(false);
-  /**
-   * Errore durante il caricamento degli album
-   * Dati vecchio album non cancellati
-   */
+  const navigateGenre = (genreId) => {
+    navigate(`/genre/${genreId}`);
+  };
+  const navigateArtist = (artistId) => {
+    navigate(`/artist/${artistId}`);
+  };
 
   const [fullscreenCover, setFullscreenCover] = useState(false);
   const coverUrl = `${authData.baseUrl}/rest/getCoverArt?${authData.authParams}&id=${id}&size=1000`;
@@ -122,9 +123,14 @@ export const Album = () => {
               {albumDetails.name}
             </h1>
 
-            <p className="text-gray-300 text-sm font-semibold ">
-              {albumDetails.artist} {" • "} {albumDetails.year}
-            </p>
+            <span className="flex gap-1">
+              <p onClick={() => navigateArtist(albumDetails.artistId)} className="text-gray-300 text-sm font-semibold hover:cursor-pointer hover:underline">
+                {albumDetails.artist}
+              </p>
+              <p className="text-gray-300 text-sm font-semibold ">
+                 {"• "}{albumDetails.year}
+              </p>
+            </span>
 
             <div className="flex items-center gap-4 text-[#a8a8a8] text-sm font-medium">
               <div className="flex items-center gap-1.5">
@@ -150,6 +156,7 @@ export const Album = () => {
             >
               {albumDetails.genres?.map((genre, index) => (
                 <button
+                onClick={() => navigateGenre(genre.name)}
                   className="backdrop-blur-md mr-4 pl-2 pr-2 rounded-md border border-white/5 group cursor-pointer hover:bg-[#161616] transition-all text-white"
                   key={index}
                 >
@@ -235,7 +242,7 @@ export const Album = () => {
                   <td className="py-2.5 text-[#a8a8a8] text-sm truncate pr-4 hidden sm:table-cell">
                     {song.artist}
                   </td>
-                </tr>                
+                </tr>
               );
             })}
           </tbody>
