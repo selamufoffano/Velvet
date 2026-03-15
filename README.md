@@ -8,10 +8,10 @@ However, if you want to build and customize your own PWA client, this project ca
 | Pages | Status |
 | --- | --- |
 | Home | Almost completed |
-| Album | **Finished** |
+| Album | completed |
 | Tracks | Not started |
 | Favorites | Currently in development |
-| Artist | Currently in development |
+| Artist | completed |
 | Genre | completed |
 | Radio | Not started |
 | Folder | Not started |

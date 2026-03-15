@@ -30,9 +30,6 @@
 }
 
 
-
-
-
 /* Rimuove il bordo e l'ombra del focus sugli input */
 input:focus,
 textarea:focus,
@@ -41,4 +38,13 @@ button:focus {
   outline: none !important;
   box-shadow: none !important;
   border-color: transparent !important;
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }

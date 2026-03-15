@@ -17,6 +17,7 @@ import { AlbumGenre } from "./pages/AlbumGenre";
 import { Categories } from "./pages/Categories";
 import { ShowArtist } from "./pages/ShowArtist";
 import { Artist } from "./pages/Artist";
+import { Favorite } from "./pages/Favorite";
 import "./App.css";
 
 function App() {
@@ -60,7 +61,7 @@ function App() {
                     <Route path="/albumpage" element={<AlbumPage />} />
                     <Route path="/album/:id" element={<Album />} />
                     <Route path="/setting" element={<Settings />} />
-                    <Route path="/loadingsong" element={<LoadingSong />} />
+                    <Route path="/favorite" element={<Favorite />} />
 
 
                     <Route path="/genre/:getGenre" element={<AlbumGenre />} />

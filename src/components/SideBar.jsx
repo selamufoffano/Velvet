@@ -13,8 +13,8 @@ const SideBar = ({ openSearch, setOpenSearch, onSearchInput, searchTerm }) => {
   const mainLinks = [
     { name: "Home", icon: "/img/home.svg", path: "/" },
     { name: "Album", icon: "/img/album.svg", path: "/AlbumPage" },
-    { name: "Tracce (Not yet)", icon: "/img/song.svg", path: "/Songs" },
-    { name: "Preferiti (Not yet)", icon: "/img/favorite.svg", path: "/Preferiti", },
+    //{ name: "Tracce (Not yet)", icon: "/img/song.svg", path: "/Songs" },
+    { name: "Preferiti", icon: "/img/favorite.svg", path: "/favorite", },
     { name: "Artist", icon: "/img/artist.svg", path: "/artists" },
     { name: "Generi", icon: "/img/generi.svg", path: "/categories" },
     //{ name: "Radio (Not yet)", icon: "/img/radio.svg", path: "/Radio" },
