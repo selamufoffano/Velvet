@@ -12,7 +12,7 @@ import { Lyric } from "./components/Lyric";
 import { Search } from "./pages/Search";
 import { CloseLyricsIcon2, CloseLyricsIcon3 } from "./components/Icons";
 import { Settings } from "./pages/Settings";
-import { LoadingSong } from "./components/LoadingSong";
+import { Radio } from "./pages/Radio";
 import { AlbumGenre } from "./pages/AlbumGenre";
 import { Categories } from "./pages/Categories";
 import { ShowArtist } from "./pages/ShowArtist";
@@ -62,6 +62,7 @@ function App() {
                     <Route path="/album/:id" element={<Album />} />
                     <Route path="/setting" element={<Settings />} />
                     <Route path="/favorite" element={<Favorite />} />
+                    <Route path="/radio" element={<Radio />} />
 
 
                     <Route path="/genre/:getGenre" element={<AlbumGenre />} />
@@ -86,9 +87,9 @@ function App() {
               >
                 <div className="p-6 pt-4 text-white overflow-y-auto h-full">
                   <div className="flex w-full justify-between items-center border-b border-white/10 pb-4">
-                    {/*<button onClick={() => setOpenLyricFull((prev) => !prev)}>
+                    <button onClick={() => setOpenLyricFull((prev) => !prev)}>
                       <CloseLyricsIcon3 />
-                    </button>*/}
+                    </button>
 
                     <button
                       onClick={() => setOpenLyric(false)}

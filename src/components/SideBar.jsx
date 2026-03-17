@@ -17,7 +17,7 @@ const SideBar = ({ openSearch, setOpenSearch, onSearchInput, searchTerm }) => {
     { name: "Preferiti", icon: "/img/favorite.svg", path: "/favorite", },
     { name: "Artist", icon: "/img/artist.svg", path: "/artists" },
     { name: "Generi", icon: "/img/generi.svg", path: "/categories" },
-    //{ name: "Radio (Not yet)", icon: "/img/radio.svg", path: "/Radio" },
+    { name: "Radio (Not yet)", icon: "/img/radio.svg", path: "/Radio" },
     //{ name: "Folder (Not yet)", icon: "/img/folder.svg", path: "/Folder" },
   ];
 

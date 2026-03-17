@@ -48,7 +48,7 @@ export const TrackInfo = () => {
             {currentTrack.album}
           </p>
         ) : (
-          <div className="w-20 h-3 bg-gray-500 rounded-md animate-pulse"></div>
+          <div className="w-15 h-3 bg-gray-500 rounded-md animate-pulse"></div>
         )}
       </div>
     </div>
