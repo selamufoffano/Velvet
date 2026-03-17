@@ -2,13 +2,14 @@ import { useEffect, useState } from "react";
 import { useAuth } from "../store/context/Auth-context";
 import { useNavigate, useParams } from "react-router-dom";
 import LoadingSkeleton from "../components/LoadingSkeleton";
+import AlbumCard from "../components/Cover";
 
 export const AlbumGenre = ({}) => {
   const navigate = useNavigate();
   const { authData } = useAuth();
 
   const { getGenre } = useParams();
-  
+
   const [albums, setAlbums] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -75,30 +76,12 @@ export const AlbumGenre = ({}) => {
       ) : (
         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
           {albums.map((album) => {
-            const coverUrl = `${authData.baseUrl}/rest/getCoverArt?id=${album.coverArt || album.id}&${authData.authParams}`;
-
             return (
-              <div
-                key={album.id}
-                onClick={() => navigate(`/album/${album.id}`)}
-                className="bg-[#292929] rounded-xl p-3 hover:bg-[#333333] transition cursor-pointer"
-              >
-                <img
-                  src={coverUrl}
-                  alt={album.name}
-                  className="w-full aspect-square object-cover rounded-lg mb-3"
-                />
-
-                <h3 className="font-semibold text-sm truncate text-white">
-                  {album.name}
-                </h3>
-
-                <p className="text-xs text-white truncate">{album.artist}</p>
-
-                <p className="text-xs text-white">
-                  {album.year || "Anno sconosciuto"}
-                </p>
-              </div>
+              <AlbumCard
+                key={`${album.id}`}
+                album={album}
+                authData={authData}
+              />
             );
           })}
         </div>

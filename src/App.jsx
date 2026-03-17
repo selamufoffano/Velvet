@@ -86,9 +86,9 @@ function App() {
               >
                 <div className="p-6 pt-4 text-white overflow-y-auto h-full">
                   <div className="flex w-full justify-between items-center border-b border-white/10 pb-4">
-                    <button onClick={() => setOpenLyricFull((prev) => !prev)}>
+                    {/*<button onClick={() => setOpenLyricFull((prev) => !prev)}>
                       <CloseLyricsIcon3 />
-                    </button>
+                    </button>*/}
 
                     <button
                       onClick={() => setOpenLyric(false)}

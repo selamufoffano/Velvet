@@ -55,14 +55,11 @@ export const Album = () => {
 
       try {
         const url = `${authData.baseUrl}/rest/getAlbum.view?${authData.authParams}&id=${id}&f=json`;
-
         const response = await fetch(url);
         const data = await response.json();
 
         setAlbumDetails(data["subsonic-response"]?.album);
-        ////////////
-        console.log(data);
-        /////////////////
+        //console.log(data);
       } catch (err) {
         console.error("Errore nel recupero dell'album:", err);
       } finally {
@@ -124,11 +121,15 @@ export const Album = () => {
             </h1>
 
             <span className="flex gap-1">
-              <p onClick={() => navigateArtist(albumDetails.artistId)} className="text-gray-300 text-sm font-semibold hover:cursor-pointer hover:underline">
+              <p
+                onClick={() => navigateArtist(albumDetails.artistId)}
+                className="text-gray-300 text-sm font-semibold hover:cursor-pointer hover:underline"
+              >
                 {albumDetails.artist}
               </p>
               <p className="text-gray-300 text-sm font-semibold ">
-                 {"• "}{albumDetails.year}
+                {"• "}
+                {albumDetails.year}
               </p>
             </span>
 
@@ -156,7 +157,7 @@ export const Album = () => {
             >
               {albumDetails.genres?.map((genre, index) => (
                 <button
-                onClick={() => navigateGenre(genre.name)}
+                  onClick={() => navigateGenre(genre.name)}
                   className="backdrop-blur-md mr-4 pl-2 pr-2 rounded-md border border-white/5 group cursor-pointer hover:bg-[#161616] transition-all text-white"
                   key={index}
                 >

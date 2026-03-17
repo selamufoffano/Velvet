@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 import { useAuth } from "../store/context/Auth-context";
 import { useNavigate, useParams } from "react-router-dom";
+import AlbumCard from "../components/Cover";
 
 export const Artist = () => {
   const { authData } = useAuth();
   const navigate = useNavigate();
-  const {id} = useParams();
+  const { id } = useParams();
 
   const handleNavigation = (albumId) => {
     navigate(`/album/${albumId}`);
@@ -28,22 +29,6 @@ export const Artist = () => {
 
         const subsonicResponse = data["subsonic-response"];
         setArtist(subsonicResponse);
-
-        /*
-        console.log(subsonicResponse.artist.coverArt);
-        console.log(subsonicResponse.artist.name);
-        if (subsonicResponse?.artist?.album) {
-          subsonicResponse.artist.album.forEach((albums) => {
-            console.log(albums.id);
-            console.log(albums.name);
-            console.log(albums.coverArt);
-          });
-
-        } else {
-          console.log("Nessun artista trovato o struttura dati imprevista.");
-        }
-          */
-
         console.log(data);
       } catch (err) {
         console.error("Errore nel recupero degli artisti:", err);
@@ -91,34 +76,8 @@ export const Artist = () => {
       </div>
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-6 pl-8">
         {getArtist?.artist?.album?.map((album) => {
-          const coverUrl = album.coverArt
-            ? `${authData.baseUrl}/rest/getCoverArt?id=${album.coverArt}&size=300&${authData.authParams}`
-            : "";
-
           return (
-            <div
-              onClick={() => handleNavigation(album.id)}
-              key={album.id}
-              className="bg-[#181818] hover:bg-[#282828] transition-all duration-300 p-4 rounded-xl flex flex-col group cursor-pointer"
-            >
-              <div className="relative mb-4 w-full aspect-square shadow-lg">
-                <img
-                  src={coverUrl}
-                  alt={album.name}
-                  className="w-full h-full object-cover rounded-md"
-                />
-              </div>
-              <p className="font-bold text-base text-white truncate w-full">
-                {album.name}
-              </p>
-
-              {/*<p className="text-sm text-[#b3b3b3] mt-1 truncate w-full">
-                Album • ID: {album.id}
-              </p>*/}
-              <p className="text-sm text-[#b3b3b3] mt-1 truncate w-full">
-                {album.year} {" • " + album.genre}
-              </p>
-            </div>
+            <AlbumCard key={`${album.id}`} album={album} authData={authData} />
           );
         })}
       </div>
