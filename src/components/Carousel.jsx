@@ -119,7 +119,7 @@ export const Carousel = ({albums, loading, authData, PAGE_SIZE,  Titolo,  onRefr
 
       <div
         ref={carouselMove}
-        className="flex w-full overflow-x-auto snap-x snap-mandatory scroll-smooth gap-x-4 items-start hide-scrollbar"
+        className="flex w-full overflow-x-auto snap-x snap-mandatory scroll-smooth gap-x-7 items-start hide-scrollbar"
       >
         {albums.map((album) => (
           <div key={album.id} className="w-[250px] snap-center flex-shrink-0">
