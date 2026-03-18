@@ -18,6 +18,7 @@ import { Categories } from "./pages/Categories";
 import { ShowArtist } from "./pages/ShowArtist";
 import { Artist } from "./pages/Artist";
 import { Favorite } from "./pages/Favorite";
+import { Prova } from "./pages/Prova";
 import "./App.css";
 
 function App() {
@@ -67,6 +68,8 @@ function App() {
 
                     <Route path="/genre/:getGenre" element={<AlbumGenre />} />
                     <Route path="/categories" element={<Categories/>} />
+
+                    <Route path="/Prova" element={<Prova/>} />
 
 
                     <Route path="/artists" element={<ShowArtist/>} />

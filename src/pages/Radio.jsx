@@ -5,8 +5,7 @@ export const Radio = () => {
   const { authData } = useAuth();
   const [stations, setStations] = useState([]);
 
-  const { currentTrack, setCurrentTrack, setIsPlaying } =
-    useAudioPlayerContext();
+  const { currentTrack, setCurrentTrack, setIsPlaying } = useAudioPlayerContext();
 
   useEffect(() => {
     const fetchRadio = async () => {
@@ -39,7 +38,7 @@ export const Radio = () => {
     const radioTrack = {
       id: radio.id,
       title: radio.name,
-      artist: "Web Radio Live",
+      author: "Web Radio Live",
       src: radio.streamUrl,
       thumbnail: radio.homePageUrl,
       duration: 0,
