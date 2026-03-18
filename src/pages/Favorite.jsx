@@ -42,7 +42,7 @@ export const Favorite = () => {
 
   return (
     <div className="w-full min-h-full bg-[#1A1A1A] p-4 text-white">
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-6">
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-8 gap-6">
         {albums.map((album) => (
           <AlbumCard
             key={`${album.id}`}

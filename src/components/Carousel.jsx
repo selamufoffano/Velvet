@@ -122,7 +122,7 @@ export const Carousel = ({albums, loading, authData, PAGE_SIZE,  Titolo,  onRefr
         className="flex w-full overflow-x-auto snap-x snap-mandatory scroll-smooth gap-x-7 items-start hide-scrollbar"
       >
         {albums.map((album) => (
-          <div key={album.id} className="w-[250px] snap-center flex-shrink-0">
+          <div key={album.id} className="w-[200px] snap-center flex-shrink-0">
             <AlbumCard album={album} authData={authData} />
           </div>
         ))}

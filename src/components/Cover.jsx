@@ -97,7 +97,7 @@ const Cover = ({ album, authData }) => {
       onClick={handleNavigate}
       className="group flex flex-col text-left cursor-pointer w-full transition-all"
     >
-      <div className="relative w-full aspect-square rounded-xl overflow-hidden bg-[#1c1c1c] transition-transform duration-300 group-hover:scale-[1.02] shadow-sm">
+      <div className="relative w-full aspect-square rounded-md border border-white/10 overflow-hidden bg-[#1F1F1F] transition-transform duration-300 group-hover:scale-[1.02] shadow-sm">
         {isVisible ? (
           <img
             src={coverUrl}

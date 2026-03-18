@@ -4,23 +4,17 @@ import { useAuth } from "../store/context/Auth-context";
 export const Prova = () => {
   const { authData } = useAuth();
   
-  const id="7EEOM00sz2DhtwAactdxPP";
+  const id="h0RzDUCjK6VBSjmd9hViNg";
   useEffect(() => {
 
     const fetchRadio = async () => {
       if (!authData) { return; }
 
       try {
-        const radioUrl = `${authData.baseUrl}/rest/star?${authData.authParams}&albumId=${id}`;
-        // prende id dell'album setStar = true
-
-        /**
-         * 
-         * const starUrl = `${authData.baseUrl}/rest/star.view?${authData.authParams}&albumId=${id}`;
-         */
-
+        const radioUrl = `${authData.baseUrl}/rest/getPlaylist?${authData.authParams}&id=${id}&f=json`;
         const response = await fetch(radioUrl);
         const json = await response.json();
+        console.log(json);
 
         const stationsArray = json["subsonic-response"]?.internetRadioStations?.internetRadioStation || [];
         console.log(stationsArray);

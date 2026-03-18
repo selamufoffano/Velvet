@@ -4,11 +4,6 @@ import { COLORS } from "./Colors";
 import LoadingGenreSkeleton from "./LoadingGenreSkeleton";
 import { useNavigate } from "react-router-dom";
 
-/**
- * I dati vengono inviati ad Home.jsx
- * Da Home.jsx -> App.jsx
- * Dentro App.jsx il passaggio AlbumGenre.jsx * */
-
 export const GenreCard = ({limit }) => {
   const { authData } = useAuth();
 
@@ -85,7 +80,7 @@ export const GenreCard = ({limit }) => {
 
   return (
     <div className="w-full p-6 h-full">
-      <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
+      <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-4">
         {genresWithColors.map((genre) => (
           <div
             key={genre.value}

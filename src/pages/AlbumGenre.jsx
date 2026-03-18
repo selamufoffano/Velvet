@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useAuth } from "../store/context/Auth-context";
 import { useNavigate, useParams } from "react-router-dom";
 import LoadingSkeleton from "../components/LoadingSkeleton";
-import AlbumCard from "../components/Cover";
+import Cover from "../components/Cover";
 
 export const AlbumGenre = ({}) => {
   const navigate = useNavigate();
@@ -68,16 +68,16 @@ export const AlbumGenre = ({}) => {
   if (error) return <p className="p-8 text-red-500">{error}</p>;
 
   return (
-    <div className="w-full h-full bg-[#1A1A1A] p-8 overflow-y-auto">
+    <div className="w-full h-full bg-[#1F1F1F] p-8 overflow-y-auto">
       <h1 className="text-2xl font-bold mb-6 text-white">Album: {getGenre}</h1>
 
       {albums.length === 0 ? (
         <p className="text-black">Nessun album trovato per questo genere.</p>
       ) : (
-        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
+        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-6">
           {albums.map((album) => {
             return (
-              <AlbumCard
+              <Cover
                 key={`${album.id}`}
                 album={album}
                 authData={authData}

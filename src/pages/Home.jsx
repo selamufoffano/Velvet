@@ -51,12 +51,12 @@ export const Home = () => {
   }, [fetchAlbums, authData]);
 
   return (
-    <div className="w-full h-full bg-[#1a1a1a] p-6 overflow-y-auto overflow-x-hidden border-l border-white/10">
+    <div className="w-full h-full bg-[#1F1F1F] p-6 overflow-y-auto overflow-x-hidden border-l border-white/10">
       <h1 className="text-4xl text-white font-semibold mb-6">Home</h1>
 
       <h1 className="text-white font-semibold text-2xl">Generi</h1>
       <div>
-        <GenreCard  limit={6} />
+        <GenreCard  limit={8} />
       </div>
 
       <Carousel

@@ -5,12 +5,7 @@ import AlbumCard from "../components/Cover";
 
 export const Artist = () => {
   const { authData } = useAuth();
-  const navigate = useNavigate();
   const { id } = useParams();
-
-  const handleNavigation = (albumId) => {
-    navigate(`/album/${albumId}`);
-  };
 
   const [getArtist, setArtist] = useState();
   const [loading, setLoading] = useState(false);
@@ -45,7 +40,7 @@ export const Artist = () => {
     : "";
 
   return (
-    <div className="w-full min-h-screen bg-[#333] text-white font-sans pb-8">
+    <div className="w-full min-h-screen bg-[#1F1F1F] text-white font-sans pb-8">
       <div className="relative flex flex-col md:flex-row items-end gap-6 mb-8 p-8 md:pt-16 overflow-hidden">
         <div
           className="absolute inset-0 z-0 bg-cover bg-center blur-2xl opacity-50 scale-110"
