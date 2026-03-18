@@ -51,7 +51,7 @@ export const Radio = () => {
 
   return (
     <div className="w-full h-full min-h-screen bg-[#18181a] p-8  pb-32">
-      <div className="grid gap-x-6 gap-y-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6">
+      <div className="grid gap-x-6 gap-y-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-8">
         {stations.map((radio) => {
           const imageUrl = radio.homePageUrl;
           const isPlayingNow = currentTrack?.id === radio.id;
