@@ -4,7 +4,6 @@ import { useAuth } from "../store/context/Auth-context";
 import { useTrack } from "../store/context/Track-context";
 import { useAudioPlayerContext } from "../store/context/audio-player-context";
 import { LoadingSong } from "../components/LoadingSong";
-import AlbumCard from "../components/Cover";
 import { CarouselV2 } from "../components/CarouselV2";
 
 import { MusicNoteIcon, ClockIcon, PlayIcon } from "../components/Icons";
@@ -35,10 +34,12 @@ export const Album = () => {
   const handlePlayAlbum = () => {
     if (albumDetails && albumDetails.song) {
       playAlbum(albumDetails.song, authData, 0, setCurrentTrack, setIsPlaying);
+      
     }
   };
 
   const handlePlaySingleTrack = (index) => {
+    handleTime();
     if (albumDetails && albumDetails.song) {
       playAlbum(
         albumDetails.song,
@@ -63,7 +64,7 @@ export const Album = () => {
         const data = await response.json();
 
         setAlbumDetails(data["subsonic-response"]?.album);
-        //console.log(data);
+        console.log(data);
       } catch (err) {
         console.error("Errore nel recupero dell'album:", err);
       } finally {
@@ -75,26 +76,37 @@ export const Album = () => {
   }, [id, authData]);
 
   useEffect(() => {
-    setAlbumsArtist(null);
+  if (!authData || !albumDetails?.artistId) return;
 
-    const fetchAlbums = async () => {
-      if (!authData || !albumDetails) return;
+  const fetchAlbums = async () => {
+    try {
+      const url = `${authData.baseUrl}/rest/getArtist?id=${albumDetails.artistId}&${authData.authParams}&f=json`;
 
-      try {
-        const urlAlbumsArtist = `${authData.baseUrl}/rest/getArtist?id=${albumDetails.artistId}&${authData.authParams}&f=json`;
-        const responseAlbums = await fetch(urlAlbumsArtist);
-        const dataAlbums = await responseAlbums.json();
+      const response = await fetch(url);
+      const data = await response.json();
 
-        const albumsRespons = dataAlbums["subsonic-response"]; //data["subsonic-response"]?.albumList2?.album || [];
-        setAlbumsArtist(albumsRespons);
-        console.log(dataAlbums);
-      } catch (err) {
-        console.error("Errore nel recupero dell'album:", err);
-      }
-    };
+      const albums =
+        data["subsonic-response"]?.artist?.album || [];
 
-    fetchAlbums();
-  }, [albumDetails, authData]);
+      setAlbumsArtist(albums);
+    } catch (err) {
+      console.error("Errore nel recupero artist albums:", err);
+    }
+  };
+
+  fetchAlbums();
+}, [albumDetails?.artistId, authData]);
+
+  const handleTime = () => {
+  const time = Date.now();
+
+  setAlbumDetails((prev) => ({
+    ...prev,
+    played: time,
+  }));
+
+  return time;
+};
 
   if (loading) return <LoadingSong />;
   if (!albumDetails)
