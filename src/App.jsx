@@ -46,7 +46,7 @@ function App() {
           element={
             <div className="h-screen w-full flex flex-col bg-[#000000] overflow-hidden">
               <div className="flex flex-grow overflow-hidden">
-                <aside className="w-[15%] flex flex-col bg-[#121212] border-white/5 group">
+                <aside className="w-2xs flex flex-col bg-[#121212] border-white/10 group">
                   <SideBar
                     openSearch={openSearch}
                     setOpenSearch={setOpenSearch}
@@ -55,7 +55,7 @@ function App() {
                   />
                 </aside>
 
-                <main className="w-[85%] overflow-y-auto overflow-x-hidden">
+                <main className="w-[100%] overflow-y-auto overflow-x-hidden">
                   <Routes>
                     <Route path="/" element={<Navigate to="/home" replace />} />
                     <Route path="/home" element={<Home />} />

@@ -5,6 +5,7 @@ import { useTrack } from "../store/context/Track-context";
 import { useAudioPlayerContext } from "../store/context/audio-player-context";
 import { LoadingSong } from "../components/LoadingSong";
 import AlbumCard from "../components/Cover";
+import { CarouselV2 } from "../components/CarouselV2";
 
 import { MusicNoteIcon, ClockIcon, PlayIcon } from "../components/Icons";
 
@@ -276,10 +277,12 @@ export const Album = () => {
       <div className="flex pl-10 pr-10">
         <span className="flex w-full border border-white/10 mt-5 mb-5"></span>
       </div>
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-8 gap-6 pl-10 pr-10">
-        {getAlbumsArtist?.artist?.album?.slice(0, 8).map((album, i) => (
-          <AlbumCard key={i} album={album} authData={authData} />
-        ))}
+      <div className="pl-10 pr-10">
+        <CarouselV2
+          albums={getAlbumsArtist?.artist?.album || []}
+          authData={authData}
+          Titolo="Altri album dell'artista"
+        />
       </div>
     </div>
   );
