@@ -4,6 +4,7 @@ import { useAuth } from "../store/context/Auth-context";
 import { useTrack } from "../store/context/Track-context";
 import { useAudioPlayerContext } from "../store/context/audio-player-context";
 import { LoadingSong } from "../components/LoadingSong";
+import AlbumCard from "../components/Cover";
 
 import { MusicNoteIcon, ClockIcon, PlayIcon } from "../components/Icons";
 
@@ -17,6 +18,8 @@ export const Album = () => {
 
   const [albumDetails, setAlbumDetails] = useState(null);
   const [loading, setLoading] = useState(true);
+
+  const [getAlbumsArtist, setAlbumsArtist] = useState([]);
 
   const navigateGenre = (genreId) => {
     navigate(`/genre/${genreId}`);
@@ -47,7 +50,7 @@ export const Album = () => {
   };
 
   useEffect(() => {
-    setAlbumDetails(null); // svuota chache
+    setAlbumDetails(null);
     setLoading(true);
 
     const fetchAlbumData = async () => {
@@ -70,8 +73,29 @@ export const Album = () => {
     fetchAlbumData();
   }, [id, authData]);
 
-  if (loading) return <LoadingSong />;
+  useEffect(() => {
+    setAlbumsArtist(null);
 
+    const fetchAlbums = async () => {
+      if (!authData || !albumDetails) return;
+
+      try {
+        const urlAlbumsArtist = `${authData.baseUrl}/rest/getArtist?id=${albumDetails.artistId}&${authData.authParams}&f=json`;
+        const responseAlbums = await fetch(urlAlbumsArtist);
+        const dataAlbums = await responseAlbums.json();
+
+        const albumsRespons = dataAlbums["subsonic-response"]; //data["subsonic-response"]?.albumList2?.album || [];
+        setAlbumsArtist(albumsRespons);
+        console.log(dataAlbums);
+      } catch (err) {
+        console.error("Errore nel recupero dell'album:", err);
+      }
+    };
+
+    fetchAlbums();
+  }, [albumDetails, authData]);
+
+  if (loading) return <LoadingSong />;
   if (!albumDetails)
     return (
       <div className="p-10 text-red-500 bg-[#5d5d5d] w-full h-full">
@@ -248,6 +272,18 @@ export const Album = () => {
             })}
           </tbody>
         </table>
+      </div>
+      <div className="flex pl-10 pr-10">
+        <span className="flex w-full border border-white/10 mt-5 mb-5"></span>
+      </div>
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-8 gap-6 pl-10 pr-10">
+        {getAlbumsArtist?.artist?.album.map((album, index) => (
+          <AlbumCard
+            key={`${album.id}-${index}`}
+            album={album}
+            authData={authData}
+          />
+        ))}
       </div>
     </div>
   );

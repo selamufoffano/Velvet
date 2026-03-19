@@ -72,8 +72,7 @@ export const Search = ({ setOpenSearch, searchTerm, onSearchInput }) => {
     return () => clearTimeout(delay);
   }, [searchQuery]);
 
-  const handleAlbumClick = (albumId) => {
-    handleNavigation(albumId);
+  const handleAlbumClick = () => {
     setOpenSearch(false);
     setSearchQuery("");
     if (onSearchInput) onSearchInput("");
@@ -99,7 +98,7 @@ export const Search = ({ setOpenSearch, searchTerm, onSearchInput }) => {
         {albums.map((album) => (
           <AlbumCard key={`${album.id}`} album={album} authData={authData} />
         ))}
-
+ 
         {loading &&
           Array.from({ length: 6 }).map((_, i) => (
             <LoadingSkeleton key={`skeleton-${i}`} />
