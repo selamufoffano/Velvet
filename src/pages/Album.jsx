@@ -76,26 +76,26 @@ export const Album = () => {
   }, [id, authData]);
 
   useEffect(() => {
-  if (!authData || !albumDetails?.artistId) return;
+    setAlbumsArtist(null);
 
-  const fetchAlbums = async () => {
-    try {
-      const url = `${authData.baseUrl}/rest/getArtist?id=${albumDetails.artistId}&${authData.authParams}&f=json`;
+    const fetchAlbums = async () => {
+      if (!authData || !albumDetails) return;
 
-      const response = await fetch(url);
-      const data = await response.json();
+      try {
+        const urlAlbumsArtist = `${authData.baseUrl}/rest/getArtist?id=${albumDetails.artistId}&${authData.authParams}&f=json`;
+        const responseAlbums = await fetch(urlAlbumsArtist);
+        const dataAlbums = await responseAlbums.json();
 
-      const albums =
-        data["subsonic-response"]?.artist?.album || [];
+        const albumsRespons = dataAlbums["subsonic-response"];
+        setAlbumsArtist(albumsRespons);
+        //console.log(dataAlbums);
+      } catch (err) {
+        console.error("Errore nel recupero dell'album:", err);
+      }
+    };
 
-      setAlbumsArtist(albums);
-    } catch (err) {
-      console.error("Errore nel recupero artist albums:", err);
-    }
-  };
-
-  fetchAlbums();
-}, [albumDetails?.artistId, authData]);
+    fetchAlbums();
+  }, [albumDetails, authData]);
 
   const handleTime = () => {
   const time = Date.now();
