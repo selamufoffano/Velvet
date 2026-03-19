@@ -1,16 +1,10 @@
 import { useEffect, useState } from "react";
 import { useAuth } from "../store/context/Auth-context";
 import LoadingSkeleton from "../components/LoadingSkeleton";
-import { useNavigate } from "react-router-dom";
 import AlbumCard from "../components/Cover";
 
 export const Search = ({ setOpenSearch, searchTerm, onSearchInput }) => {
   const { authData } = useAuth();
-  const navigate = useNavigate();
-
-  const handleNavigation = (albumId) => {
-    navigate(`/album/${albumId}`);
-  };
 
   // Ripristiniamo lo stato locale per l'input interno
   const [searchQuery, setSearchQuery] = useState(searchTerm || "");
@@ -94,9 +88,9 @@ export const Search = ({ setOpenSearch, searchTerm, onSearchInput }) => {
         </h1>
       </div>
 
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-6">
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-6" onClick={handleAlbumClick}>
         {albums.map((album) => (
-          <AlbumCard key={`${album.id}`} album={album} authData={authData} />
+          <AlbumCard key={`${album.id}`} album={album} authData={authData}/>
         ))}
  
         {loading &&

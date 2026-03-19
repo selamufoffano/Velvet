@@ -277,12 +277,8 @@ export const Album = () => {
         <span className="flex w-full border border-white/10 mt-5 mb-5"></span>
       </div>
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-8 gap-6 pl-10 pr-10">
-        {getAlbumsArtist?.artist?.album.map((album, index) => (
-          <AlbumCard
-            key={`${album.id}-${index}`}
-            album={album}
-            authData={authData}
-          />
+        {getAlbumsArtist?.artist?.album?.slice(0, 8).map((album, i) => (
+          <AlbumCard key={i} album={album} authData={authData} />
         ))}
       </div>
     </div>
