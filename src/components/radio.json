@@ -1,0 +1,56 @@
+{
+  "Radio": [
+    {
+      "title": "Canali BBC radio: ...",
+      "channels": [
+        {
+          "name": "BBC Radio 1",
+          "link": "https://..."
+        },
+        {
+          "name": "BBC Radio 2",
+          "link": "https://..."
+        }
+      ]
+    },
+    {
+      "title": "Canali RAI: ...",
+      "channels": [
+        {
+          "name": "BBC Radio 1",
+          "link": "https://..."
+        },
+        {
+          "name": "BBC Radio 2",
+          "link": "https://..."
+        }
+      ]
+    },
+    {
+      "title": "Rock channel: ...",
+      "channels": [
+        {
+          "name": "BBC Radio 1",
+          "link": "https://..."
+        },
+        {
+          "name": "BBC Radio 2",
+          "link": "https://..."
+        }
+      ]
+    },
+    {
+      "title": "Canali BBC radio: ...",
+      "channels": [
+        {
+          "name": "BBC Radio 1",
+          "link": "https://..."
+        },
+        {
+          "name": "BBC Radio 2",
+          "link": "https://..."
+        }
+      ]
+    }
+  ]
+}

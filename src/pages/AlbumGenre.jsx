@@ -74,7 +74,7 @@ export const AlbumGenre = ({}) => {
       {albums.length === 0 ? (
         <p className="text-black">Nessun album trovato per questo genere.</p>
       ) : (
-        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-6">
+        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-6">
           {albums.map((album) => {
             return (
               <Cover

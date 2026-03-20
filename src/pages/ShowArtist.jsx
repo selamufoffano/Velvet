@@ -2,13 +2,13 @@ import { useEffect, useState } from "react";
 import { useAuth } from "../store/context/Auth-context";
 import { useNavigate } from "react-router-dom";
 
-export const ShowArtist = ({idSingle}) => {
+export const ShowArtist = ({ idSingle }) => {
   const { authData } = useAuth();
 
   const [artistList, setArtistList] = useState(null);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
-  
+
   const handleNavigation = (artistId) => {
     navigate(`/artist/${artistId}`);
   };
@@ -35,6 +35,7 @@ export const ShowArtist = ({idSingle}) => {
               indexItem.artist.forEach((artist) => {
                 console.log(artist.name);
                 console.log(artist.id);
+                console.log(artist.artistImageUrl);
               });
             }
           });
@@ -56,26 +57,32 @@ export const ShowArtist = ({idSingle}) => {
   if (loading) return <p>Caricamento...</p>;
   const userIcon = "/img/circle.svg";
 
-
   return (
     <div className="w-full min-h-full bg-[#1F1F1F] p-6">
       <h1 className="text-white text-2xl font-bold mb-6">Artisti</h1>
 
-      <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6 w-full">
+      <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-6 w-full">
         {artistList?.artists?.index?.map((indexItem) =>
           indexItem.artist?.map((artist) => (
             <div
-            onClick={()=>handleNavigation(artist.id)}
+              onClick={() => handleNavigation(artist.id)}
               key={artist.id}
               className="flex flex-col items-center justify-center text-center"
             >
-              <img
-                src={artist.artistImageUrl || userIcon}
-                alt={artist.name}
-                className="w-40 h-40 rounded-full object-cover mb-2 bg-red-500"
-              />
+              {artist.artistImageUrl ? (
+                <>
+                  <img
+                    src={artist.artistImageUrl}
+                    
+                    //alt={artist.name}
+                    className="rounded-full object-cover mb-2 bg-[#525761] hover:scale-110 transition-all"
+                  />
 
-              <p className="text-sm text-white font-medium">{artist.name}</p>
+                  <p className="text-sm text-white font-medium">
+                    {artist.name}
+                  </p>
+                </>
+              ) : null}
             </div>
           )),
         )}
