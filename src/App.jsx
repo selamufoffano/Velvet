@@ -107,7 +107,7 @@ function App() {
               </div>
               
               <div
-                className={`fixed top-0 bottom-[90px] w-[85%] right-0 backdrop-blur-2xl bg-[#4e4e4e52] border-l border-white/20 z-30 transform transition-transform duration-300 ${
+                className={`fixed top-0 bottom-[90px] w-[calc(100%-250px)] right-0 backdrop-blur-2xl bg-[#4e4e4e52] border-l border-white/20 z-30 transform transition-transform duration-300 ${
                   openSearch ? "translate-x-0" : "translate-x-full"
                 }`}
               >
